@@ -1,0 +1,42 @@
+[project]
+name = "universal-hamiltonian-framework"
+version = "0.1.0"
+description = "A universal cross-domain Hamiltonian compiler for reality"
+authors = [{name = "Mopati Labs"}]
+requires-python = ">=3.11"
+dependencies = [
+    "polars>=0.20.0",
+    "plotly>=5.18.0",
+    "dash>=2.14.0",
+    "sympy>=1.12",
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    "cython>=3.0.0",
+    "pandas>=2.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-benchmark>=4.0.0",
+    "manim>=0.18.0",
+    "jupyter>=1.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+mojo = []  # Mojo dependencies when package manager available
+
+[build-system]
+requires = ["setuptools>=68.0.0", "cython>=3.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["uvh", "uvh.core", "uvh.domains", "uvh.compiler", "uvh.viz"]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

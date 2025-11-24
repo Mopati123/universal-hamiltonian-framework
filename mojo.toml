@@ -1,0 +1,23 @@
+[project]
+name = "universal-hamiltonian-framework"
+version = "0.1.0"
+
+[build]
+sources = [
+    "src/core/hamiltonian_engine.mojo",
+    "src/core/propagator.mojo",
+    "src/domains/quantum_systems.mojo",
+    "src/domains/consciousness_field.mojo",
+]
+
+[compile]
+# SIMD optimization flags
+flags = [
+    "--enable-simd",
+    "--vectorize",
+    "--inline-threshold=1000",
+]
+
+# FFI bindings to Python
+[ffi]
+python_interop = true
