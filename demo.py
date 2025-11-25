@@ -6,7 +6,10 @@ Demonstrates the core concepts across multiple domains.
 
 import numpy as np
 import sys
-sys.path.insert(0, 'src')
+import os
+
+# Add src to path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 from core import PhaseSpace, HamiltonianSystem
 from compiler import define_system, SymbolicHamiltonian, harmonic_oscillator_hamiltonian

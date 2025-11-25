@@ -2,13 +2,23 @@
 Universal Hamiltonian Framework - Compiler Module
 """
 
-from .hamiltonian_dsl import define_system, hamiltonian_system, HamiltonianDSL
-from .symbolic_engine import (
-    SymbolicHamiltonian,
-    harmonic_oscillator_hamiltonian,
-    coupled_oscillators_hamiltonian,
-    kepler_hamiltonian,
-)
+try:
+    from .hamiltonian_dsl import define_system, hamiltonian_system, HamiltonianDSL
+    from .symbolic_engine import (
+        SymbolicHamiltonian,
+        harmonic_oscillator_hamiltonian,
+        coupled_oscillators_hamiltonian,
+        kepler_hamiltonian,
+    )
+except ImportError:
+    # Fallback for direct execution
+    from hamiltonian_dsl import define_system, hamiltonian_system, HamiltonianDSL
+    from symbolic_engine import (
+        SymbolicHamiltonian,
+        harmonic_oscillator_hamiltonian,
+        coupled_oscillators_hamiltonian,
+        kepler_hamiltonian,
+    )
 
 __all__ = [
     'define_system',
