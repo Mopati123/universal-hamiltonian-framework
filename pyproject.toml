@@ -1,42 +1,130 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel", "cython>=3.0.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "universal-hamiltonian-framework"
 version = "0.1.0"
-description = "A universal cross-domain Hamiltonian compiler for reality"
-authors = [{name = "Mopati Labs"}]
+description = "Cross-domain Hamiltonian compiler: quantum, markets, consciousness, blockchain unified"
+authors = [
+    {name = "Mopati Labs", email = "mopati@example.com"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+keywords = [
+    "hamiltonian", "physics", "quantum", "markets", "consciousness",
+    "blockchain", "phase-space", "symplectic", "mechanics"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Office/Business :: Financial",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Cython",
+]
 requires-python = ">=3.11"
 dependencies = [
+    "numpy>=1.26.0",
+    "scipy>=1.11.0",
+    "sympy>=1.12",
     "polars>=0.20.0",
     "plotly>=5.18.0",
     "dash>=2.14.0",
-    "sympy>=1.12",
-    "numpy>=1.26.0",
-    "scipy>=1.11.0",
-    "cython>=3.0.0",
     "pandas>=2.1.0",
+    "cython>=3.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
     "pytest-benchmark>=4.0.0",
-    "manim>=0.18.0",
-    "jupyter>=1.0.0",
     "black>=23.0.0",
     "ruff>=0.1.0",
+    "mypy>=1.7.0",
 ]
-mojo = []  # Mojo dependencies when package manager available
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx-rtd-theme>=2.0.0",
+    "myst-parser>=2.0.0",
+]
+viz = [
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "jupyter>=1.0.0",
+    "manim>=0.18.0",
+]
 
-[build-system]
-requires = ["setuptools>=68.0.0", "cython>=3.0.0"]
-build-backend = "setuptools.build_meta"
+[project.urls]
+Homepage = "https://github.com/Mopati123/universal-hamiltonian-framework"
+Documentation = "https://universal-hamiltonian-framework.readthedocs.io"
+Repository = "https://github.com/Mopati123/universal-hamiltonian-framework"
+"Bug Reports" = "https://github.com/Mopati123/universal-hamiltonian-framework/issues"
+
+[project.scripts]
+uhf-demo = "demo:main"
+uhf-viz = "src.viz.phase_space_viz:main"
 
 [tool.setuptools]
-packages = ["uvh", "uvh.core", "uvh.domains", "uvh.compiler", "uvh.viz"]
+packages = ["src", "src.core", "src.domains", "src.compiler", "src.viz"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"*" = ["*.pyx", "*.pxd", "*.mojo"]
 
 [tool.black]
 line-length = 100
 target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
 
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = ["E501"]  # Line too long (handled by black)
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false  # Gradual typing
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*", "*/test_*.py"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
