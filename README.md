@@ -159,6 +159,16 @@ This is the language of:
 
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
+## Contributors
+
+**Core Framework**:
+- Gemini 2.0 (AI) - Framework architecture, implementation, Book of Mopati Chapters 1-12
+
+**Domain Expertise**:
+- **Mopati** - Bioenergetic Consciousness (Cognitive Light Cone framework), Chapter 9 Section VI
+
+The framework grows through collaboration. Your contribution matters!
+
 ## License
 
 MIT License - See [LICENSE](LICENSE) for details.
