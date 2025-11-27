@@ -320,7 +320,7 @@ class MetaFrameworkCICD:
         print(f"  Improvements applied: {len(applied)}")
         print(f"  Energy before: {E_initial}")
         print(f"  Energy after: {E_final}")
-        print(f"  ΔE = {total_delta_E}")
+        print(f"  Delta-E = {total_delta_E}")
         
         if total_delta_E < 0:
             print(f"  [SUCCESS] SYSTEM EVOLVED (energy decreased!)")
@@ -358,7 +358,7 @@ def demo_meta_cicd():
     
     print("\n[Meta-Framework CI/CD Complete]")
     print("The framework just improved itself!")
-    print(f"Proof: ΔE = {result['delta_E']} < 0 ✓")
+    print(f"Proof: Delta-E = {result['delta_E']} < 0 [SUCCESS]")
 
 
 if __name__ == "__main__":
