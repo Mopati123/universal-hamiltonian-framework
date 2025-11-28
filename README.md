@@ -12,6 +12,17 @@ The Universal Hamiltonian Framework (UHF) is a cross-domain system that unifies 
 - **Controllable** - Engineer desired trajectories
 - **Quantizable** - Transition smoothly between classical and quantum
 
+## 🧭 Quick Navigation
+
+**New here?** Start with your goal:
+
+- **🎓 Understand the concept**: [README](#vision) → [Book Ch.1](docs/book-of-mopati.md) → [Quick Demo](quick_demo.py)
+- **📐 See the math**: [Book Ch.1-2](docs/book-of-mopati.md) → [HL Paper](papers/hl-formal-paper.md) → [Reference Implementation](examples/reference_implementation.py)
+- **💻 Build something**: [Domain Examples](examples/) → Pick your domain → Run & adapt
+- **🔧 Extend compiler**: [Reference Implementation](examples/reference_implementation.py) → [Compiler](src/compiler/) → [Backends](src/backends/)
+
+📖 **Full routing guide**: [Navigation](docs/NAVIGATION.md) - Every use case mapped to entry point
+
 ## Quantum-Inspired Tech Stack
 
 This framework embodies quantum principles through its multi-language architecture:
