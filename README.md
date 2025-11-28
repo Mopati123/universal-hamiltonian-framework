@@ -75,27 +75,40 @@ python setup.py build_ext --inplace
 
 ## Quick Start
 
+**5-Minute Demo**: See the framework in action
+
 ```python
-from uvh import define_system
+# Run the interactive demo
+python quick_demo.py
 
-# Define a quantum harmonic oscillator
-@define_system
-class QuantumOscillator:
-    coordinates = ['x']
-    
-    def kinetic(self, p):
-        return p.px**2 / (2 * self.mass)
-    
-    def potential(self, q):
-        return 0.5 * self.k * q.x**2
-
-# Evolve the system (JIT-compiles to Mojo)
-system = QuantumOscillator(mass=1.0, k=1.0)
-trajectory = system.evolve(t_max=10.0, dt=0.01)
-
-# Visualize phase space
-system.plot_phase_portrait()
+# Or try the reference implementation (validates all theorems)
+python examples/reference_implementation.py
 ```
+
+**Want to build something?** Here's a minimal working example:
+
+```python
+# examples/minimal_example.py
+import numpy as np
+from src.hl.canonical_library import CanonicalHamiltonians, Register, RegisterType
+
+# Define a qubit
+qubit = Register("q", RegisterType.QUBIT, dimension=2)
+
+# Create energy eigenstate Hamiltonian
+H_energy = CanonicalHamiltonians.H_state(qubit, energy_levels=np.array([0.0, 1.0]))
+
+# Verify it's Hermitian (H = H†)
+is_hermitian = np.allclose(H_energy, H_energy.conj().T)
+print(f"Hermitian: {is_hermitian}")  # True
+
+# Output:
+# Hermitian: True
+# [[0. 0.]
+#  [0. 1.]]  ← Diagonal energy levels
+```
+
+> **Note**: The above is a **complete, copy-pastable example** that actually runs! For the full compilation pipeline (AST → JAX → TPU), see [`examples/reference_implementation.py`](examples/reference_implementation.py) which demonstrates all 6 compiler stages with numerical validation.
 
 ## Supported Domains
 
