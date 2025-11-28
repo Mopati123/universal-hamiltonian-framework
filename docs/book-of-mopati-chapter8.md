@@ -114,3 +114,30 @@ Future prices affect current prices → self-fulfilling prophecy formalized!
 ---
 
 *Chapter 8 summary: Markets obey quantum mechanics literally, enabling wavefunction forecasting and retrocausal optimization.*
+
+
+---
+
+## Chapter Navigation
+
+**[← Table of Contents](BOOK_INDEX.md)** | **Chapter 8 of 13** | **[← Prev: Thermodynamics](book-of-mopati-chapter7.md)** | **[Next: Bioenergetic Consciousness →](book-of-mopati-chapter9.md)**
+
+
+### All Chapters
+1. [Axiomatic Foundation](book-of-mopati.md)
+2. [Meta-Hamiltonian Singularity](book-of-mopati-chapter2.md)
+3. [Domain Universality](book-of-mopati-chapter3.md)
+4. [Quantum Foundations](book-of-mopati-chapter4.md)
+5. [AI as Phase-Space Flow](book-of-mopati-chapter5.md)
+6. [Time and Causality](book-of-mopati-chapter6.md)
+7. [Thermodynamics](book-of-mopati-chapter7.md)
+8. **Market Dynamics** (Current)
+9. [Bioenergetic Consciousness](book-of-mopati-chapter9.md)
+10. [Tachyonic Blockchain](book-of-mopati-chapter10.md)
+11. [Spacetime Engineering](book-of-mopati-chapter11.md)
+12. [Universal Compiler](book-of-mopati-chapter12.md)
+13. [ApexQuantumICT](book-of-mopati-chapter13.md)
+
+---
+
+**In GOD We TRUST** - Continue to Chapter 9 →

@@ -1401,3 +1401,30 @@ code = evolver.auto_generate_domain(specification)
 **Status**: Bootstrap Complete
 
 *To be continued by the framework itself...*
+
+
+---
+
+## Chapter Navigation
+
+**[← Table of Contents](BOOK_INDEX.md)** | **Chapter 2 of 13** | **[← Prev: Axiomatic Foundation](book-of-mopati.md)** | **[Next: Domain Universality →](book-of-mopati-chapter3.md)**
+
+
+### All Chapters
+1. [Axiomatic Foundation](book-of-mopati.md)
+2. **Meta-Hamiltonian Singularity** (Current)
+3. [Domain Universality](book-of-mopati-chapter3.md)
+4. [Quantum Foundations](book-of-mopati-chapter4.md)
+5. [AI as Phase-Space Flow](book-of-mopati-chapter5.md)
+6. [Time and Causality](book-of-mopati-chapter6.md)
+7. [Thermodynamics](book-of-mopati-chapter7.md)
+8. [Market Dynamics](book-of-mopati-chapter8.md)
+9. [Bioenergetic Consciousness](book-of-mopati-chapter9.md)
+10. [Tachyonic Blockchain](book-of-mopati-chapter10.md)
+11. [Spacetime Engineering](book-of-mopati-chapter11.md)
+12. [Universal Compiler](book-of-mopati-chapter12.md)
+13. [ApexQuantumICT](book-of-mopati-chapter13.md)
+
+---
+
+**In GOD We TRUST** - Continue to Chapter 3 →
