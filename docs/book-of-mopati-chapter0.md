@@ -6,9 +6,70 @@
 
 ---
 
-**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 0 of 14** | **[Next: Chapter 1 - Axiomatic Foundation →](book-of-mopati.md)**
+## ⚡ CHOOSE YOUR DIFFICULTY LEVEL - START HERE!
+
+**Welcome! Before you begin, select your level below to get a personalized reading experience.**
+
+### 🌱 I'm a Beginner (High School / New to This)
+**Click here if**: You're learning this for the first time, want intuition over math, or prefer visual explanations.
+
+**What you'll read**: 🟢 Green sections only (~45 minutes)  
+**What you'll skip**: Heavy derivations, advanced exercises  
+**You'll get**: Big ideas, stunning visuals, real-world examples
+
+**[→ Start Beginner Path - Jump to First Section](#what-youll-learn-the-fun-way-)** ✅
 
 ---
+
+### 🌿 I'm Intermediate (Undergrad Level)
+**Click here if**: You want to balance understanding with working through math, can handle calculus.
+
+**What you'll read**: 🟢 Green + 🟡 Yellow sections (~2 hours)  
+**What you'll skip**: Most advanced proofs  
+**You'll get**: Can solve problems, understand derivations, see connections
+
+**[→ Start Intermediate Path - Jump to First Section](#what-youll-learn-the-fun-way-)** ✅
+
+---
+
+### 🌳 I'm Advanced (Graduate Level)
+**Click here if**: You want complete mathematical rigor, all derivations, all exercises.
+
+**What you'll read**: Everything including 🟠 Orange sections (~4 hours)  
+**What you'll skip**: Nothing!  
+**You'll get**: Deep mastery, can teach others, ready for research
+
+**[→ Start Advanced Path - Read Everything](#what-youll-learn-the-fun-way-)** ✅
+
+---
+
+### 🌲 I'm an Expert (Researcher / PhD)
+**Click here if**: You want to verify every claim, find novel connections, extend the framework.
+
+**What you'll read**: Everything + 🔴 Red expert sections (~6 hours)  
+**Focus**: Convergence arguments, historical predictions, research opportunities  
+**You'll get**: Novel insights, new research directions, contribution ideas
+
+**[→ Start Expert Path - Deep Dive](#what-youll-learn-the-fun-way-)** ✅
+
+---
+
+### 🔥 Speed Run (Just 30 Minutes!)
+**Click here if**: You're busy, want just the highlights, need to make a decision quickly.
+
+**What you'll read**: Analogies + Timeline + Diagrams + Why It's Best  
+**What you'll skip**: Everything else!  
+**You'll get**: Elevator pitch understanding, informed decision-making
+
+**[→ Start Speed Run - Highlights Only](#speed-run-30-minutes)** ✅
+
+---
+
+**💡 Not sure?** Start with 🌱 Beginner - you can always come back for more depth!
+
+---
+
+**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 0 of 14** | **[Next: Chapter 1 - Axiomatic Foundation →](book-of-mopati.md)**
 
 ## 🎓 Choose Your Learning Path
 

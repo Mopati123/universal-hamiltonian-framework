@@ -205,7 +205,7 @@ class BioenergticConsciousness:
         epsilon = 1e-5
         
         dq = np.zeros_like(q)
-       dp = np.zeros_like(p)
+        dp = np.zeros_like(p)
         
         # ∂H/∂p
         for i in range(len(p)):
