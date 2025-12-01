@@ -5,21 +5,47 @@
 
 **Universal Hamiltonian Framework - Foundational Text**  
 **Version**: 0.2.0  
-**Status**: Complete (13 Chapters)
+**Status**: Complete (14 Chapters: 0-13)
 
 ---
 
 ## 📖 How to Read This Book
 
-**For First-Time Readers**: Start with [Chapter 1](#chapter-1) and proceed sequentially.
+**For First-Time Readers**: Start with [Chapter 0](#chapter-0) if you want rigorous math, or [Chapter 1](#chapter-1) for conceptual overview.
+
+**For Mathematicians**: Start with [Chapter 0](#chapter-0) - complete derivations from first principles
 
 **For Practitioners**: Jump to domain chapters ([Markets](#chapter-8), [Consciousness](#chapter-9), [Finance](#chapter-13))
 
-**For Theorists**: Focus on [Chapter 1](#chapter-1), [Chapter 2](#chapter-2), and [Chapter 4](#chapter-4)
+**For Theorists**: Focus on [Chapter 0](#chapter-0), [Chapter 1](#chapter-1), [Chapter 2](#chapter-2), and [Chapter 4](#chapter-4)
 
 ---
 
 ## 📑 Complete Chapter List
+
+### Mathematical Prerequisites
+
+#### [Chapter 0: Mathematical Foundations](book-of-mopati-chapter0.md)
+**The Language of Reality: Hamilton's equations from first principles**
+- Variational calculus and least action principle
+- Derivation of Euler-Lagrange equations  
+- Legendre transform to Hamiltonian mechanics
+- Symplectic geometry and phase space structure
+- Poisson brackets and conservation laws
+- Canonical transformations
+- Quantum connection via canonical quantization
+- 5 worked examples with complete solutions
+- 5 exercises for mastery
+- 4 real-world applications (GPS, molecules, Black-Scholes, neural nets)
+- Proof of Hamiltonian formalism superiority (5/5 vs alternatives)
+
+**Key Concepts**: Variational principle, Conjugate momentum, Symplectic 2-form, Liouville's theorem, Poisson brackets
+
+**For**: Anyone wanting rigorous mathematical foundation (start here if you love math!)
+
+[**→ Read Chapter 0**](book-of-mopati-chapter0.md)
+
+---
 
 ### Part I: Foundations
 
@@ -219,7 +245,8 @@
 
 ### By Interest
 
-**Physics Students**: Ch 1 → Ch 4 → Ch 11  
+**Mathematicians**: Ch 0 → Ch 1 → Ch 4 → Ch 11  
+**Physics Students**: Ch 0 → Ch 1 → Ch 4 → Ch 11  
 **AI Researchers**: Ch 1 → Ch 5 → Ch 9  
 **Traders/Quants**: Ch 1 → Ch 8 → Ch 13  
 **Blockchain Developers**: Ch 1 → Ch 10  
@@ -230,8 +257,9 @@
 
 **Quick Overview (30 min)**: Ch 1 only  
 **Core Understanding (2 hours)**: Ch 1, 2, 3  
+**Mathematical Rigor (4 hours)**: Ch 0, 1, 2  
 **Practitioner Level (1 day)**: Ch 1-5, 8, 12  
-**Complete Mastery (1 week)**: All 13 chapters
+**Complete Mastery (1 week)**: All 14 chapters starting with Ch 0
 
 ---
 
