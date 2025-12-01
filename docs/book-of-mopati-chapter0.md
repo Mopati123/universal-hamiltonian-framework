@@ -80,12 +80,12 @@
 **Welcome, Beginner!** You'll focus on understanding the BIG IDEAS through intuition and visuals.
 
 **Your Roadmap - Read ONLY These Sections**:
-1. ✅ [What You'll Learn (The Fun Way!)](#what-youll-learn-the-fun-way-)
-2. ✅ [Skateboard Analogy](#prologue-the-skateboard-analogy-) 
-3. ✅ [2000-Year Historical Journey](#the-2000-year-journey-how-we-discovered-hamiltons-equations-)
-4. ✅ [Pizza Delivery Analogy (Least Action)](#intuition-first-the-pizza-delivery-analogy)
-5. ✅ [Visual Diagrams](#visual-concept-diagrams)
-6. ✅ [Real-World Applications](#real-world-applications-you-care-about-)
+1. ✅ [What You'll Learn (The Fun Way!)](#-what-youll-learn-the-fun-way-)
+2. ✅ [Skateboard Analogy](#-prologue-the-skateboard-analogy-) 
+3. ✅ [2000-Year Historical Journey](#-the-2000-year-journey-how-we-discovered-hamiltons-equations-)
+4. ✅ [Pizza Delivery Analogy (Least Action)](#-part-i-the-principle-of-least-action)
+5. ✅ [Visual Diagrams](#-visual-concept-diagrams)
+6. ✅ [Real-World Applications](#-real-world-applications-you-care-about-)
 7. ✅ [Why Hamilton is Best](#why-hamiltonian-is-the-best)
 
 **⏭️ SKIP**: Sections marked 🟡🟠🔴
@@ -96,7 +96,7 @@
 - Historical evolution (all paths → Hamilton)
 - Real applications (GPS, games, etc.)
 
-**✅ Check Your Understanding**: [Jump to Beginner Exercises](#beginner-exercises)
+**✅ Check Your Understanding**: [Jump to Beginner Exercises](chapter0-exercises.md#beginner-exercises)
 
 ---
 
@@ -107,11 +107,11 @@
 **Your Roadmap - Read These Sections**:
 1. ✅ All Beginner sections (foundation)
 2. ✅ [Euler-Lagrange Derivation](#deriving-euler-lagrange-the-algorithm-of-the-universe-)
-3. ✅ [Harmonic Oscillator Example](#example-harmonic-oscillator-bouncing-on-a-spring)
-4. ✅ [Phase Space Concept](#part-ii-phase-space-the-secret-map-of-everything-)
-5. ✅ [Legendre Transform](#from-lagrangian-to-hamiltonian-the-big-upgrade)
-6. ✅ [Hamilton's Equations](#hamiltons-equations-the-ultimate-upgrade-)
-7. ✅ [Quantum Connection](#the-quantum-connection)
+3. ✅ [Harmonic Oscillator Example](#example-1-harmonic-oscillator-bouncing-on-a-spring)
+4. ✅ [Phase Space Concept](#-part-ii-phase-space-the-secret-map-of-everything-)
+5. ✅ [Legendre Transform](#from-lagrangian-to-hamiltonian-the-big-upgrade-)
+6. ✅ [Hamilton's Equations](#-hamiltons-equations-the-ultimate-upgrade-)
+7. ✅ [Quantum Connection](#the-quantum-connection-)
 
 **⏭️ SKIP**: Sections marked 🟠🔴
 
@@ -121,7 +121,7 @@
 - Draw phase space diagrams
 - Practice Legendre transform
 
-**✅ Check Your Understanding**: [Jump to Intermediate Exercises](#intermediate-exercises)
+**✅ Check Your Understanding**: [Jump to Intermediate Exercises](chapter0-exercises.md#intermediate-exercises)
 
 ---
 
@@ -131,11 +131,11 @@
 
 **Your Roadmap - Read EVERYTHING**:
 1. ✅ All Beginner + Intermediate sections
-2. ✅ [Complete Derivationsall 🟠 sections)
-3. ✅ [All Exercises with Solutions](#exercises-with-visual-hints-)
-4. ✅ [Symplectic Geometry Details](#part-iii-why-this-changes-everything-)
-5. ✅ [Conservation Laws Proofs](#conservation-laws-are-automatic)
-6. ✅ [Poisson Brackets](#poisson-brackets)
+2. ✅ [Complete Derivations (all 🟠 sections)](#-part-iii-why-this-changes-everything-)
+3. ✅ [All Exercises with Solutions](#-exercises-with-visual-hints-)
+4. ✅ [Symplectic Geometry Details](#symplectic-geometry--liouville's-theorem-)
+5. ✅ [Conservation Laws Proofs](#conservation-laws-are-automatic-)
+6. ✅ [Poisson Brackets](#poisson-brackets-)
 
 **⏭️ SKIP**: Nothing! Read it all.
 
@@ -145,7 +145,7 @@
 - Prove all conservation laws
 - Verify all claims numerically
 
-**✅ Check Your Understanding**: [Jump to Advanced Exercises](#advanced-exercises)
+**✅ Check Your Understanding**: [Jump to Advanced Exercises](chapter0-exercises.md#advanced-exercises)
 
 ---
 
@@ -155,10 +155,10 @@
 
 **Your Roadmap - Complete Analysis**:
 1. ✅ Everything above
-2. ✅ [Grand Convergence - Verify All 6 Paths](#all-roads-lead-to-hamilton-the-grand-convergence-)
-3. ✅ [Historical Prediction Power](#why-did-everything-converge)
+2. ✅ [Grand Convergence - Verify All 6 Paths](#-all-roads-lead-to-hamilton-the-grand-convergence-)
+3. ✅ [Historical Prediction Power](#why-did-everything-converge-)
 4. ✅ [Meta-Framework Connection](#the-meta-principle-chapter-2)
-5. ✅ [Research Opportunities](#expert-path-researcher--looking-for-new-insights)
+5. ✅ [Research Opportunities](#-expert-path-researcher--phd)
 
 **Focus Areas**:
 - Verify each of the 6 convergence paths independently
@@ -172,7 +172,7 @@
 - Extensions to new domains
 - Questions for further investigation
 
-**✅ Check Your Understanding**: [Jump to Expert Exercises](#expert-exercises)
+**✅ Check Your Understanding**: [Jump to Expert Exercises](chapter0-exercises.md#expert-exercises)
 
 ---
 
@@ -181,9 +181,9 @@
 **Welcome, Speed Runner!** Here's your express tour.
 
 **Your Minimal Roadmap**:
-1. ✅ [Skateboard Analogy](#prologue-the-skateboard-analogy-) (5 min)
+1. ✅ [Skateboard Analogy](#-prologue-the-skateboard-analogy-) (5 min)
 2. ✅ [Historical Timeline](#the-timeline-of-mathematical-evolution) (5 min)
-3. ✅ [Visual Diagrams](#visual-concept-diagrams) (5 min)
+3. ✅ [Visual Diagrams](#-visual-concept-diagrams) (5 min)
 4. ✅ [Why Hamilton is Best](#why-hamiltonian-is-the-best) (10 min)
 5. ✅ [Big Picture](#the-big-picture-why-history-matters) (5 min)
 
