@@ -156,9 +156,9 @@
 **Your Roadmap - Complete Analysis**:
 1. ✅ Everything above
 2. ✅ [Grand Convergence - Verify All 6 Paths](#-all-roads-lead-to-hamilton-the-grand-convergence-)
-3. ✅ [Historical Prediction Power](#why-did-everything-converge)
+3. ✅ [Part VI: The Big Picture](#part-vi-the-big-picture)
 4. ✅ [Meta-Framework Connection](#the-meta-principle-chapter-2)
-5. ✅ [Research Opportunities](#-expert-path-researcher--phd)
+5. ✅ [Why Hamiltonian is BEST (Expert Analysis)](#-why-hamiltonian-is-the-best)
 
 **Focus Areas**:
 - Verify each of the 6 convergence paths independently
