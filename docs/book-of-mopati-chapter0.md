@@ -131,11 +131,11 @@
 
 **Your Roadmap - Read EVERYTHING**:
 1. ✅ All Beginner + Intermediate sections
-2. ✅ [Complete Derivations (all 🟠 sections)](#part-iii-why-this-changes-everything-)
-3. ✅ [All Exercises with Solutions](#-exercises-with-visual-hints-)
-4. ✅ [Symplectic Geometry Details](#part-iii-why-this-changes-everything-)
-5. ✅ [Conservation Laws Proofs](#-the-aha-moments)
-6. ✅ [Poisson Brackets](#part-v-exercises-with-visual-hints-)
+2. ✅ [Part III: Why This Changes Everything](#-part-iii-deep-insights--why-this-changes-everything-)
+3. ✅ [Symplectic Geometry & Phase Space](#-part-ii-phase-space--the-true-map-of-reality-)
+4. ✅ [Energy Conservation Proofs](#-energy-conservation-the-hamiltonian-never-changes-)
+5. ✅ [Poisson Brackets & Quantization](#-from-classical-to-quantum-the-magic-of-poisson-brackets-)
+6. ✅ [Complete all Advanced Exercises](#-check-your-understanding-jump-to-advanced-exercises)
 
 **⏭️ SKIP**: Nothing! Read it all.
 
