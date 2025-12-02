@@ -131,11 +131,11 @@
 
 **Your Roadmap - Read EVERYTHING**:
 1. ✅ All Beginner + Intermediate sections
-2. ✅ [Part III: Why This Changes Everything](#-part-iii-deep-insights--why-this-changes-everything-)
-3. ✅ [Symplectic Geometry & Phase Space](#-part-ii-phase-space--the-true-map-of-reality-)
-4. ✅ [Energy Conservation Proofs](#-energy-conservation-the-hamiltonian-never-changes-)
-5. ✅ [Poisson Brackets & Quantization](#-from-classical-to-quantum-the-magic-of-poisson-brackets-)
-6. ✅ [Complete all Advanced Exercises](#-check-your-understanding-jump-to-advanced-exercises)
+2. ✅ [Axiomatic Foundations](#️-axiomatic-foundations-the-pillars-we-build-upon)
+3. ✅ [Part IV: Visual Guide to Key Concepts](#part-iv-the-visual-guide-to-key-concepts)
+4. ✅ [Part V: Exercises with Visual Hints](#part-v-exercises-with-visual-hints-)
+5. ✅ [The "Aha!" Moments](#-the-aha-moments)
+6. ✅ [Complete all Advanced Exercises](chapter0-exercises.md#-advanced-exercises-5-total)
 
 **⏭️ SKIP**: Nothing! Read it all.
 
