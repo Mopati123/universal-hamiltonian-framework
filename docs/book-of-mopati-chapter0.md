@@ -96,7 +96,7 @@
 - Historical evolution (all paths → Hamilton)
 - Real applications (GPS, games, etc.)
 
-**✅ Check Your Understanding**: [Jump to Beginner Exercises](chapter0-exercises.md#beginner-exercises)
+**✅ Check Your Understanding**: [Jump to Beginner Exercises](chapter0-exercises.md#-beginner-exercises-3-total)
 
 ---
 
@@ -121,7 +121,7 @@
 - Draw phase space diagrams
 - Practice Legendre transform
 
-**✅ Check Your Understanding**: [Jump to Intermediate Exercises](chapter0-exercises.md#intermediate-exercises)
+**✅ Check Your Understanding**: [Jump to Intermediate Exercises](chapter0-exercises.md#-intermediate-exercises-5-total)
 
 ---
 
@@ -145,7 +145,7 @@
 - Prove all conservation laws
 - Verify all claims numerically
 
-**✅ Check Your Understanding**: [Jump to Advanced Exercises](chapter0-exercises.md#advanced-exercises)
+**✅ Check Your Understanding**: [Jump to Advanced Exercises](chapter0-exercises.md#-advanced-exercises-5-total)
 
 ---
 
@@ -172,7 +172,7 @@
 - Extensions to new domains
 - Questions for further investigation
 
-**✅ Check Your Understanding**: [Jump to Expert Exercises](chapter0-exercises.md#expert-exercises)
+**✅ Check Your Understanding**: [Jump to Expert Exercises](chapter0-exercises.md#-expert-exercises-3-total)
 
 ---
 
