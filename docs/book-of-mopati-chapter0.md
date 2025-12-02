@@ -189,6 +189,8 @@
 
 **⏭️ SKIP**: Everything else!
 
+**✅ Quick Test**: After understanding, try [Speed Run Exercises](chapter0-exercises.md#-beginner-exercises-3-total) (3 concept checks, ~5 min)
+
 **✅ Decision Point**: After 30 minutes, you'll know if you want to:
 - Dive deeper (choose a difficulty level)
 - Integrate into your work (see domain chapters)
