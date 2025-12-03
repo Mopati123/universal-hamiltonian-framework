@@ -8,6 +8,52 @@
 
 ---
 
+## 🚀 Quick Start (5 Minutes)
+
+**See Hamiltonian mechanics in action - right now!**
+
+### Install
+```bash
+git clone https://github.com/Mopati123/universal-hamiltonian-framework.git
+cd universal-hamiltonian-framework
+pip install -e .
+```
+
+### Your First Hamiltonian
+```python
+from hl import Register, RegisterType, Hamiltonian
+import numpy as np
+
+# 1. Create a qubit (2-dimensional quantum system)
+qubit = Register("spin", RegisterType.QUBIT, 2)
+
+# 2. Define Hamiltonian (Pauli-Z operator: measures spin)
+H = np.array([[1, 0],    # Energy = +1 for spin-up
+              [0, -1]])   # Energy = -1 for spin-down
+
+# 3. Initial state: superposition (50% up, 50% down)
+psi_0 = np.array([1, 1]) / np.sqrt(2)
+
+# 4. Evolve under H for time t=1.0
+from scipy.linalg import expm
+psi_t = expm(-1j * H * 1.0) @ psi_0
+
+print(f"Initial state: {psi_0}")
+print(f"Evolved state: {psi_t}")
+print(f"Energy expectation: {np.vdot(psi_t, H @ psi_t).real:.3f}")
+```
+
+**What's happening?**  
+The qubit evolves in phase space under Hamiltonian H. Spin-up and spin-down components oscillate - this is **quantum phase space flow!**
+
+**See the result immediately**: Just run it! You've used the same math that describes atoms, markets, and consciousness.
+
+➡️ **Want to learn more?** Start with [Chapter 0: Mathematical Foundations](docs/book-of-mopati-chapter0.md)  
+➡️ **See more examples?** Check [examples/](examples/)  
+➡️ **Build something?** Read the [Full Tutorial](docs/PAPER_TO_CODE_GUIDE.md)
+
+---
+
 ## The Foundation: Why Hamiltonian Mechanics Underpins EVERYTHING
 
 **This is not a metaphor. This is literal truth.**

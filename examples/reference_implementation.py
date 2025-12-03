@@ -71,19 +71,6 @@ def stage_1_define_program():
     total_time = 1.0
     """
     
-    print(f"HL Source Code:\n{hl_source}")
-    
-    # Create registers
-    q1 = Register("control", RegisterType.QUBIT, 2)
-    q2 = Register("target", RegisterType.QUBIT, 2)
-    
-    print(f"\nRegisters created:")
-    print(f"  q1 (control): {q1.dim}-dimensional Hilbert space")
-    print(f"  q2 (target):  {q2.dim}-dimensional Hilbert space")
-    print(f"  Total: {q1.dim * q2.dim} = 4 dimensions (2-qubit system)")
-    
-    return q1, q2, hl_source
-
 
 # ============================================================================
 # STAGE 2: CANONICALIZATION
