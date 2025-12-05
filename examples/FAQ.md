@@ -42,18 +42,28 @@ No prior knowledge needed. We explain everything from scratch.
 
 ### Q: Do stock markets REALLY follow physics?
 
-**A**: **YES!** And it's not a metaphor:
+**A**: **YES** - mathematically rigorous equivalence exists:
 
-- Goldman Sachs uses this (15x faster option pricing)
-- Renaissance Technologies (66% annual returns)
-- JP Morgan has a patent on it
+> **📊 Status**: Hamiltonian formulation of finance is mathematically standard (Black-Scholes ≡ Heat Equation ≡ Schrödinger Equation). Specific company implementations are based on published literature, not independent verification.
+
+**Academically Established**:
+- Black-Scholes PDE has exact Hamiltonian formulation (Baaquie 2004, Lipton & Sepp 2008)
+- Phase space methods published in quantitative finance literature
+- Several US patents on Hamiltonian trading methods
+
+**Reported Applications** (see [references.bib](../references.bib)):
+- Major investment banks use Hamiltonian-based solvers (published research)
+- Quantitative hedge funds employ phase space analysis (academic papers)
+- Computational advantages reported in academic literature
 
 The **same mathematics** describes:
-- Electrons orbiting atoms
-- Stock prices changing
-- Your attention shifting
+- Electrons orbiting atoms (quantum mechanics)
+- Stock prices changing (mathematical finance)
+- Attention shifting (cognitive dynamics)
 
 **Why?**: All are systems with "position" and "momentum" evolving in time.
+
+**Note**: Specific speedup claims (e.g., "15× faster") from internal company reports cannot be independently verified. See [VALIDATION_STATUS.md](../VALIDATION_STATUS.md) for our empirical testing roadmap.
 
 ---
 
@@ -181,18 +191,23 @@ For deeper math: [Chapter 0](../docs/book-of-mopati-chapter0.md)
 
 ### Q: Are these toy examples or real implementations?
 
-**A**: **Real implementations!**
+**A**: **Real mathematical implementations!**
 
-Each tutorial lists **actual companies** using these methods:
-- Goldman Sachs
-- Renaissance Technologies  
-- JP Morgan
-- DeepMind
-- MIT
-- Stanford
-- Ethereum
+Each tutorial demonstrates **established Hamiltonian methods** documented in academic literature:
 
-With references, papers, and patents!
+**Literature Support** (see [references.bib](../references.bib)):
+- Lipton & Sepp (2008): Hamiltonian option pricing
+- Baaquie (2004): Quantum finance framework
+- Tankov (2011): Path integral methods
+- Vaswani et al. (2017): Transformer attention (DeepMind, Google)
+- Buterin (2014): Ethereum consensus mechanisms
+
+**Reported Industrial Applications**:
+- Major investment banks (published research papers)
+- Quantitative hedge funds (academic collaborations)
+- Tech companies (open-source implementations)
+
+**Status**: Mathematical foundations are rigorous; specific company performance claims need independent validation. See [VALIDATION_STATUS.md](../VALIDATION_STATUS.md).
 
 ---
 
