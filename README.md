@@ -1,6 +1,8 @@
 # Universal Hamiltonian Framework
 
-**Reality is Hamiltonian. This framework proves it, then builds on it.**
+**Reality follows Hamiltonian principles. This framework demonstrates this principle across diverse domains, then builds on it.**
+
+> **📊 Status**: Theoretical framework with empirical validation in progress. Core axioms are rigorously proven; quantitative domain validations ongoing. See [Validation Status](#validation-status) below.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](#)
@@ -54,9 +56,14 @@ The qubit evolves in phase space under Hamiltonian H. Spin-up and spin-down comp
 
 ---
 
-## The Foundation: Why Hamiltonian Mechanics Underpins EVERYTHING
+## The Foundation: Why Hamiltonian Mechanics Underpins Diverse Systems
 
-**This is not a metaphor. This is literal truth.**
+**This framework proposes that Hamiltonian mechanics provides a universal mathematical language for describing complex systems.**
+
+> **📊 Domain Status**: 
+> - **Physics (Quantum/Classical)**: ✅ Mathematically standard
+> - **Markets (Black-Scholes)**: ✅ Well-established equivalence  
+> - **Consciousness/Blockchain**: ⚠️ Conceptual models - empirical validation needed
 
 ### The Irreducible Core: Three Axiomatic Pillars
 
@@ -128,9 +135,9 @@ Try to describe ANY dynamical system without:
 
 ---
 
-### How This Framework Proves Universality
+### How This Framework Demonstrates Universality
 
-**Chapter 0 shows**: How 2000 years of mathematics (from Archimedes to quantum theory) ALL converged to Hamilton's equations.
+**Chapter 0 documents**: How 2000 years of mathematics (from Archimedes to quantum theory) converged to Hamilton's equations.
 
 **Six independent paths**, starting from completely different fields:
 1. **Geometry** → Shortest paths → Action principle → Hamilton ✓
@@ -140,9 +147,7 @@ Try to describe ANY dynamical system without:
 5. **Quantum** → Heisenberg → Schrödinger → Hamilton (iℏ∂ψ/∂t = Ĥψ) ✓
 6. **Information** → Shannon → Landauer → Hamilton (reversible computing) ✓
 
-**All roads lead to Hamilton. This is not coincidence.**
-
-**This is proof that Hamiltonian mechanics IS the structure of reality.**
+**All roads lead to Hamilton.** This historical convergence provides strong evidence for Hamiltonian mechanics as a fundamental mathematical structure.
 
 ---
 
@@ -283,19 +288,19 @@ python examples/minimal_example.py
 
 ## Philosophy
 
-**This framework emerged from one realization**:
+**This framework emerged from one observation**:
 
-> **Hamiltonian mechanics is not a "model" of reality.**  
-> **It IS reality's structure.**
+> **Hamiltonian mechanics appears to be more than a "model" of reality.**  
+> **It may represent a fundamental mathematical structure underlying diverse systems.**
 
-The three axiomatic pillars are:
-1. **Inevitable** (cannot be more fundamental)
-2. **Universal** (apply to everything)
-3. **Complete** (nothing outside their scope)
+The three axiomatic pillars exhibit remarkable properties:
+1. **Fundamental** (difficult to find more basic principles)
+2. **Broadly Applicable** (work across many domains)
+3. **Internally Complete** (form a self-consistent system)
 
-Chapter 0 proves this by showing six independent mathematical paths all converge to Hamilton's equations.
+Chapter 0 documents six independent mathematical paths converging to Hamilton's equations, suggesting deep structural significance.
 
-**This is not math convenience. This is ontological truth.**
+**This convergence invites investigation**: Is this mathematical convenience, or something more fundamental?
 
 ---
 
@@ -315,10 +320,10 @@ MIT License - See [LICENSE](LICENSE).
 
 ```bibtex
 @software{universal_hamiltonian_framework,
-  title = {Universal Hamiltonian Framework: Reality's Operating System},
+  title = {Universal Hamiltonian Framework: A Unified Mathematical Approach to Complex Systems},
   author = {Mopati Labs},
   year = {2025},
-  note = {Mathematical proof that all systems are Hamiltonian},
+  note = {Theoretical framework demonstrating Hamiltonian structure across domains},
   url = {https://github.com/Mopati123/universal-hamiltonian-framework}
 }
 ```
