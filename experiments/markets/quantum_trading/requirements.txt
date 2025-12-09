@@ -2,11 +2,24 @@
 
 # Core dependencies
 numpy>=1.21.0
-pandas>=1.3.0
+
+# Data processing - QUANTUM-LIKE LAZY EXECUTION
+# Polars chosen for lazy evaluation = superposition until .collect()
+# See TECH_STACK.md for philosophical justification
+polars>=0.20.0
+
+# Numerical computing
 scipy>=1.7.0
 
 # Optimization
 scikit-learn>=0.24.0
+
+# Performance optimization
+# Cython for hot paths (30-100x speedup)
+cython>=3.0.0
+
+# Future: Mojo integration (uncomment when available)
+# mojo>=0.6.0  # AI-first language, 100-1000x speedup projected
 
 # Data sources (optional - for live trading)
 # Uncomment if using live data connectors:
@@ -26,3 +39,4 @@ pytz>=2021.3
 matplotlib>=3.4.0
 seaborn>=0.11.0
 plotly>=5.3.0
+

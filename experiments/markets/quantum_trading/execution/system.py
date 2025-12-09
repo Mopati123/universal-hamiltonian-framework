@@ -12,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 
 import numpy as np
-import pandas as pd
+import polars as pl  # Lazy execution = quantum superposition!
 from typing import Dict, List
 from datetime import datetime
 import time
@@ -338,12 +338,17 @@ class TradingSystem:
         print("="*70)
     
     def save_log(self, filename: str = 'trading_log.csv'):
-        """Save trading log to CSV"""
+        """
+        Save trading log to CSV using Polars lazy execution
+        
+        Quantum insight: Build query in superposition (lazy),
+        collapse to file only at the end (.collect() + write)
+        """
         
         if not self.log:
             return
         
-        # Flatten log for CSV
+        # Flatten log for CSV (stay in superposition - use dict)
         rows = []
         for entry in self.log:
             row = {
@@ -360,9 +365,24 @@ class TradingSystem:
             
             rows.append(row)
         
-        # Save
-        df = pd.DataFrame(rows)
-        df.to_csv(filename, index=False)
+        # Quantum collapse: Create lazy frame → optimize → write
+        # This is lazy execution = superposition until write!
+        (
+            pl.LazyFrame(rows)
+            .select([  # Define schema in superposition
+                pl.col('timestamp'),
+                pl.col('action'),
+                pl.col('pnl'),
+                pl.col('portfolio_value'),
+                pl.col('^.*_energy$'),  # All energy columns
+                pl.col('^.*_price$')    # All price columns
+            ])
+            .collect()  # ← Wavefunction collapse!
+            .write_csv(filename)
+        )
+        
+        # Alternative eager mode (if lazy not needed):
+        # pl.DataFrame(rows).write_csv(filename)
     
     def stop(self):
         """Stop event loop"""
