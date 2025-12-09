@@ -20,7 +20,7 @@ class TestQuantumDomain:
     """Tests for quantum systems"""
     
     def test_harmonic_oscillator_energy_levels(self):
-       """Quantum oscillator should have discrete energy levels"""
+        """Quantum oscillator should have discrete energy levels"""
         @define_system
         class QuantumOsc:
             coordinates = ['x']

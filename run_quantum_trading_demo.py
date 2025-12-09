@@ -3,7 +3,7 @@
 Quantum Trading System - Quick Start Demo
 
 This script demonstrates the practical application of the
-Universal Hamiltonian Framework for trading.
+Universal Hamiltonian Framework for Markets (Chapter 9).
 
 Run this after cloning the repository to see it in action!
 """
@@ -11,10 +11,10 @@ Run this after cloning the repository to see it in action!
 import sys
 from pathlib import Path
 
-# Add src to path
+# Add paths for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
-from src.quantum_trading.execution.system import TradingSystem
+from experiments.markets.quantum_trading.execution.system import TradingSystem
 
 
 def main():
@@ -22,7 +22,8 @@ def main():
     
     print("\n" + "="*80)
     print(" " * 15 + "QUANTUM-INSPIRED TRADING SYSTEM")
-    print(" " * 10 + "Practical Application of Universal Hamiltonian Framework")
+    print(" " * 5 + "Chapter 9: Practical Application of Universal Hamiltonian Framework")
+    print(" " * 20 + "Markets Domain")
     print("="*80)
     
     print("\n📚 This demonstrates Chapter 9: Empirical Validation")
@@ -73,7 +74,8 @@ def main():
     print()
     print("📚 Learn more:")
     print("   • docs/book-of-mopati-chapter9-empirical-validation.md")
-    print("   • src/quantum_trading/ (source code)")
+    print("   • experiments/markets/quantum_trading/ (source code)")
+    print("   • experiments/markets/data_sources/ (multi-source data)")
     print("   • GitHub: https://github.com/Mopati123/universal-hamiltonian-framework")
     print()
     print("="*80 + "\n")
@@ -89,4 +91,4 @@ if __name__ == "__main__":
         import traceback
         traceback.print_exc()
         print("\nIf you see import errors, make sure to install dependencies:")
-        print("  pip install -r src/quantum_trading/requirements.txt")
+        print("  pip install -r experiments/markets/quantum_trading/requirements.txt")
