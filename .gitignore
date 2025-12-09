@@ -45,3 +45,9 @@ htmlcov/
 
 # Logs
 *.log
+
+# API Credentials (NEVER commit these!)
+.env
+experiments/markets/.env
+*.env
+
