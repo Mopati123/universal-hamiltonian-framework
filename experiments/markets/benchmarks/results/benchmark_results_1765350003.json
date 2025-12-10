@@ -1,0 +1,50 @@
+[
+  {
+    "test": "polars_vs_pandas",
+    "n_rows": 1000000,
+    "iterations": 5,
+    "pandas_time_avg": 0.12107471999479458,
+    "pandas_time_std": 0.019855014603550634,
+    "polars_time_avg": 0.0804736000020057,
+    "polars_time_std": 0.05976823238355757,
+    "speedup": 1.5045271988798432,
+    "timestamp": "2025-12-10T08:59:57.542328",
+    "system_info": {
+      "platform": "Windows-10-10.0.26200-SP0",
+      "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+      "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "numpy_version": "2.2.6",
+      "pandas_version": "2.3.3",
+      "polars_version": "1.33.1"
+    }
+  },
+  {
+    "test": "numpy_vectorized",
+    "n": 1000000,
+    "iterations": 5,
+    "python_time_avg": 0.4359706400078721,
+    "numpy_time_avg": 0.01976272000465542,
+    "speedup": 22.060254858904663,
+    "timestamp": "2025-12-10T08:59:59.874392"
+  },
+  {
+    "test": "cython_speedup",
+    "n": 1000000,
+    "iterations": 5,
+    "python_time_avg": 0.748378700017929,
+    "python_time_std": 0.10428215994425283,
+    "cython_time_avg": null,
+    "cython_time_std": null,
+    "speedup": null,
+    "cython_available": false,
+    "timestamp": "2025-12-10T09:00:03.674291",
+    "system_info": {
+      "platform": "Windows-10-10.0.26200-SP0",
+      "processor": "Intel64 Family 6 Model 151 Stepping 5, GenuineIntel",
+      "python_version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+      "numpy_version": "2.2.6",
+      "pandas_version": "2.3.3",
+      "polars_version": "1.33.1"
+    }
+  }
+]
