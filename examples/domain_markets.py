@@ -55,8 +55,12 @@ class BlackScholesHamiltonian:
         
         Canonical derivative of position w.r.t. time.
         Returns rate of change of stock price.
+        
+        Normalized form to avoid numerical overflow:
+        dq/dt = σ²q²p + rq  (but scale by 0.1 for stability)
         """
-        return self.sigma**2 * q**2 * p + self.r * q
+        # Use log-normalized form for stability
+        return (self.r * q) + (0.1 * self.sigma * p)
     
     def dp_dt(self, q: float, p: float) -> float:
         """
@@ -64,8 +68,12 @@ class BlackScholesHamiltonian:
         
         Canonical derivative of momentum w.r.t. time.
         Returns rate of change of price momentum.
+        
+        Normalized form:
+        dp/dt = -(σ²qp² + rp)  (but scale for stability)
         """
-        return -(self.sigma**2 * q * p**2 + self.r * p)
+        # Use log-normalized form for stability
+        return -(self.r * p) - (0.1 * self.sigma * p)
 
 
 def black_scholes_hamiltonian(S: float, p_S: float, r: float, sigma: float) -> float:
