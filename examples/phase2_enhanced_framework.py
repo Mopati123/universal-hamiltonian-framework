@@ -17,6 +17,7 @@ The framework synthesizes:
 
 import numpy as np
 import pandas as pd
+import polars as pl
 import yfinance as yf
 from typing import Dict, Tuple, List, Optional
 from datetime import datetime, timedelta
@@ -196,34 +197,61 @@ class MarketDataLoader:
     
     @staticmethod
     def load_historical_data(symbol: str, start_date: str,
-                            end_date: str) -> pd.DataFrame:
+                            end_date: str) -> pl.DataFrame:
         """
         Fetch real historical price data from Yahoo Finance
         """
         try:
             data = yf.download(symbol, start=start_date, end=end_date,
                              progress=False)
-            return data
+            
+            # Handle multi-index columns from yfinance (new format)
+            if isinstance(data.columns, pd.MultiIndex):
+                # Flatten multi-index: (Price, Ticker) -> Price
+                data.columns = [col[0] for col in data.columns]
+            
+            # Reset index to make Date a column
+            if hasattr(data.index, 'name'):
+                data.index.name = 'Date'
+                data = data.reset_index()
+            
+            # Ensure numeric columns are float64, skip Date columns
+            for col in data.columns:
+                if col not in ['Date', 'Datetime'] and data[col].dtype != 'object':
+                    try:
+                        data[col] = data[col].astype(np.float64)
+                    except:
+                        pass  # Skip columns that can't be converted
+            
+            df = pl.from_pandas(data)
+            return df
         except Exception as e:
             print(f"Error loading {symbol}: {e}")
             return None
     
     @staticmethod
-    def prepare_data(data: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
+    def prepare_data(data: pl.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
         """
         Extract prices and compute realized volatility
         """
         if data is None:
             return None, None
         
-        # Handle both single and multi-level column indices from yfinance
-        if isinstance(data.columns, pd.MultiIndex):
-            # Multi-symbol download returns MultiIndex columns
-            prices = data.iloc[:, 0].values  # Take first available price column
+        # Polars: Get price column (handles Adj Close or Close)
+        if 'Adj Close' in data.columns:
+            prices = np.asarray(data.select('Adj Close').to_numpy().flatten(), dtype=np.float64)
+        elif 'Close' in data.columns:
+            prices = np.asarray(data.select('Close').to_numpy().flatten(), dtype=np.float64)
         else:
-            # Single symbol download returns simple columns
-            price_col = 'Adj Close' if 'Adj Close' in data.columns else 'Close'
-            prices = data[price_col].values
+            # Fallback: find first numeric column that's not a date
+            numeric_cols = [col for col in data.columns if col not in ['Date', 'Datetime']]
+            if numeric_cols:
+                prices = np.asarray(data.select(numeric_cols[0]).to_numpy().flatten(), dtype=np.float64)
+            else:
+                prices = np.array([])
+        
+        if len(prices) == 0:
+            return None, None
         
         returns = np.diff(np.log(prices))
         realized_vol = np.std(returns) * np.sqrt(252)  # Annualized
@@ -414,7 +442,7 @@ class Phase2ValidationFramework:
         data = loader.load_historical_data(symbol, start_date, end_date)
         
         if data is None or len(data) < 100:
-            print(f"⚠️ Insufficient data for {symbol}")
+            print(f"[WARNING] Insufficient data for {symbol}")
             return None
         
         prices, realized_vol = loader.prepare_data(data)

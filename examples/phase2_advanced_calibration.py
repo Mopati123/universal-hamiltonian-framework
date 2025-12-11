@@ -11,6 +11,7 @@ Enhanced with:
 
 import numpy as np
 import pandas as pd
+import polars as pl
 import yfinance as yf
 from typing import Dict, Tuple, List, Optional
 from datetime import datetime, timedelta
@@ -281,6 +282,21 @@ class Phase2AdvancedValidation:
         # Load data
         try:
             data = yf.download(symbol, start=start_date, end=end_date, progress=False)
+            # Handle multi-index columns from yfinance (new format)
+            if isinstance(data.columns, pd.MultiIndex):
+                data.columns = [col[0] for col in data.columns]
+            # Reset index to make Date a column
+            if hasattr(data.index, 'name'):
+                data.index.name = 'Date'
+                data = data.reset_index()
+            # Ensure numeric columns are float64
+            for col in data.columns:
+                if col not in ['Date', 'Datetime'] and data[col].dtype != 'object':
+                    try:
+                        data[col] = data[col].astype(np.float64)
+                    except:
+                        pass
+            data = pl.from_pandas(data)
         except Exception as e:
             print(f"Error loading {symbol}: {e}")
             return None
@@ -289,12 +305,17 @@ class Phase2AdvancedValidation:
             print(f"Insufficient data for {symbol}")
             return None
         
-        # Extract prices
-        if isinstance(data.columns, pd.MultiIndex):
-            prices = data.iloc[:, 0].values
+        # Extract prices - use Polars methods
+        if 'Adj Close' in data.columns:
+            prices = np.asarray(data.select('Adj Close').to_numpy().flatten(), dtype=np.float64)
+        elif 'Close' in data.columns:
+            prices = np.asarray(data.select('Close').to_numpy().flatten(), dtype=np.float64)
         else:
-            price_col = 'Adj Close' if 'Adj Close' in data.columns else 'Close'
-            prices = data[price_col].values
+            numeric_cols = [col for col in data.columns if col not in ['Date', 'Datetime']]
+            if numeric_cols:
+                prices = np.asarray(data.select(numeric_cols[0]).to_numpy().flatten(), dtype=np.float64)
+            else:
+                prices = np.array([])
         
         realized_vol = np.std(np.diff(np.log(prices))) * np.sqrt(252)
         
