@@ -9,6 +9,65 @@ import numpy as np
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 
+
+class BlackScholesHamiltonian:
+    """
+    Black-Scholes Hamiltonian System
+    
+    Represents financial market dynamics in canonical phase space:
+    - q = Stock price S
+    - p = Price momentum p_S
+    
+    H(S, p_S) = (1/2)σ²S²p_S² + rSp_S
+    
+    This class enables axiom validation for markets as Hamiltonian systems.
+    """
+    
+    def __init__(self, sigma: float, r: float, K: float):
+        """
+        Initialize market Hamiltonian.
+        
+        Args:
+            sigma: Volatility (annual)
+            r: Risk-free rate (annual)
+            K: Strike price (for reference)
+        """
+        self.sigma = sigma
+        self.r = r
+        self.K = K
+    
+    def hamiltonian(self, q: float, p: float) -> float:
+        """
+        Compute total energy: H(S, p_S)
+        
+        Args:
+            q: Stock price
+            p: Price momentum
+            
+        Returns:
+            Total Hamiltonian energy
+        """
+        return black_scholes_hamiltonian(q, p, self.r, self.sigma)
+    
+    def dq_dt(self, q: float, p: float) -> float:
+        """
+        Hamilton's equation: dS/dt = ∂H/∂p_S
+        
+        Canonical derivative of position w.r.t. time.
+        Returns rate of change of stock price.
+        """
+        return self.sigma**2 * q**2 * p + self.r * q
+    
+    def dp_dt(self, q: float, p: float) -> float:
+        """
+        Hamilton's equation: dp_S/dt = -∂H/∂S
+        
+        Canonical derivative of momentum w.r.t. time.
+        Returns rate of change of price momentum.
+        """
+        return -(self.sigma**2 * q * p**2 + self.r * p)
+
+
 def black_scholes_hamiltonian(S: float, p_S: float, r: float, sigma: float) -> float:
     """
     Hamiltonian for Black-Scholes dynamics.

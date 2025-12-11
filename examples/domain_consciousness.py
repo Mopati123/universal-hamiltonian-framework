@@ -10,6 +10,62 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from typing import Tuple, List
 
+
+class ConsciousnessHamiltonian:
+    """
+    Consciousness Hamiltonian System
+    
+    Represents cognitive dynamics in canonical phase space:
+    - q = Thought state θ
+    - p = Attention momentum p_θ
+    
+    H(θ, p_θ) = p_θ²/(2m) + V(θ)
+    where V(θ) = -salience·cos(θ)
+    
+    This class enables axiom validation for consciousness as Hamiltonian system.
+    """
+    
+    def __init__(self, salience: float, mass: float):
+        """
+        Initialize consciousness Hamiltonian.
+        
+        Args:
+            salience: How important/interesting the thought is
+            mass: Cognitive inertia (resistance to context switching)
+        """
+        self.salience = salience
+        self.mass = mass
+    
+    def hamiltonian(self, q: float, p: float) -> float:
+        """
+        Compute total cognitive energy: H(θ, p_θ)
+        
+        Args:
+            q: Thought state (angle)
+            p: Attention momentum
+            
+        Returns:
+            Total cognitive energy
+        """
+        return attention_hamiltonian(q, p, self.salience, self.mass)
+    
+    def dq_dt(self, q: float, p: float) -> float:
+        """
+        Hamilton's equation: dθ/dt = ∂H/∂p_θ
+        
+        Attention drives thought change.
+        """
+        return p / self.mass
+    
+    def dp_dt(self, q: float, p: float) -> float:
+        """
+        Hamilton's equation: dp_θ/dt = -∂H/∂θ
+        
+        Salience creates attention force.
+        """
+        return -self.salience * np.sin(q)
+
+
 def attention_hamiltonian(theta: float, p_theta: float, 
                          salience: float, cognitive_mass: float) -> float:
     """

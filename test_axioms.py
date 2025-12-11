@@ -286,12 +286,15 @@ class EnergyConservationTest:
         
         H_initial = p**2 / (2*m) + 0.5 * k * q**2
         
-        # Time evolution
-        dt = 0.01
-        for _ in range(1000):
-            # Hamilton's equations
-            q_new = q + (p / m) * dt
-            p_new = p + (-k * q) * dt
+        # Symplectic Euler integration (preserves energy better than basic Euler)
+        dt = 0.001
+        for _ in range(10000):
+            # Half-step in momentum using current position
+            p_half = p - (k * q) * (dt / 2)
+            # Full step in position using half-step momentum
+            q_new = q + (p_half / m) * dt
+            # Half-step in momentum using new position
+            p_new = p_half - (k * q_new) * (dt / 2)
             q, p = q_new, p_new
         
         H_final = p**2 / (2*m) + 0.5 * k * q**2
@@ -301,7 +304,7 @@ class EnergyConservationTest:
         
         assert relative_error < 0.01, f"Energy not conserved: ΔE/E = {relative_error}"
         
-        print(f"  ✓ Harmonic oscillator: ΔE/E = {relative_error:.2e} < 1%")
+        print(f"  ✓ Harmonic oscillator (symplectic): ΔE/E = {relative_error:.2e} < 1%")
         return True
     
     @staticmethod

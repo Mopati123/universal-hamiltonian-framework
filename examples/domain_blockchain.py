@@ -11,6 +11,72 @@ from typing import List, Tuple, Dict
 import hashlib
 import time
 
+
+class BlockchainHamiltonian:
+    """
+    Blockchain Consensus Hamiltonian System
+    
+    Represents distributed ledger dynamics in canonical phase space:
+    - q = Consensus state (per node)
+    - p = Validation momentum (per node)
+    
+    H = Σᵢ[pᵢ²/(2m) + V(qᵢ)] + coupling·Σᵢⱼ(qᵢ - qⱼ)²
+    
+    This class enables axiom validation for blockchain as Hamiltonian system.
+    """
+    
+    def __init__(self, n_nodes: int, coupling: float = 1.0, mass: float = 1.0):
+        """
+        Initialize blockchain Hamiltonian.
+        
+        Args:
+            n_nodes: Number of nodes in network
+            coupling: Strength of consensus force
+            mass: Node "mass" (validation difficulty)
+        """
+        self.n_nodes = n_nodes
+        self.coupling = coupling
+        self.mass = mass
+    
+    def hamiltonian(self, q: np.ndarray, p: np.ndarray) -> float:
+        """
+        Compute total network energy: H(state, momentum)
+        
+        Args:
+            q: State vector (one entry per node)
+            p: Momentum vector (one entry per node)
+            
+        Returns:
+            Total network Hamiltonian
+        """
+        return consensus_hamiltonian(q, p, self.coupling)
+    
+    def dq_dt(self, q: np.ndarray, p: np.ndarray) -> np.ndarray:
+        """
+        Hamilton's equation: dq/dt = ∂H/∂p
+        
+        Momentum drives state change.
+        """
+        return p / self.mass
+    
+    def dp_dt(self, q: np.ndarray, p: np.ndarray) -> np.ndarray:
+        """
+        Hamilton's equation: dp/dt = -∂H/∂q
+        
+        State disagreement creates consensus force.
+        """
+        N = len(q)
+        force = np.zeros(N)
+        
+        # Coupling forces from other nodes
+        for i in range(N):
+            for j in range(N):
+                if i != j:
+                    force[i] += 2 * self.coupling * (q[i] - q[j])
+        
+        return -force
+
+
 class BlockState:
     """Represents a block in Hamiltonian phase space."""
     
