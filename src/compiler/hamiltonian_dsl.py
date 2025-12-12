@@ -11,7 +11,7 @@ from typing import Callable, List, Dict, Any, Optional
 from dataclasses import dataclass
 import inspect
 
-from ..core import PhaseSpace, HamiltonianSystem
+from core import PhaseSpace, HamiltonianSystem
 
 
 @dataclass

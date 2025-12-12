@@ -1,1 +1,1 @@
-"""\nDomains module\n"""\n
+"""Domains module"""

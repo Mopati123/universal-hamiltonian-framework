@@ -1,1 +1,1 @@
-"""\nValidation module\n"""\n
+"""Validation module"""

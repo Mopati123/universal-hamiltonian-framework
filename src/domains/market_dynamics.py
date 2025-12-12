@@ -40,11 +40,13 @@ class MarketHamiltonian:
         liquidity_mass: float = 1.0,
         volatility: float = 0.1,
         mean_reversion_strength: float = 0.5,
+        damping: float = 0.05,
         equilibrium_price: float = 100.0
     ):
         self.lambda_liq = liquidity_mass
         self.sigma = volatility  # Market temperature
         self.kappa = mean_reversion_strength
+        self.damping = damping
         self.p_eq = equilibrium_price
     
     def kinetic_energy(self, momentum: float) -> float:
@@ -86,14 +88,24 @@ class MarketHamiltonian:
         # Symplectic step
         F = self.force(q)
         p_half = p + 0.5 * dt * F + external_flow
-        q_new = q + dt * p_half / self.lambda_liq
-        F_new = self.force(q_new)
-        p_new = p_half + 0.5 * dt * F_new
-        
-        # Add thermal noise (volatility)
+        # Add thermal noise (volatility) to half-step momentum so price can move immediately
         noise = np.random.normal(0, self.sigma * np.sqrt(dt))
-        p_new += noise
+        p_half_noisy = p_half + noise
+        q_new = q + dt * p_half_noisy / self.lambda_liq
+        F_new = self.force(q_new)
+        p_new = p_half_noisy + 0.5 * dt * F_new
         
+        # Damping (mean reversion) term: reduce momentum over time
+        # gamma = self.kappa (mean_reversion_strength) used as damping coeff
+        if hasattr(self, 'damping'):
+            gamma = self.damping
+        else:
+            gamma = 0.0
+        # Attenuate momentum
+        p_new = p_new * (1.0 - gamma * dt)
+
+        # Note: noise already applied to p_half_noisy (affects q_new). p_new may be further modified by damping above.
+
         return MarketState(price=q_new, momentum=p_new)
 
 

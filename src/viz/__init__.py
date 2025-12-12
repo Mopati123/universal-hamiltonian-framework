@@ -1,1 +1,1 @@
-"""\nViz module\n"""\n
+"""Viz module"""
