@@ -63,9 +63,13 @@ class TestClassicalDomain:
                 crossings.append(t[i])
         
         if len(crossings) >= 2:
-            period = crossings[1] - crossings[0]
+            # consecutive zero-crossings correspond to half-period; use two crossings (full period) when possible
+            if len(crossings) >= 3:
+                period = crossings[2] - crossings[0]
+            else:
+                period = 2.0 * (crossings[1] - crossings[0])
             expected_period = 2 * np.pi * np.sqrt(1.0 / 9.8)  # T = 2π√(L/g)
-            
+
             assert abs(period - expected_period) / expected_period < 0.05
 
 
@@ -85,6 +89,7 @@ class TestMarketDomain:
             liquidity_mass=1.0,
             volatility=0.0,  # No noise for test
             mean_reversion_strength=0.5,
+            damping=1.0,
             equilibrium_price=100.0
         )
         
@@ -97,6 +102,27 @@ class TestMarketDomain:
         
         # Should be close to equilibrium
         assert abs(state.price - 100.0) < 1.0
+
+    def test_market_damping_noise_interplay(self):
+        """Test interplay of damping (mean reversion) vs noise scale"""
+        pytest.importorskip('polars')
+        from domains.market_dynamics import MarketHamiltonian, MarketState
+
+        # Zero noise, positive damping: should converge to equilibrium
+        H1 = MarketHamiltonian(liquidity_mass=1.0, volatility=0.0, mean_reversion_strength=0.5, damping=1.0, equilibrium_price=100.0)
+        s = MarketState(price=110.0, momentum=0.0)
+        for _ in range(500):
+            s = H1.evolve_tick(s, dt=0.01)
+        assert abs(s.price - 100.0) < 1.0
+
+        # High noise, low damping: should have larger variance after evolution
+        H2 = MarketHamiltonian(liquidity_mass=1.0, volatility=1.0, mean_reversion_strength=0.0, damping=0.0, equilibrium_price=100.0)
+        s2 = MarketState(price=100.0, momentum=0.0)
+        prices = []
+        for _ in range(500):
+            s2 = H2.evolve_tick(s2, dt=0.01)
+            prices.append(s2.price)
+        assert np.std(prices) > 0.01
 
 
 class TestConsciousnessDomain:
@@ -136,6 +162,50 @@ class TestConsciousnessDomain:
         
         # Coupled should have higher Φ
         assert phi_coup > phi_ind
+
+    def test_hamiltonian_partition_energy(self):
+        """Check that independent Hamiltonian energy decomposes while coupled does not"""
+        from compiler import define_system
+        from core import PhaseSpace
+
+        @define_system
+        class Independent:
+            coordinates = ['x1', 'x2']
+            def kinetic(self, p): return (p.px1**2 + p.px2**2) / 2
+            def potential(self, q): return 0.5 * (q.x1**2 + q.x2**2)
+
+        @define_system
+        class Coupled:
+            coordinates = ['x1', 'x2']
+            def kinetic(self, p): return (p.px1**2 + p.px2**2) / 2
+            def potential(self, q):
+                V_ind = 0.5 * (q.x1**2 + q.x2**2)
+                V_coup = 0.5 * (q.x1 - q.x2)**2
+                return V_ind + V_coup
+
+        ind = Independent()
+        coup = Coupled()
+        test_state = np.array([1.0, 0.8, 0.2, -0.1])
+        q = test_state[:2]
+        p = test_state[2:]
+
+        # Build full-length arrays for partitions
+        qA = np.array([q[0], 0.0])
+        pA = np.array([p[0], 0.0])
+        qB = np.array([0.0, q[1]])
+        pB = np.array([0.0, p[1]])
+
+        # Independent: should sum exactly
+        H_ind_full = ind.hamiltonian(q, p)
+        H_ind_A = ind.hamiltonian(qA, pA)
+        H_ind_B = ind.hamiltonian(qB, pB)
+        assert np.isclose(H_ind_full, H_ind_A + H_ind_B)
+
+        # Coupled: should not equal sum
+        H_coup_full = coup.hamiltonian(q, p)
+        H_coup_A = coup.hamiltonian(qA, pA)
+        H_coup_B = coup.hamiltonian(qB, pB)
+        assert not np.isclose(H_coup_full, H_coup_A + H_coup_B)
 
 
 class TestBlockchainDomain:

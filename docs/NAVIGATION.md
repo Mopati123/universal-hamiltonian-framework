@@ -280,6 +280,7 @@ Phase space preserves volume (Liouville's theorem).
 - [Chapter 11: Spacetime Engineering](book-of-mopati-chapter11.md)
 - [Chapter 12: Universal Compiler](book-of-mopati-chapter12.md)
 - [Chapter 13: ApexQuantumICT](book-of-mopati-chapter13.md)
+- [Chapter 15: Phase 2 - Real Market Data Migration & Axiomatic Discovery](book-of-mopati-chapter15.md)
 
 **[→ See detailed chapter descriptions](BOOK_INDEX.md)**
 

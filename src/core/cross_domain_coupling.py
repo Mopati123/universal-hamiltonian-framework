@@ -14,7 +14,7 @@ import numpy as np
 from typing import List, Tuple, Callable
 from dataclasses import dataclass
 
-from ..core import PhaseSpace
+from core import PhaseSpace
 
 
 @dataclass
@@ -138,8 +138,8 @@ def quantum_market_coupling_example():
     
     This is NOT metaphor - we're literally coupling the phase spaces!
     """
-    from ..compiler import define_system
-    from ..domains.market_dynamics import MarketHamiltonian, MarketState
+    from compiler import define_system
+    from domains.market_dynamics import MarketHamiltonian, MarketState
     
     # Quantum subsystem
     @define_system
@@ -167,7 +167,7 @@ def quantum_market_coupling_example():
         quantum_uncertainty = abs(quantum_state.q[0])  # Simplified
         return quantum_uncertainty * market_state.p[0]
     
-    def market to_quantum_coupling(market_state: PhaseSpace, quantum_state: PhaseSpace):
+    def market_to_quantum_coupling(market_state: PhaseSpace, quantum_state: PhaseSpace):
         """
         Quantum decoherence influenced by market activity.
         
