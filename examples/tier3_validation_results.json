@@ -1,0 +1,47 @@
+{
+  "axiom_tests": {},
+  "domain_tests": {
+    "markets": {
+      "spy_return": 0.05126588244024319,
+      "energy_drift": 0,
+      "correlations": {
+        "SPY-QQQ": 0.99999999909067,
+        "SPY-IWM": -0.9999850159545157,
+        "QQQ-IWM": -0.9999847834992837
+      }
+    },
+    "consciousness": {
+      "energy_drift": 0.03447463061832686,
+      "final_state": [
+        0.20669438494291184,
+        0.1151429608273593
+      ],
+      "amplitude_range": 0.1
+    },
+    "blockchain": {
+      "consensus_error": 0.010739392439883042,
+      "energy_drift": 0.05,
+      "convergence": 0.9892606075601169
+    }
+  },
+  "coupling_tests": {
+    "markets_to_consciousness": true
+  },
+  "learning_results": {
+    "k_importance": {
+      "markets": 1.5,
+      "consciousness": 0.8,
+      "blockchain": 1.2
+    },
+    "m_difficulty": {
+      "markets": 1.5,
+      "consciousness": 1.0,
+      "blockchain": 2.0
+    },
+    "effectiveness": {
+      "energy_conservation": 0.0005,
+      "axiom_coverage": 5,
+      "coupling_active": true
+    }
+  }
+}
