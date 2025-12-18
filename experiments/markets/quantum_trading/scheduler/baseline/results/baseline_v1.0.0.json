@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-pure",
+  "timestamp": "2025-12-18T11:41:41.481188",
+  "philosophy": "Pure measurement, no dependencies, instant feedback",
+  "metrics": {
+    "latency_ms": 1.2564701003720984,
+    "sharpe_estimated": 0.34199999999999997,
+    "energy_drift_pct": 0.05
+  },
+  "gate": {
+    "latency_pass": true,
+    "sharpe_pass": true,
+    "energy_pass": false,
+    "proceed_to_phase2": false
+  }
+}
