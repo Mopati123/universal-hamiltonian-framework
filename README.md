@@ -6,6 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](#)
+[![Meta status](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Mopati123/universal-hamiltonian-framework/main/meta/meta_shields.json)](#)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
 ---
