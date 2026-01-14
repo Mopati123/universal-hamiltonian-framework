@@ -7,7 +7,10 @@ Usage:
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from validation.unified_validation import run_unified_validation
 
@@ -33,14 +36,14 @@ def main() -> int:
     summary = {}
     for name, result in results.items():
         summary[name] = {
-            "energy_drift": result.energy_drift,
+            "energy_drift": float(result.energy_drift),
             "invariants": [
                 {
                     "name": invariant.name,
-                    "passed": invariant.passed,
-                    "metric": invariant.metric,
-                    "threshold": invariant.threshold,
-                    "skipped": invariant.skipped,
+                    "passed": bool(invariant.passed),
+                    "metric": float(invariant.metric),
+                    "threshold": float(invariant.threshold),
+                    "skipped": bool(invariant.skipped),
                 }
                 for invariant in result.invariants
             ],
