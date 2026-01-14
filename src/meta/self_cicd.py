@@ -40,6 +40,7 @@ class MetaHamiltonian:
             'missing_docstring': 0.8,
             'missing_domain': 1.5,
             'low_coverage': 2.0,
+            'invariant_violation': 1.2,
         }
         
         # Difficulty factors (how hard to fix)
@@ -48,6 +49,7 @@ class MetaHamiltonian:
             'missing_docstring': 0.8,
             'missing_domain': 2.0,  # Hard
             'low_coverage': 1.5,
+            'invariant_violation': 1.0,
         }
         
         # Learning history
