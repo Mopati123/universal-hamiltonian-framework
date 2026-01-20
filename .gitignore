@@ -46,6 +46,10 @@ htmlcov/
 # Logs
 *.log
 
+# Meta CI/CD (per-run state, not versioned)
+.meta/
+meta_result.json
+
 # API Credentials (NEVER commit these!)
 .env
 experiments/markets/.env
