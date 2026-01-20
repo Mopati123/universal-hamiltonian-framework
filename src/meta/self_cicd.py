@@ -54,7 +54,8 @@ class MetaHamiltonian:
         
         # Learning history
         self.history = []
-        self.learning_rate = 0.1
+        self.learning_rate = 0.05  # Reduced from 0.1 for better convergence
+        self.convergence_threshold = 1e-6  # Stop learning if change < this
         
     def learn_from_iteration(self, void_type: str, delta_E: float, success: bool):
         """
@@ -118,7 +119,7 @@ class MetaHamiltonian:
         
         return (k * base_energy) / m
     
-    def save_parameters(self, filepath: str = "meta_parameters.json"):
+    def save_parameters(self, filepath: str = ".meta/parameters.json"):
         """Save learned parameters for next iteration."""
         params = {
             'k': self.k,
@@ -127,13 +128,19 @@ class MetaHamiltonian:
         }
         
         try:
+            # Ensure .meta directory exists
+            import os
+            os.makedirs(os.path.dirname(filepath) or '.', exist_ok=True)
+            
             with open(filepath, 'w') as f:
                 json.dump(params, f, indent=2)
             print(f"  [META-SAVE] Parameters saved to {filepath}")
+        except OSError as e:
+            print(f"  [WARN] Could not create .meta directory: {e}")
         except Exception as e:
             print(f"  [WARN] Could not save parameters: {e}")
     
-    def load_parameters(self, filepath: str = "meta_parameters.json"):
+    def load_parameters(self, filepath: str = ".meta/parameters.json"):
         """Load previously learned parameters."""
         try:
             with open(filepath, 'r') as f:
@@ -143,10 +150,18 @@ class MetaHamiltonian:
             self.m = params.get('m', self.m)
             self.history = params.get('history', [])
             
+            # Add convergence safeguards: clamp weights to reasonable ranges
+            for key in self.k:
+                self.k[key] = max(0.1, min(10.0, self.k[key]))  # Clamp to [0.1, 10.0]
+            for key in self.m:
+                self.m[key] = max(0.1, min(10.0, self.m[key]))  # Clamp to [0.1, 10.0]
+            
             print(f"  [META-LOAD] Parameters loaded from {filepath}")
             print(f"    Learned from {len(self.history)} previous iterations")
         except FileNotFoundError:
             print(f"  [META-INIT] No saved parameters, using defaults")
+        except json.JSONDecodeError as e:
+            print(f"  [WARN] Parameters file corrupted: {e}, using defaults")
         except Exception as e:
             print(f"  [WARN] Could not load parameters: {e}")
 
@@ -414,12 +429,29 @@ class MetaFrameworkCICD:
                 print(f"  [OK] {improvement['file']} already exists")
                 return True
             
+            elif improvement['action'] == 'add_docstring':
+                # For docstring additions, we'd need code parsing
+                # Mark as requiring manual implementation for now
+                print(f"  [INFO] Docstring for {improvement['file']} requires manual review")
+                return False
+            
+            elif improvement['action'] == 'generate_tests':
+                # Test generation requires careful implementation
+                print(f"  [INFO] Test generation requires manual implementation")
+                return False
+            
             else:
-                print(f"  [WARN] Action {improvement['action']} requires manual implementation")
+                print(f"  [WARN] Unknown action {improvement['action']}")
                 return False
         
+        except FileNotFoundError as e:
+            print(f"  [ERROR] File not found during deployment: {e}")
+            return False
+        except PermissionError as e:
+            print(f"  [ERROR] Permission denied during deployment: {e}")
+            return False
         except Exception as e:
-            print(f"  [ERROR] Error deploying improvement: {e}")
+            print(f"  [ERROR] Unexpected error deploying improvement: {e}")
             return False
     
     # ========================================================================
@@ -438,10 +470,11 @@ class MetaFrameworkCICD:
         
         # Step 1: Observe
         state = self.observe_codebase()
-        E_initial = sum([100] * len(state.files))  # Rough total energy
         
         # Step 2: Identify voids
         voids = self.identify_energy_voids(state)
+        # Calculate total initial energy from all voids
+        E_initial = sum([void['energy'] for void in voids]) if voids else 0
         
         # Step 3: Generate improvements
         improvements = self.generate_improvements(voids)
@@ -496,14 +529,18 @@ class MetaFrameworkCICD:
 # DEMONSTRATION
 # ============================================================================
 
-def demo_meta_cicd():
+def demo_meta_cicd(repo_path=None):
     """
     Demonstrate meta-framework CI/CD in action
     
     The framework literally improves itself!
+    
+    Args:
+        repo_path: Path to repository (defaults to current directory)
     """
-    # Create CI/CD system
-    repo_path = r"C:\Users\ramaologam\.gemini\antigravity\scratch\universal-hamiltonian-framework"
+    if repo_path is None:
+        import os
+        repo_path = os.getcwd()
     
     cicd = MetaFrameworkCICD(repo_path)
     
@@ -512,8 +549,18 @@ def demo_meta_cicd():
     
     print("\n[Meta-Framework CI/CD Complete]")
     print("The framework just improved itself!")
-    print(f"Proof: Delta-E = {result['delta_E']} < 0 [SUCCESS]")
+    print(f"Proof: Delta-E = {result['delta_E']} < 0 [SUCCESS]" if result['delta_E'] < 0 else f"Result: Delta-E = {result['delta_E']}")
 
 
 if __name__ == "__main__":
-    demo_meta_cicd()
+    import sys
+    import os
+    
+    # Use provided path or current directory
+    repo_path = sys.argv[1] if len(sys.argv) > 1 else os.getcwd()
+    
+    if not os.path.isdir(repo_path):
+        print(f"Error: Repository path not found: {repo_path}")
+        sys.exit(1)
+    
+    demo_meta_cicd(repo_path)

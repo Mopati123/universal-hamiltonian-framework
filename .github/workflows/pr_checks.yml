@@ -37,35 +37,70 @@ jobs:
 
     - name: Validate GitHub workflow YAML
       run: |
+        cd ${{ github.workspace }}
         python -m pip install --upgrade pip
         pip install pyyaml
         python scripts/validate_github_workflows.py
 
     - name: Run tests
       run: |
+        cd ${{ github.workspace }}
         pytest tests/ -q
 
     - name: Meta self-validation (non-blocking, produce artifact)
       id: meta_check
       env:
         PYTHONPATH: ${{ github.workspace }}
-      run: python scripts/run_meta_check.py
+      run: |
+        cd ${{ github.workspace }}
+        python scripts/run_meta_check.py
+      continue-on-error: true
 
+    - name: Validate meta result file exists
+      run: |
+        if [ ! -f meta_result.json ]; then
+          echo "ERROR: meta_result.json not found"
+          exit 1
+        fi
+        python -m json.tool meta_result.json > /dev/null 2>&1 || (echo "ERROR: Invalid JSON in meta_result.json"; exit 1)
+      shell: bash
 
     - name: Comment meta self-validation result on PR (badge + labels)
       uses: actions/github-script@v7
+      if: always()
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const fs = require('fs');
           const resPath = 'meta_result.json';
+          let body = '';
+          let improved = false;
+          
           try {
-            const raw = fs.readFileSync(resPath, 'utf8');
-            const res = JSON.parse(raw);
-            const improved = res.improved === true;
-            const deltaE = res.delta_E;
-            const badge = improved ? '✅ **PASS** (Delta-E < 0)' : '⚠️ **WARN** (Delta-E >= 0)';
-            const body = `**Meta self-validation results**\n\n${badge}\n\n\`\`\`json\n${JSON.stringify(res, null, 2)}\n\`\`\``;
+            if (!fs.existsSync(resPath)) {
+              body = '**Meta self-validation results**\n\n❌ **ERROR** - Result file not found\n\nThe meta validation script did not produce a result file.';
+            } else {
+              const raw = fs.readFileSync(resPath, 'utf8');
+              
+              // Validate JSON
+              let res;
+              try {
+                res = JSON.parse(raw);
+              } catch (jsonErr) {
+                body = '**Meta self-validation results**\n\n❌ **ERROR** - Invalid JSON\n\nThe result file contains invalid JSON.';
+                throw new Error('JSON parse failed');
+              }
+              
+              // Validate critical fields
+              if (!('improved' in res) || !('delta_E' in res)) {
+                body = '**Meta self-validation results**\n\n⚠️ **WARNING** - Missing required fields in result\n\nMissing improved or delta_E field.';
+              } else {
+                improved = res.improved === true;
+                const deltaE = res.delta_E;
+                const badge = improved ? '✅ **PASS** (Delta-E < 0)' : '⚠️ **WARN** (Delta-E >= 0)';
+                body = `**Meta self-validation results**\n\n${badge}\n\n\`\`\`json\n${JSON.stringify(res, null, 2)}\n\`\`\``;
+              }
+            }
 
             // Post comment
             await github.rest.issues.createComment({
@@ -79,26 +114,95 @@ jobs:
             const passLabel = 'meta:passed';
             const reviewLabel = 'meta:review-needed';
 
-            // Ensure labels exist (create if missing)
-            const { data: existingLabels } = await github.rest.issues.listLabelsForRepo({ owner: context.repo.owner, repo: context.repo.repo });
-            const existingNames = existingLabels.map(l => l.name);
-            if (!existingNames.includes(passLabel)) {
-              await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name: passLabel, color: '0e8a16', description: 'Meta self-check passed' });
-            }
-            if (!existingNames.includes(reviewLabel)) {
-              await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, name: reviewLabel, color: 'ff9f1c', description: 'Meta self-check requires human review' });
+            // Ensure labels exist (idempotent with try-catch)
+            try {
+              const { data: existingLabels } = await github.rest.issues.listLabelsForRepo({ 
+                owner: context.repo.owner, 
+                repo: context.repo.repo 
+              });
+              const existingNames = existingLabels.map(l => l.name);
+              
+              if (!existingNames.includes(passLabel)) {
+                try {
+                  await github.rest.issues.createLabel({ 
+                    owner: context.repo.owner, 
+                    repo: context.repo.repo, 
+                    name: passLabel, 
+                    color: '0e8a16', 
+                    description: 'Meta self-check passed' 
+                  });
+                } catch (e) {
+                  if (e.status !== 422) throw e;  // 422 = already exists
+                }
+              }
+              
+              if (!existingNames.includes(reviewLabel)) {
+                try {
+                  await github.rest.issues.createLabel({ 
+                    owner: context.repo.owner, 
+                    repo: context.repo.repo, 
+                    name: reviewLabel, 
+                    color: 'ff9f1c', 
+                    description: 'Meta self-check requires human review' 
+                  });
+                } catch (e) {
+                  if (e.status !== 422) throw e;  // 422 = already exists
+                }
+              }
+            } catch (labelErr) {
+              console.warn('Warning: Could not create labels:', labelErr.message);
             }
 
-            // Apply labels accordingly and remove the other label if present
+            // Apply labels accordingly
             if (improved) {
-              await github.rest.issues.addLabels({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, labels: [passLabel] });
-              try { await github.rest.issues.removeLabel({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, name: reviewLabel }); } catch (e) {}
+              try {
+                await github.rest.issues.addLabels({ 
+                  owner: context.repo.owner, 
+                  repo: context.repo.repo, 
+                  issue_number: context.issue.number, 
+                  labels: [passLabel] 
+                });
+              } catch (e) {}
+              
+              try { 
+                await github.rest.issues.removeLabel({ 
+                  owner: context.repo.owner, 
+                  repo: context.repo.repo, 
+                  issue_number: context.issue.number, 
+                  name: reviewLabel 
+                }); 
+              } catch (e) {}
             } else {
-              await github.rest.issues.addLabels({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, labels: [reviewLabel] });
-              try { await github.rest.issues.removeLabel({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, name: passLabel }); } catch (e) {}
+              try {
+                await github.rest.issues.addLabels({ 
+                  owner: context.repo.owner, 
+                  repo: context.repo.repo, 
+                  issue_number: context.issue.number, 
+                  labels: [reviewLabel] 
+                });
+              } catch (e) {}
+              
+              try { 
+                await github.rest.issues.removeLabel({ 
+                  owner: context.repo.owner, 
+                  repo: context.repo.repo, 
+                  issue_number: context.issue.number, 
+                  name: passLabel 
+                }); 
+              } catch (e) {}
             }
 
           } catch (err) {
-            const body = '**Meta self-validation results**\n\n_Error reading result file or parsing JSON_';
-            await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.issue.number, body });
+            console.error('Script error:', err.message);
+            try {
+              const fallbackBody = '**Meta self-validation results**\n\n❌ **ERROR** - Script execution failed\n\nCould not process meta validation results.';
+              await github.rest.issues.createComment({ 
+                owner: context.repo.owner, 
+                repo: context.repo.repo, 
+                issue_number: context.issue.number, 
+                body: fallbackBody 
+              });
+            } catch (commentErr) {
+              console.error('Could not post comment:', commentErr.message);
+            }
           }
