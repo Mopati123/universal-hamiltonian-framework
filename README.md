@@ -57,6 +57,49 @@ The qubit evolves in phase space under Hamiltonian H. Spin-up and spin-down comp
 
 ---
 
+## Architecture and What's Built So Far
+
+This repository is both a theoretical framework and a working codebase. The high-level flow is:
+
+1. Define a Hamiltonian (DSL or a domain module)
+2. Evolve the system (core integrators)
+3. Validate invariants and tests
+4. Visualize or apply to a domain
+
+### Core architecture (src/)
+- `src/core/`: `PhaseSpace`, `HamiltonianSystem`, symplectic integration
+- `src/compiler/`: decorator DSL and symbolic engine
+- `src/hl/`: canonical Hamiltonian Language primitives and `HLProgram`
+- `src/domains/`: markets, blockchain, bioenergetic consciousness, ApexQuantumICT, adapters
+- `src/backends/`: JAX backend for accelerated evolution
+- `src/validation/`: unified invariant validation (energy drift, symplectic volume)
+- `src/meta/`: self-observing CI/CD loop and meta-parameter learning
+- `src/viz/`: Dash/Plotly phase-space visualization
+
+### Demos and examples
+- `examples/minimal_example.py`: HL basics
+- `examples/reference_implementation.py`: HL to JAX pipeline with theorem checks
+- `examples/domain_markets.py`, `examples/domain_blockchain.py`, `examples/domain_consciousness.py`
+- `examples/tri_domain_demo.py`: blockchain + consciousness + ApexQuantumICT in one run
+- `demo.py`, `interactive_demo.py`, `quick_demo.py`: multi-domain or interactive demos
+
+### Validation and tests
+- `tests/test_core.py`, `tests/test_domains.py`: core and domain behaviors
+- `tests/test_intelligent_suite.py`: intelligent validators
+- `tests/test_apex_quantum_ict.py`: ApexQuantumICT smoke and invariant checks
+- `scripts/run_unified_validation.py`: canonical invariant checks
+
+### Documentation and theory
+- `docs/`: Book of Mopati chapters, navigation, and API references
+- `papers/`: formal writeups and proofs
+
+### Experiments and operations
+- `experiments/markets/`: empirical market validation and trading system scaffolding
+- `.github/workflows/`: CI checks and meta status updates
+- `scripts/`: GitHub workflow validation and helper utilities
+
+---
+
 ## The Foundation: Why Hamiltonian Mechanics Underpins Diverse Systems
 
 **This framework proposes that Hamiltonian mechanics provides a universal mathematical language for describing complex systems.**
