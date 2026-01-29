@@ -37,12 +37,12 @@ async def main():
     
     # Validate agent count
     if not 1 <= args.agents <= 10:
-        print(f"❌ Error: Must deploy 1-10 agents, got {args.agents}")
+        print(f"ERROR: Must deploy 1-10 agents, got {args.agents}")
         sys.exit(1)
     
     # Create Governor
     print("\n" + "="*80)
-    print("🤖 MULTI-AGENT SAAS BUSINESS PLAN SYSTEM")
+    print("MULTI-AGENT SAAS BUSINESS PLAN SYSTEM")
     print("="*80)
     print(f"Mode: {args.mode.upper()}")
     print(f"Agents: {args.agents}/10")
@@ -58,9 +58,9 @@ async def main():
             st.name: governor.agents[st.name] 
             for st in saas_types if st.name in governor.agents
         }
-        print(f"⚠️  Deploying {args.agents} agents for testing:\n")
+        print(f"WARN Deploying {args.agents} agents for testing:\n")
         for agent_name in governor.agents.keys():
-            print(f"   • {agent_name}")
+            print(f"   - {agent_name}")
         print()
     
     # Deploy agents
@@ -103,7 +103,7 @@ async def main():
     
     # Final report
     print("\n" + "="*80)
-    print("✅ EXECUTION COMPLETE")
+    print("EXECUTION COMPLETE")
     print("="*80)
     status = governor.get_status_report()
     print(f"Completed: {status['completed']}/{status['total_agents']} agents")
@@ -126,10 +126,10 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\n\n❌ Execution cancelled by user")
+        print("\n\nExecution cancelled by user")
         sys.exit(1)
     except Exception as e:
-        print(f"\n\n❌ Error: {e}")
+        print(f"\n\nError: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)

@@ -191,7 +191,7 @@ class GovernorAI:
             agent = SpecializedAgent(saas_type, config, llm_provider=self.llm_provider)
             self.agents[saas_type.name] = agent
             self.state.all_agents.append(agent.name)
-            print(f"  ✅ {agent.name:40} [{config['priority'].upper()}]")
+            print(f"  OK  {agent.name:40} [{config['priority'].upper()}]")
         
         print(f"\nTotal Agents Deployed: {len(self.agents)}")
         print("=" * 80 + "\n")
@@ -228,7 +228,7 @@ class GovernorAI:
         
         for agent, result in zip(self.agents.values(), results):
             if isinstance(result, Exception):
-                print(f"  ❌ {agent.name} failed: {result}")
+                print(f"  ERR {agent.name} failed: {result}")
                 self.state.agent_outputs[agent.name] = AgentOutput(
                     saas_type=agent.saas_type,
                     agent_name=agent.name,
@@ -241,7 +241,7 @@ class GovernorAI:
                 )
             else:
                 self.state.agent_outputs[agent.name] = result
-                print(f"  ✅ {agent.name:40} [Quality: {result.quality_score:.0f}%]")
+                print(f"  OK  {agent.name:40} [Quality: {result.quality_score:.0f}%]")
     
     async def _deploy_sequential(self):
         """Deploy agents in sequence by priority"""
@@ -252,13 +252,13 @@ class GovernorAI:
         for agent in high_priority:
             result = await agent.develop()
             self.state.agent_outputs[agent.name] = result
-            print(f"  ✅ {agent.name:40} [Quality: {result.quality_score:.0f}%]")
+            print(f"  OK  {agent.name:40} [Quality: {result.quality_score:.0f}%]")
         
         print("\n[PHASE 2] Medium Priority Agents...")
         for agent in medium_priority:
             result = await agent.develop()
             self.state.agent_outputs[agent.name] = result
-            print(f"  ✅ {agent.name:40} [Quality: {result.quality_score:.0f}%]")
+            print(f"  OK  {agent.name:40} [Quality: {result.quality_score:.0f}%]")
     
     async def _deploy_hybrid(self):
         """Deploy high-priority in parallel, then medium-priority"""
@@ -270,13 +270,13 @@ class GovernorAI:
         results = await asyncio.gather(*tasks)
         for agent, result in zip(high_priority, results):
             self.state.agent_outputs[agent.name] = result
-            print(f"  ✅ {agent.name:40} [Quality: {result.quality_score:.0f}%]")
+            print(f"  OK  {agent.name:40} [Quality: {result.quality_score:.0f}%]")
         
         print("\n[PHASE 2] Sequential: Medium Priority Agents...")
         for agent in medium_priority:
             result = await agent.develop()
             self.state.agent_outputs[agent.name] = result
-            print(f"  ✅ {agent.name:40} [Quality: {result.quality_score:.0f}%]")
+            print(f"  OK  {agent.name:40} [Quality: {result.quality_score:.0f}%]")
     
     def quality_control(self) -> Dict[str, Any]:
         """
@@ -307,10 +307,10 @@ class GovernorAI:
             
             if output.quality_score >= self.quality_threshold:
                 quality_report["passed"] += 1
-                print(f"  ✅ {agent_name:40} PASSED")
+                print(f"  OK  {agent_name:40} PASSED")
             else:
                 quality_report["failed"] += 1
-                print(f"  ⚠️  {agent_name:40} NEEDS REVIEW")
+                print(f"  WARN {agent_name:40} NEEDS REVIEW")
                 quality_report["issues"].append(f"{agent_name}: Quality below threshold")
         
         quality_report["average_quality"] = sum(scores) / len(scores) if scores else 0
@@ -391,10 +391,10 @@ class GovernorAI:
             if output.status == "completed":
                 summary["detailed_outputs"][agent_name] = output.deliverables
         
-        print("  ✅ Market aggregation complete")
-        print("  ✅ Opportunity ranking generated")
-        print("  ✅ Resource allocation calculated")
-        print("  ✅ Risk matrix compiled")
+        print("  OK  Market aggregation complete")
+        print("  OK  Opportunity ranking generated")
+        print("  OK  Resource allocation calculated")
+        print("  OK  Risk matrix compiled")
         
         self.state.executive_summary = summary
         print("=" * 80 + "\n")
@@ -576,7 +576,7 @@ class SpecializedAgent:
         Main development method - orchestrates creation of all deliverables.
         This would call specialized prompts for each deliverable.
         """
-        print(f"    → {self.name} starting development...")
+        print(f"    -> {self.name} starting development...")
         
         deliverables: Dict[str, Any] = {}
         errors: List[str] = []
@@ -779,5 +779,5 @@ if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("\n\n❌ Governor AI: Shutdown requested")
+        print("\n\nERROR Governor AI: Shutdown requested")
         sys.exit(0)
