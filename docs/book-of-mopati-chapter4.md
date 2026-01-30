@@ -785,7 +785,7 @@ Everything past here builds on coupled Hamiltonians.
 1. [Axiomatic Foundation](book-of-mopati.md)
 2. [Meta-Hamiltonian Singularity](book-of-mopati-chapter2.md)
 3. [Domain Universality](book-of-mopati-chapter3.md)
-4. **Quantum Foundations** (Current)
+4. **Cross-Domain Coupling** (Current)
 5. [AI as Phase-Space Flow](book-of-mopati-chapter5.md)
 6. [Time and Causality](book-of-mopati-chapter6.md)
 7. [Thermodynamics](book-of-mopati-chapter7.md)

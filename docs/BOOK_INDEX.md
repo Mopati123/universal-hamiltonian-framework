@@ -4,8 +4,8 @@
 > *"The universe is written in the language of Hamiltonians."*
 
 **Universal Hamiltonian Framework - Foundational Text**  
-**Version**: 0.2.0  
-**Status**: Complete (15 Chapters: 0-15)
+**Version**: 0.3.2  
+**Status**: Complete (16 Chapters: 0-15)
 
 ---
 
@@ -241,6 +241,44 @@
 
 ---
 
+### Part VIII: Executability
+
+#### [Chapter 14: A Framework Becomes Executable](book-of-mopati-chapter14.md)
+**Governed Application Discovery**
+- The translation problem: theory to execution
+- Schemas as admissible regions
+- Refusal as enforcement
+- Agents as non-sovereign observers
+- Audit logs as observables
+- Invariant Preservation Theorem
+- What this enables (and what it does not)
+- Position in the framework
+
+**Key Concepts**: Non-sovereign observation, Refusal-first governance, Constrained exploration, Auditability without trust
+
+**For**: Anyone implementing framework-level systems who must preserve invariants under creativity
+
+[**→ Read Chapter 14**](book-of-mopati-chapter14.md)
+
+---
+
+#### [Chapter 15: Empirical Validation](book-of-mopati-chapter15.md)
+**How to Test Without Breaking the Law**
+- Validation is external (no self-measurement)
+- Hypotheses vs measurements (projection semantics)
+- The validation gate (PASS/FAIL/REFUSAL)
+- Evidence artifacts (manifests, hashes, audit logs)
+- Failure semantics (rollback, non-collapse)
+- Worked example: TRADING_ENGINE validation loop
+
+**Key Concepts**: External measurement, Projection vs truth, Validation gates, Evidence without trust, Failure as data
+
+**For**: Anyone implementing testable systems that preserve governance under empirical validation
+
+[**→ Read Chapter 15**](book-of-mopati-chapter15.md)
+
+---
+
 ## 🎯 Quick Navigation Guides
 
 ### By Interest
@@ -259,7 +297,7 @@
 **Core Understanding (2 hours)**: Ch 1, 2, 3  
 **Mathematical Rigor (4 hours)**: Ch 0, 1, 2  
 **Practitioner Level (1 day)**: Ch 1-5, 8, 12  
-**Complete Mastery (1 week)**: All 14 chapters starting with Ch 0
+**Complete Mastery (1 week)**: All 16 chapters starting with Ch 0
 
 ---
 
@@ -270,6 +308,10 @@
 **API Documentation**: [api-reference.md](api-reference.md)  
 **Formal Paper**: [HL Paper](../papers/hl-formal-paper.md)  
 **Navigation Guide**: [NAVIGATION.md](NAVIGATION.md)
+
+### Appendices
+
+**Appendix D**: [Phase 2 Data Migration Implementation Notes](appendix-data-migration.md) — Pandas→Polars migration, dtype handling, ETO calibration
 
 ---
 

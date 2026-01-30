@@ -434,13 +434,15 @@ while trading:
 
 **In GOD We TRUST - The market is a quantum system.**
 
+*End of Chapter 13*
 
 ---
 
 ## Chapter Navigation
 
-**[← Table of Contents](BOOK_INDEX.md)** | **Chapter 13 of 13** | **[← Prev: Universal Compiler](book-of-mopati-chapter12.md)**
+**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 13 of 14** | **[← Previous Chapter](book-of-mopati-chapter12.md)** | **[Next Chapter →](book-of-mopati-chapter14.md)**
 
+---
 
 ### All Chapters
 1. [Axiomatic Foundation](book-of-mopati.md)
