@@ -356,8 +356,8 @@ This book proves it, and the code demonstrates it.
 
 ---
 
-**Version**: 0.2.0  
-**Last Updated**: November 28, 2025  
+**Version**: 0.3.2  
+**Last Updated**: January 30, 2026  
 **Repository**: https://github.com/Mopati123/universal-hamiltonian-framework  
 
 **In GOD We TRUST** - Master reality's source code! 📘
