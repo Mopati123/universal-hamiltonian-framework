@@ -228,6 +228,16 @@ This is not the end of the framework.
 
 ---
 
+## 14.10 Reference Implementation
+
+The concepts in this chapter are implemented in the **Governor AI** system:
+
+- **Location**: [`agents/`](../agents/)
+- **Core Orchestrator**: [`agents/agent_orchestrator.py`](../agents/agent_orchestrator.py)
+- **Governance Logic**: See `GovernorAI.authorize_commit()` for refusal-first implementation.
+
+---
+
 **📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 14 of 15** | **[← Previous Chapter](book-of-mopati-chapter13.md)** | **[Next Chapter →](book-of-mopati-chapter15.md)**
 
 ---

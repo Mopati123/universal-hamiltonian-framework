@@ -257,6 +257,7 @@
 **Key Concepts**: Non-sovereign observation, Refusal-first governance, Constrained exploration, Auditability without trust
 
 **For**: Anyone implementing framework-level systems who must preserve invariants under creativity
+**Implementation**: [`agents/`](../agents/) - GovernorAI & 10 Specialized Agents
 
 [**→ Read Chapter 14**](book-of-mopati-chapter14.md)
 
