@@ -440,7 +440,7 @@ while trading:
 
 ## Chapter Navigation
 
-**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 13 of 14** | **[← Previous Chapter](book-of-mopati-chapter12.md)** | **[Next Chapter →](book-of-mopati-chapter14.md)**
+**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 13 of 15** | **[← Previous Chapter](book-of-mopati-chapter12.md)** | **[Next Chapter →](book-of-mopati-chapter14.md)**
 
 ---
 
