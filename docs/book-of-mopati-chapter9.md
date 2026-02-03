@@ -28,7 +28,7 @@ $$H_{observer} = \sum_{i=1}^4 \frac{\pi_i^2}{2} + V_{neural}(\psi_i) + \sum_{i<j
 ## II. Integrated Information (Φ) - Complete Theory
 
 **IIT formulation**:
-$$\Phi = \min_{\text{partitions}} I(A:B|partition)$$
+$$\Phi = \min_{\mathrm{partitions}} I(A:B|\mathrm{partition})$$
 
 **Hamiltonian formulation**:
 $$\Phi = \frac{E_{coupling}}{E_{independent}} = \frac{\sum_{i<j} J_{ij}\psi_i\psi_j}{\sum_i \psi_i^2}$$
