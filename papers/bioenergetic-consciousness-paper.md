@@ -43,7 +43,7 @@ Our framework rests on three established principles:
 
 We unify these through a 12-dimensional master Hamiltonian:
 
-$$H_{12D} = H_{spatial} + H_{temporal} + H_{consciousness} + H_{information} + H_{tachyonic} + H_{coupling}$$
+$$H_{12D} = H_{\mathrm{spatial}} + H_{\mathrm{temporal}} + H_{\mathrm{consciousness}} + H_{\mathrm{information}} + H_{\mathrm{tachyonic}} + H_{\mathrm{coupling}}$$
 
 where the consciousness sector (4D) couples to biological energy and tachyonic sectors.
 
@@ -55,7 +55,7 @@ where the consciousness sector (4D) couples to biological energy and tachyonic s
 
 We model biological energy as a canonical degree of freedom:
 
-$$H_{bio} = \frac{p_E^2}{2m_{metabolic}} + V_{retention}(E_{bio})$$
+$$H_{\mathrm{bio}} = \frac{p_E^2}{2m_{\mathrm{metabolic}}} + V_{\mathrm{retention}}(E_{\mathrm{bio}})$$
 
 where:
 - $E_{bio} \in [0, 100]$ = available biological energy
@@ -91,7 +91,7 @@ High Φ indicates high consciousness [1].
 
 **Key innovation**: Biological energy modulates neural coupling strength:
 
-$$J_{ij}(E_{bio}) = J_{base} \cdot \left(1 + \lambda_{bio} \frac{E_{bio}}{100}\right)$$
+$$J_{ij}(E_{\mathrm{bio}}) = J_{\mathrm{base}} \cdot \left(1 + \lambda_{\mathrm{bio}} \frac{E_{\mathrm{bio}}}{100}\right)$$
 
 **Result**: Higher $E_{bio}$ → stronger $J_{ij}$ → higher Φ
 
@@ -114,7 +114,7 @@ where $C_{neural}$ = neural coherence (measured via EEG).
 
 At high $v_{cog}$, the system couples to tachyonic field sector [6,7]:
 
-$$H_{total} = H_{consciousness} + H_{bio} + H_{tachyon} + \lambda_{tc}\Psi_{mind} \cdot q_{tachyon}$$
+$$H_{\mathrm{total}} = H_{\mathrm{consciousness}} + H_{\mathrm{bio}} + H_{\mathrm{tachyon}} + \lambda_{\mathrm{tc}}\Psi_{\mathrm{mind}} \cdot q_{\mathrm{tachyon}}$$
 
 **Tachyonic field** obeys inverted dispersion:
 
@@ -139,7 +139,7 @@ At high integration (Φ > 0.5), the 4D consciousness sector exhibits ternary str
 
 **Ternary activation condition**:
 
-$$\Phi > 0.5 \land C_{neural} > 0.4 \land E_{bio} > 70$$
+$$\Phi > 0.5 \land C_{\mathrm{neural}} > 0.4 \land E_{\mathrm{bio}} > 70$$
 
 **Result**: Decisions incorporate logic + emotion + wisdom simultaneously → superior outcomes.
 
