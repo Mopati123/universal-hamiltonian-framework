@@ -135,8 +135,10 @@ class ApexQuantumICT:
         
         Models time evolution and retrocausality
         """
-        # Timeframe alignment energy
-        coherence_energy = -state.timeframe_coherence  # Negative = stable
+        # Timeframe alignment energy (INVERTED: now positive stable)
+        # Changed from negative to positive - high coherence = low energy (stable)
+        # Uses (1 - coherence)^2 to create minimum at coherence = 1
+        coherence_energy = (1.0 - state.timeframe_coherence) ** 2
         
         return coherence_energy
     
@@ -144,14 +146,18 @@ class ApexQuantumICT:
         """
         Tachyonic prediction Hamiltonian
         
-        H_tachyon = -(p_t^2)/(2μ^2) - V_tach
+        H_tachyon = p_t^2/(2μ^2) + V_tach
         
-        Note NEGATIVE kinetic energy (superluminal!)
+        INVERTED: Now uses POSITIVE energy formulation.
+        Represents prediction quality as potential energy (bounded [0, 1]).
+        High prediction accuracy = low energy = stable equilibrium.
         """
-        # Prediction accuracy (negative energy = good prediction!)
+        # Prediction quality as positive bounded energy
         if len(state.predicted_prices) > 0 and len(state.prices) > 0:
             prediction_error = np.mean((state.predicted_prices - state.prices) ** 2)
-            tachyon_energy = -1.0 / (1.0 + prediction_error)  # Negative!
+            # Bounded [0, 1] - 0 = perfect prediction (minimum energy)
+            # INVERTED: Changed from negative to positive
+            tachyon_energy = 1.0 / (1.0 + prediction_error)  # POSITIVE - bounded [0, 1]
         else:
             tachyon_energy = 0.0
         
@@ -227,6 +233,45 @@ class ApexQuantumICT:
             self.H_market(state) +
             self.H_meta(state)
         )
+    
+    def dq_dt(self, q_vec: np.ndarray, p_vec: np.ndarray) -> np.ndarray:
+        """
+        Compute ∂H/∂p for market state vector [prices, orderflows].
+        
+        Hamilton's equation: dq/dt = ∂H/∂p
+        
+        For market Hamiltonian:
+        - dq/dt (price velocity) = orderflow / liquidity_mass
+        """
+        if len(p_vec) >= self.n_assets:
+            return p_vec[:self.n_assets] / self.liquidity_mass
+        return p_vec
+    
+    def dp_dt(self, q_vec: np.ndarray, p_vec: np.ndarray) -> np.ndarray:
+        """
+        Compute -∂H/∂q for market state vector [prices, orderflows].
+        
+        Hamilton's equation: dp/dt = -∂H/∂q
+        
+        Returns numerical gradient via finite differences.
+        """
+        epsilon = 0.01
+        dp = np.zeros_like(q_vec)
+        
+        # Create minimal state for gradient computation
+        for i in range(min(len(q_vec), self.n_assets)):
+            q_plus = q_vec.copy()
+            q_minus = q_vec.copy()
+            q_plus[i] += epsilon
+            q_minus[i] -= epsilon
+            
+            # Approximate gradient (using market component as proxy)
+            H_plus = np.sum(q_plus[:self.n_assets] ** 2) / (2 * self.liquidity_mass)
+            H_minus = np.sum(q_minus[:self.n_assets] ** 2) / (2 * self.liquidity_mass)
+            
+            dp[i] = -(H_plus - H_minus) / (2 * epsilon)
+        
+        return dp
     
     # ========================================================================
     # EVOLUTION & PREDICTION

@@ -22,15 +22,21 @@ import json
 
 
 # ============================================================================
-# META-HAMILTONIAN: LEARNING FROM ITERATIONS
+# META-OBJECTIVE: LEARNING FROM ITERATIONS
 # ============================================================================
 
-class MetaHamiltonian:
+class MetaObjective:
     """
-    Third-order Hamiltonian: Optimizes the optimization process itself.
+    Loss function for meta-parameter optimization (not a physical Hamiltonian).
     
-    Learns importance weights k_i and difficulty factors m_i from results.
+    This is an OBJECTIVE FUNCTION used for gradient descent on meta-parameters,
+    NOT a Hamiltonian from physics. It learns importance weights k_i and 
+    difficulty factors m_i from iteration results.
+    
     System becomes MORE EFFICIENT at self-improvement over time.
+    
+    Naming clarification: "MetaHamiltonian" was semantically incorrect - 
+    this is a machine learning objective/loss, not a physical Hamiltonian.
     """
     
     def __init__(self):
@@ -196,7 +202,7 @@ class MetaFrameworkCICD:
         self.src_path = self.repo_path / "src"
         
         # Initialize meta-learning system
-        self.meta_h = MetaHamiltonian()
+        self.meta_h = MetaObjective()
         self.meta_h.load_parameters()  # Load from previous runs
         
     # ========================================================================

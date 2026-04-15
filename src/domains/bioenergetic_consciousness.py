@@ -103,8 +103,11 @@ class BioenergticConsciousness:
         # Neural potential (self-energy)
         V_neural = 0.5 * np.sum(psi**2)
         
-        # Biological potential (favors high energy)
-        V_bio = -0.5 * E_bio**2 / 100.0  # Negative potential
+        # Biological potential (stable harmonic oscillator)
+        # INVERTED: Changed from negative to positive for stability
+        # Positive potential creates stable equilibrium at E_bio = 0
+        # System now has bounded energy rather than runaway growth
+        V_bio = +0.5 * E_bio**2 / 100.0  # STABLE positive potential
         
         # Bio-enhanced neural coupling
         J_enhanced = self.J_base * (1.0 + self.lambda_bio_cons * E_bio / 100.0)
@@ -115,6 +118,56 @@ class BioenergticConsciousness:
                 V_coupling += -J_enhanced * psi[i] * psi[j]
         
         return T_neural + T_bio + V_neural + V_bio + V_coupling
+    
+    def dq_dt(self, q: np.ndarray, p: np.ndarray) -> np.ndarray:
+        """
+        Compute ∂H/∂p via finite differences.
+        
+        Hamilton's equation: dq/dt = ∂H/∂p
+        
+        Returns:
+            Array of time derivatives for each q component
+        """
+        epsilon = 1e-5
+        dq = np.zeros_like(p)
+        
+        for i in range(len(p)):
+            p_plus = p.copy()
+            p_plus[i] += epsilon
+            p_minus = p.copy()
+            p_minus[i] -= epsilon
+            
+            H_plus = self.hamiltonian(q, p_plus)
+            H_minus = self.hamiltonian(q, p_minus)
+            
+            dq[i] = (H_plus - H_minus) / (2 * epsilon)
+        
+        return dq
+    
+    def dp_dt(self, q: np.ndarray, p: np.ndarray) -> np.ndarray:
+        """
+        Compute -∂H/∂q via finite differences.
+        
+        Hamilton's equation: dp/dt = -∂H/∂q
+        
+        Returns:
+            Array of time derivatives for each p component
+        """
+        epsilon = 1e-5
+        dp = np.zeros_like(q)
+        
+        for i in range(len(q)):
+            q_plus = q.copy()
+            q_plus[i] += epsilon
+            q_minus = q.copy()
+            q_minus[i] -= epsilon
+            
+            H_plus = self.hamiltonian(q_plus, p)
+            H_minus = self.hamiltonian(q_minus, p)
+            
+            dp[i] = -(H_plus - H_minus) / (2 * epsilon)
+        
+        return dp
     
     def compute_coherence(self, psi: np.ndarray) -> float:
         """
@@ -201,35 +254,9 @@ class BioenergticConsciousness:
         q = np.concatenate([state.psi, [state.E_bio]])
         p = np.concatenate([state.pi, [0.0]])  # Energy momentum
         
-        # Compute gradients numerically
-        epsilon = 1e-5
-        
-        dq = np.zeros_like(q)
-        dp = np.zeros_like(p)
-        
-        # ∂H/∂p
-        for i in range(len(p)):
-            p_plus = p.copy()
-            p_plus[i] += epsilon
-            p_minus = p.copy()
-            p_minus[i] -= epsilon
-            
-            H_plus = self.hamiltonian(q, p_plus)
-            H_minus = self.hamiltonian(q, p_minus)
-            
-            dq[i] = (H_plus - H_minus) / (2 * epsilon)
-        
-        # -∂H/∂q
-        for i in range(len(q)):
-            q_plus = q.copy()
-            q_plus[i] += epsilon
-            q_minus = q.copy()
-            q_minus[i] -= epsilon
-            
-            H_plus = self.hamiltonian(q_plus, p)
-            H_minus = self.hamiltonian(q_minus, p)
-            
-            dp[i] = -(H_plus - H_minus) / (2 * epsilon)
+        # Use dq_dt and dp_dt methods (Hamilton's equations)
+        dq = self.dq_dt(q, p)
+        dp = self.dp_dt(q, p)
         
         # Update
         q_new = q + dq * dt

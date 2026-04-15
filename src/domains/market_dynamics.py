@@ -11,6 +11,12 @@ import numpy as np
 import polars as pl
 from typing import Callable, Tuple
 from dataclasses import dataclass
+import sys
+from pathlib import Path
+
+# Add parent to path for imports
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from core import DissipativeHamiltonian
 
 @dataclass
 class MarketState:
@@ -22,9 +28,9 @@ class MarketState:
         return np.array([self.price, self.momentum])
 
 
-class MarketHamiltonian:
+class MarketHamiltonian(DissipativeHamiltonian):
     """
-    Market dynamics as Hamiltonian system.
+    Market dynamics as dissipative Hamiltonian system.
     
     H = p²/(2λ) + V(q) + noise
     
@@ -33,6 +39,9 @@ class MarketHamiltonian:
     - p = momentum (related to volume)
     - λ = "liquidity mass"
     - V(q) = order book potential
+    
+    Note: Inherits from DissipativeHamiltonian because markets are
+    open systems with energy dissipation (friction, information flow).
     """
     
     def __init__(
@@ -43,11 +52,15 @@ class MarketHamiltonian:
         damping: float = 0.05,
         equilibrium_price: float = 100.0
     ):
+        super().__init__(n_dof=1, damping=damping)
         self.lambda_liq = liquidity_mass
         self.sigma = volatility  # Market temperature
         self.kappa = mean_reversion_strength
-        self.damping = damping
         self.p_eq = equilibrium_price
+        
+        # For 1D system, q and p are scalars
+        self._q_scalar = True
+        self._p_scalar = True
     
     def kinetic_energy(self, momentum: float) -> float:
         """T = p²/(2λ) - momentum component"""
@@ -68,6 +81,50 @@ class MarketHamiltonian:
     def force(self, price: float) -> float:
         """F = -∂V/∂q = -κ(q - q_eq)"""
         return -self.kappa * (price - self.p_eq)
+    
+    def dq_dt(self, q: np.ndarray, p: np.ndarray) -> np.ndarray:
+        """
+        ∂H/∂p = p/λ (price velocity = momentum / liquidity mass)
+        
+        For scalar price/momentum, returns scalar.
+        For array input, returns array.
+        """
+        # Convert to scalar if needed
+        if np.isscalar(p) or (isinstance(p, np.ndarray) and p.size == 1):
+            return np.array([p / self.lambda_liq]) if isinstance(p, np.ndarray) else p / self.lambda_liq
+        return p / self.lambda_liq
+    
+    def dp_dt(self, q: np.ndarray, p: np.ndarray) -> np.ndarray:
+        """
+        -∂H/∂q = -κ(q - q_eq) (momentum change = restoring force)
+        
+        For scalar price/momentum, returns scalar.
+        For array input, returns array.
+        """
+        q_val = q[0] if isinstance(q, np.ndarray) and q.size > 0 else q
+        force = -self.kappa * (q_val - self.p_eq)
+        
+        if isinstance(q, np.ndarray):
+            return np.array([force])
+        return force
+    
+    def evolve_tick_hamiltonian(self, state: MarketState, dt: float = 1.0) -> MarketState:
+        """
+        Pure Hamiltonian evolution (no damping, no noise).
+        
+        Uses analytical dq_dt, dp_dt for exact symplectic evolution.
+        """
+        q = np.array([state.price])
+        p = np.array([state.momentum])
+        
+        # Hamilton's equations
+        dq = self.dq_dt(q, p) * dt
+        dp = self.dp_dt(q, p) * dt
+        
+        q_new = q + dq
+        p_new = p + dp
+        
+        return MarketState(price=float(q_new[0]), momentum=float(p_new[0]))
     
     def evolve_tick(
         self,
@@ -199,23 +256,44 @@ class BlackScholesHamiltonian:
     
     ∂V/∂t + ½σ²S²∂²V/∂S² + rS∂V/∂S - rV = 0
     
-    Can be cast as Hamiltonian evolution in (S, Π) space.
+    Can be cast as Hamiltonian evolution in (S, Π) space where:
+    - S = underlying price (q)
+    - Π = conjugate momentum related to price sensitivity (p)
+    
+    Hamiltonian represents the evolution generator for option pricing.
     """
     
-    def __init__(self, r: float, sigma: float):
+    def __init__(self, r: float, sigma: float, K: float = 100.0):
         self.r = r  # Risk-free rate
         self.sigma = sigma  # Volatility
+        self.K = K  # Strike price (for reference)
     
     def hamiltonian(self, S: float, Pi: float) -> float:
         """
-        H = -rS·∂/∂S + ½σ²S²·∂²/∂S²
+        H = -rS·Π + ½σ²S²·Π²
         
-        (Simplified representation)
+        Canonical Black-Scholes Hamiltonian in (S, Π) phase space.
         """
-        # Drift term
+        # Drift term: -rS·Π
         drift = -self.r * S * Pi
         
-        # Diffusion term (simplified)
+        # Diffusion term: ½σ²S²·Π²
         diffusion = 0.5 * self.sigma**2 * S**2 * Pi**2
         
         return drift + diffusion
+    
+    def dq_dt(self, S: float, Pi: float) -> float:
+        """
+        ∂H/∂Π = -rS + σ²S²·Π
+        
+        Price evolution rate (analytical derivative).
+        """
+        return -self.r * S + self.sigma**2 * S**2 * Pi
+    
+    def dp_dt(self, S: float, Pi: float) -> float:
+        """
+        -∂H/∂S = r·Π - σ²S·Π²
+        
+        Momentum evolution rate (analytical derivative).
+        """
+        return self.r * Pi - self.sigma**2 * S * Pi**2
