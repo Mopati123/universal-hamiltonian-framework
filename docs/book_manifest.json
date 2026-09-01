@@ -4,7 +4,9 @@
     "title": "The Book of Mopati",
     "chapter_count": 16,
     "canonical_exercises": "docs/chapter0-exercises.md",
-    "certification_status": "candidate_pending_ci"
+    "certification_status": "certified",
+    "certified_scope": "Book of Mopati corpus: chapters 0-15, canonical index, exercises, claim taxonomy, and documentation-level consistency gates",
+    "certification_note": "Certification is documentation-scoped. It does not promote unvalidated domain hypotheses or trading performance claims to empirically_validated."
   },
   "allowed_classifications": [
     "standard_physics",
