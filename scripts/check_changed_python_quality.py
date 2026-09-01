@@ -12,13 +12,20 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def changed_python_files(base: str) -> list[str]:
     result = subprocess.run(
-        ["git", "diff", "--name-only", "--diff-filter=ACMR", f"{base}...HEAD", "--", "*.py"],
+        [
+            "git",
+            "diff",
+            "--name-only",
+            "--diff-filter=ACMR",
+            f"{base}...HEAD",
+            "--",
+            "*.py",
+        ],
         cwd=ROOT,
         text=True,
         capture_output=True,
