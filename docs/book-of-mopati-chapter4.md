@@ -1,105 +1,116 @@
 # Book of Mopati — Chapter 4: Coupling and Interaction
 
-> **Classification:** standard_physics, engineering_analogy, research_hypothesis
-> **Evidence:** Coupled Hamiltonian systems and quantum entanglement are standard physics concepts; cross-domain coupling claims require separate justification.
-> **Certification scope:** Prevents classical interaction, correlation, and quantum entanglement from being conflated.
+> **Classification:** standard_physics, engineering_analogy, research_hypothesis  
+> **Evidence:** Coupled Hamiltonian systems and quantum entanglement are standard physics concepts; cross-domain coupling claims require separate justification.  
+> **Certification scope:** Prevents classical interaction, statistical correlation, and quantum entanglement from being conflated.
 
 ## 4.1 Coupled Hamiltonian systems
 
-Two canonical systems may be combined as
+Two canonical subsystems can be combined as
 
-[
-H_{	ext{total}}
+$$
+H_{\mathrm{total}}
 =
 H_1(q_1,p_1)
 +
 H_2(q_2,p_2)
 +
-H_{	ext{int}}(q_1,p_1,q_2,p_2).
-]
+H_{\mathrm{int}}(q_1,p_1,q_2,p_2).
+$$
+
+**Where:**
+- $H_1$ and $H_2$ are the subsystem Hamiltonians;
+- $H_{\mathrm{int}}$ is the interaction Hamiltonian;
+- $(q_1,p_1)$ and $(q_2,p_2)$ are the canonical variables of the two subsystems.
 
 The interaction term changes the joint equations of motion.
 
-This is standard classical or quantum mechanics when the underlying model is physically defined.
-
 ## 4.2 Coupling strength
 
-A family of interacting subsystems may use parameters (lambda_{ij}) to control interaction strength:
+A family of interacting subsystems may be written as
 
-[
-H_{	ext{total}}
+$$
+H_{\mathrm{total}}
 =
-sum_i H_i
+\sum_i H_i
 +
-sum_{i<j}lambda_{ij}V_{ij}.
-]
+\sum_{i<j}
+\lambda_{ij} V_{ij}.
+$$
 
-The coupling matrix need not be symmetric in every generalized model, and complex-valued couplings require a well-defined quantum/operator setting. Those properties must be derived from the model rather than assumed universally.
+**Where:**
+- $H_i$ is the Hamiltonian of subsystem $i$;
+- $V_{ij}$ describes how subsystems $i$ and $j$ interact;
+- $\lambda_{ij}$ controls the strength of that interaction.
+
+The symmetry and allowed values of $\lambda_{ij}$ depend on the specific model. They are not universal properties.
 
 ## 4.3 Classical coupling versus quantum entanglement
 
-A coupled classical system can exhibit correlation, synchronization, normal modes, energy exchange, and chaos.
+A coupled classical system can exhibit correlation, synchronization, normal modes, energy transfer, and chaos.
 
-Quantum entanglement is different. A bipartite pure state is entangled when
+Quantum entanglement is different. A bipartite pure quantum state is entangled when it cannot be written as a product state:
 
-[
-|Psiangle_{AB}
+$$
+|\Psi\rangle_{AB}
+\neq
+|\psi\rangle_A
+\otimes
+|\phi\rangle_B.
+$$
 
-eq
-|psiangle_Aotimes|phiangle_B.
-]
+**Meaning:** the joint quantum state cannot be decomposed into independent subsystem states.
 
-An interaction Hamiltonian can generate entanglement from suitable quantum initial states, but strong coupling is not synonymous with entanglement.
-
-This book therefore reserves the word entanglement for quantum states unless clearly marked as metaphorical language.
+An interaction Hamiltonian can generate entanglement from suitable quantum initial states, but strong classical coupling is not itself entanglement.
 
 ## 4.4 Measurement interaction
 
-A quantum measurement model may represent system–apparatus interaction with an interaction Hamiltonian. That does not by itself solve the quantum measurement problem, prove wave-function collapse as a dynamical mechanism, or imply consciousness-induced collapse.
+A quantum measurement model may describe system–apparatus interaction using an interaction Hamiltonian.
 
-Those stronger claims require a specific interpretation or experimentally supported model.
+That does not, by itself:
+- solve the quantum measurement problem;
+- prove a specific collapse mechanism;
+- imply consciousness-induced collapse.
+
+Those stronger claims require a separate interpretation or experimentally supported theory.
 
 ## 4.5 Cross-domain coupling
 
-In software, markets, organizations, or cognition, UHF may use a coupling graph or interaction matrix to represent dependencies.
+In software, markets, organizations, or cognition, UHF may use a coupling objective such as
 
-For example,
-
-[
-J_{	ext{coupling}}
+$$
+J_{\mathrm{coupling}}
 =
-sum_{i<j}w_{ij},phi(x_i,x_j)
-]
+\sum_{i<j}
+w_{ij}\,
+\phi(x_i,x_j).
+$$
 
-can be a useful engineering objective.
+**Where:**
+- $x_i$ and $x_j$ are modeled subsystem states or features;
+- $w_{ij}$ is a designer-selected weight;
+- $\phi(x_i,x_j)$ measures a declared relationship between them.
 
-This is an engineering_analogy; it is not evidence that the modeled entities are quantum-entangled.
+This is an engineering objective, not evidence of quantum entanglement.
 
 ## 4.6 Retrocausal claims
 
-Time-symmetric equations, boundary-value problems, and retrocausal interpretations exist in theoretical physics, but an inverted potential or negative sign in a model does not prove faster-than-light signaling or backward causation.
+Time-symmetric equations and boundary-value problems exist in theoretical physics, but an inverted potential or a negative sign does not prove faster-than-light signaling or backward causation.
 
-Any UHF retrocausal model must specify:
-
-- the state space;
+A UHF retrocausal hypothesis must specify:
+- state space;
 - equations of motion;
 - boundary conditions;
-- observable predictions;
-- consistency with no-signaling and relativity where applicable;
-- falsification criteria.
-
-Until then, it is a research_hypothesis.
+- observables;
+- falsifiable predictions;
+- consistency with established physical constraints.
 
 ## 4.7 Consciousness–matter coupling
 
-The repository does not provide evidence that consciousness couples to matter through a new Hamiltonian interaction.
+The repository does not establish a new physical interaction between consciousness and matter.
 
-Such a proposal may be studied as a hypothesis only after operationally defining both the relevant physical variable and the consciousness variable, plus a measurement protocol that distinguishes the model from ordinary neurophysics.
+Any such proposal must operationally define both the physical observable and the consciousness-related observable and must produce predictions distinguishable from standard neurophysics.
 
-## 4.8 Engineering conclusion
+## 4.8 Conclusion
 
-The robust cross-domain result is:
-
-> Interaction structure can be represented explicitly and tested. Classical coupling, quantum entanglement, and metaphorical coupling must remain distinct categories.
-
-That distinction preserves both mathematical precision and the usefulness of the UHF interaction vocabulary.
+> Interaction structure can be represented explicitly and tested. Classical coupling, quantum entanglement, and metaphorical cross-domain coupling must remain distinct categories.
