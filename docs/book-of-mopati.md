@@ -1,142 +1,142 @@
 # Book of Mopati — Chapter 1: Axiomatic Foundation
 
-> **Classification:** `standard_physics`, `engineering_analogy`, `research_hypothesis`
-> **Evidence:** Established Hamiltonian mechanics is separated from UHF modeling conventions and speculative extensions.
-> **Certification scope:** This chapter defines the vocabulary and claim rules used by the rest of the book.
+> **Classification:** standard_physics, engineering_analogy, research_hypothesis  
+> **Evidence:** Established Hamiltonian mechanics is separated from UHF modeling conventions and speculative extensions.  
+> **Certification scope:** This chapter defines the vocabulary, optimization rules, and claim classes used by the rest of the book.
 
-## 1.1 The Universal Hamiltonian Framework as a modeling language
+## 1.1 UHF as a modeling language
 
-UHF is a framework for representing dynamics, objectives, interactions, constraints, and evidence using a common vocabulary inspired in part by analytical mechanics.
+The Universal Hamiltonian Framework (UHF) is a common language for representing state, dynamics, objectives, interactions, constraints, authority, observables, and evidence.
 
-It does **not** assume that every physical, informational, economic, biological, cognitive, or organizational system literally possesses canonical coordinates and momenta.
+It does **not** assume that every physical, informational, economic, biological, cognitive, or organizational system literally has canonical coordinates and momenta.
 
-Instead, every mapping must answer three questions:
+Every mapping must answer:
 
-1. Is this an established Hamiltonian model?
-2. Is this an engineering construction using Hamiltonian-inspired notation?
-3. Is this a research hypothesis that still requires theoretical or empirical support?
+1. Is this established Hamiltonian physics?
+2. Is this a Hamiltonian-inspired engineering construction?
+3. Is this a research hypothesis that still requires proof or evidence?
 
-## 1.2 Three mathematical pillars
+## 1.2 Canonical evolution
 
-### Canonical state
+For a genuine Hamiltonian system,
 
-For a genuine Hamiltonian model, the state is represented by canonical variables ((q,p)) on a symplectic phase space.
+$$
+\dot q_i
+=
+\frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i
+=
+-\frac{\partial H}{\partial q_i}.
+$$
 
-For an engineering model, a state vector may be introduced for computational convenience, but it must not be called canonical unless the required structure is actually defined.
+**Where:**
+- $q_i$ and $p_i$ are canonical coordinate–momentum pairs;
+- $H$ is the Hamiltonian;
+- the overdot means differentiation with respect to time.
 
-### Generator of evolution
+If a proposed domain does not define the required canonical structure, these equations must not be asserted literally for that domain.
 
-For a Hamiltonian system,
+## 1.3 Hard constraints and soft objectives
 
-[
-dot q_i=rac{partial H}{partial p_i},
-qquad
-dot p_i=-rac{partial H}{partial q_i}.
-]
+Let $C(x)$ be a predicate that is true only when state $x$ satisfies every hard constraint. The admissible set is
 
-For optimization, UHF uses an objective such as (J(x)) and an optimizer appropriate to the problem. The objective is not automatically a physical energy.
+$$
+\mathcal A
+=
+\{x \mid C(x)=\mathrm{true}\}.
+$$
 
-### Constraints and invariants
+Let $J(x)$ be a soft objective to be minimized. Governed optimization then has the form
 
-A hard invariant defines an admissibility boundary. A soft score ranks admissible candidates.
+$$
+x^\star
+\in
+\operatorname*{arg\,min}_{x\in\mathcal A}
+J(x).
+$$
 
-This distinction is constitutional throughout UHF:
+**Where:**
+- $\mathcal A$ is the admissible region;
+- $J(x)$ is the soft score or objective;
+- $x^\star$ is an optimal admissible candidate, if one exists.
 
-[
-	ext{admissibility before optimization}.
-]
+The order matters:
 
-A candidate that violates a hard invariant is refused; it is not rescued by a favorable soft score.
+> **admissibility first, optimization second.**
 
-## 1.3 The four claim classes
+A candidate that violates a hard invariant is refused even if it has an attractive soft score.
 
-Every major model or claim in this repository must use one of four labels.
+## 1.4 Four claim classes
 
-### `standard_physics`
+### standard_physics
 
-Use when the relevant mathematical/physical structure is established within its stated assumptions.
+Use when the mathematical or physical structure is established within stated assumptions.
 
-Examples include canonical mechanics, the Schrödinger equation, symplectic geometry, and standard thermodynamic results.
+Examples include canonical Hamiltonian mechanics, the Schrödinger equation, symplectic geometry, and standard thermodynamics.
 
-### `engineering_analogy`
+### engineering_analogy
 
 Use when physical language is deliberately repurposed as a computational abstraction.
 
-Examples include a "market potential," a software "energy score," or "collapse" as deterministic candidate selection.
+Examples include:
+- a market "potential";
+- a software "energy score";
+- "collapse" as deterministic candidate selection.
 
 The analogy may be useful without implying literal physical equivalence.
 
-### `research_hypothesis`
+### research_hypothesis
 
-Use for falsifiable or formalizable proposals that are not established.
+Use for a formalizable proposal that is not yet established.
 
-Examples include proposed cross-domain Hamiltonians, retrocausal computational models, or consciousness-related mappings.
+Examples include:
+- a proposed cross-domain Hamiltonian;
+- a retrocausal computational model;
+- a consciousness-related mapping.
 
-### `empirically_validated`
+### empirically_validated
 
-Use only when a clearly stated claim has reproducible evidence under an appropriate protocol.
+Use only when a scoped claim has reproducible evidence under an appropriate protocol.
 
-For market claims this requires, at minimum, out-of-sample data, realistic transaction costs, leakage controls, baselines, and reproducible data or fixtures.
-
-## 1.4 Hard invariants versus soft scores
-
-Suppose (C(x)) is a set of hard constraints and (J(x)) is a soft objective.
-
-UHF treats the lawful region as
-
-[
-mathcal A={x:C(x)=	ext{true}}.
-]
-
-Optimization occurs only inside (mathcal A):
-
-[
-x^starinargmin_{xinmathcal A}J(x).
-]
-
-This is not Hamiltonian mechanics unless the model independently satisfies the Hamiltonian conditions. It is a governed optimization architecture.
+For trading, that includes out-of-sample data, realistic costs, leakage controls, baselines, and reproducible evidence.
 
 ## 1.5 Cross-domain mapping rule
 
-A cross-domain mapping is valid only to the extent that the mapped quantities and equations preserve the properties being claimed.
-
-Similarity of notation is not enough.
+Similarity of notation is not proof of physical identity.
 
 For example:
-
-- price and order flow can be useful state features, but they are not automatically canonical conjugates;
+- price and order flow may be useful state features, but they are not automatically canonical conjugates;
 - two coupled oscillators are not automatically quantum-entangled;
-- a neural coupling score is not automatically IIT (Phi);
-- information has physical processing costs, but information, energy, and consciousness are not interchangeable physical quantities.
+- a neural coupling score is not automatically IIT $\Phi$;
+- information, energy, and consciousness are not interchangeable physical quantities.
 
-## 1.6 Evidence-native interpretation
+## 1.6 Evidence-native execution
 
-UHF separates proposal from evidence:
+UHF separates proposal from execution and evidence:
 
-[
-	ext{observe}
-ightarrow
-	ext{represent}
-ightarrow
-	ext{propose}
-ightarrow
-	ext{constrain}
-ightarrow
-	ext{authorize}
-ightarrow
-	ext{execute}
-ightarrow
-	ext{measure}
-ightarrow
-	ext{reconcile}.
-]
+~~~text
+observe
+  ↓
+represent
+  ↓
+propose
+  ↓
+constrain
+  ↓
+authorize
+  ↓
+execute
+  ↓
+measure
+  ↓
+reconcile
+~~~
 
-A model can be mathematically valid and empirically poor. A useful engineering analogy can remain nonphysical. A failed empirical hypothesis must be revised or rejected rather than protected by the framework's terminology.
+This is a governance architecture, not a physical law.
+
+A mathematically consistent model can still be empirically wrong. A useful analogy can remain nonphysical. A failed empirical hypothesis must be revised or rejected.
 
 ## 1.7 Foundational statement
 
-The defensible UHF principle is:
-
-> Use Hamiltonian mechanics exactly where its structure applies; use Hamiltonian-inspired abstractions explicitly where they are engineering choices; label speculative extensions as hypotheses; and promote empirical claims only when reproducible evidence supports them.
-
-This principle replaces blanket statements that everything is literally Hamiltonian.
+> Use Hamiltonian mechanics exactly where its mathematical structure applies; use Hamiltonian-inspired abstractions explicitly where they are engineering choices; label speculative extensions as hypotheses; and promote empirical claims only when reproducible evidence supports their stated scope.
