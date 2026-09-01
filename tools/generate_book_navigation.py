@@ -20,7 +20,7 @@ def load_chapters() -> list[dict]:
 
 def rel_docs_path(path: str) -> str:
     prefix = "docs/"
-    return path[len(prefix):] if path.startswith(prefix) else path
+    return path[len(prefix) :] if path.startswith(prefix) else path
 
 
 def render_nav(chapters: list[dict], index: int) -> str:
