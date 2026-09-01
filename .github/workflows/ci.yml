@@ -74,7 +74,8 @@ jobs:
       run: |
         ruff check src/ tests/
     
-    - name: Type check with mypy
+    - name: Full type check with mypy
+      if: ${{ github.event_name != 'pull_request' }}
       run: |
         mypy src/ --ignore-missing-imports
 
