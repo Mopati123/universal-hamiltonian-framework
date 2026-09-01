@@ -2,130 +2,127 @@
 
 > **Classification:** engineering_analogy  
 > **Evidence:** The chapter describes architectural properties that are valid only when enforced by implementation and tests.  
-> **Certification scope:** Replaces an over-broad “Invariant Preservation Theorem” with explicit conditional safety properties.
+> **Certification scope:** Replaces an over-broad invariant theorem with explicit, readable conditional safety properties.
 
-## 14.1 From proposal to governed execution
+## 14.1 Governed execution sequence
 
 A system becomes governable when proposal generation is separated from authority to execute.
 
-The canonical sequence is:
+~~~text
+observe
+  ↓
+represent
+  ↓
+propose
+  ↓
+constrain
+  ↓
+authorize
+  ↓
+execute
+  ↓
+evidence
+  ↓
+reconcile
+~~~
 
-[
-	ext{observe}
-ightarrow
-	ext{represent}
-ightarrow
-	ext{propose}
-ightarrow
-	ext{constrain}
-ightarrow
-	ext{authorize}
-ightarrow
-	ext{execute}
-ightarrow
-	ext{evidence}
-ightarrow
-	ext{reconcile}.
-]
+This diagram is an execution architecture, not a physical equation.
 
-No generative component is sovereign by default.
+## 14.2 Hard invariants
 
-## 14.2 Schemas as structural constraints
+Let $I_k(x,a)$ be the $k$th invariant check for state $x$ and proposed action $a$.
 
-Schemas can define structural admissibility:
+The admissible action set can be written as
 
-- required fields;
-- types;
-- ranges;
-- relationships;
-- identifiers.
+$$
+\mathcal A(x)
+=
+\left\{
+a
+\;\middle|\;
+I_k(x,a)=\mathrm{true}
+\text{ for every } k
+\right\}.
+$$
 
-Schema validity is necessary for structured execution, but a schema alone does not prove semantic correctness, safety, or truth.
+**Meaning:** an action is admissible only if every required hard invariant passes.
 
-## 14.3 Hard invariants
+A soft score cannot override this condition.
 
-A hard invariant must be enforced by code at the relevant boundary.
+## 14.3 Authority
 
-Examples include:
+Let $A_{\mathrm{auth}}(x,a)$ be an authorization predicate.
 
-- authorization required before execution;
-- forbidden state transitions;
-- risk limits;
-- immutable evidence requirements;
-- deterministic reconciliation conditions.
+Execution requires
 
-An invariant stated only in documentation is not enforced.
+$$
+a\in\mathcal A(x)
+\quad\text{and}\quad
+A_{\mathrm{auth}}(x,a)=\mathrm{true}.
+$$
+
+Both conditions are necessary.
+
+A proposal can therefore be mathematically attractive and still be refused because authority is missing.
 
 ## 14.4 Refusal
 
-Refusal is a valid execution outcome.
+A refusal is a valid execution result:
 
-When a candidate violates an invariant, the correct transition may be:
+~~~text
+candidate
+   ↓
+invariant or authority failure
+   ↓
+refusal evidence
+   ↓
+no external effect
+~~~
 
-[
-	ext{candidate}
-ightarrow
-	ext{refusal evidence}
-]
-
-with no execution effect.
-
-Refusal must be explicit and testable.
+Refusal must be explicit, testable, and auditable.
 
 ## 14.5 Non-sovereign agents
 
-An agent may observe, reason, and propose while lacking authority to mutate canonical state.
+An agent may observe, reason, and propose while lacking the ability to mutate canonical state.
 
-This separation reduces the blast radius of model errors.
-
-It does not make the overall system automatically safe; the authority boundary, tool permissions, effect handlers, and tests must actually enforce the separation.
+That separation reduces blast radius but does not guarantee safety unless the enforcement boundaries themselves are correct and non-bypassable.
 
 ## 14.6 Conditional invariant-preservation property
 
-The earlier chapter called its architectural claim an “Invariant Preservation Theorem.”
-
-That wording was too strong.
-
-A defensible conditional property is:
+A precise claim is:
 
 > If every state-changing path is mediated by complete invariant checks, authority checks cannot be bypassed, effect handlers faithfully enforce decisions, and the implementation is correct, then transitions that violate the encoded invariants are refused.
 
-This is an architectural safety property with proof obligations.
+This is a conditional architectural safety property.
 
-It is not a theorem about arbitrary agents or arbitrary software.
+It is not a theorem about arbitrary software.
 
 ## 14.7 Proof obligations
 
-For an invariant (I), certification should identify:
-
-- every state-changing entry point;
-- the enforcement function;
-- tests for allowed transitions;
-- tests for forbidden transitions;
+For each invariant, certification should identify:
+- state-changing entry points;
+- enforcement code;
+- allowed-transition tests;
+- forbidden-transition tests;
 - bypass analysis;
-- evidence emitted on refusal;
+- refusal evidence;
 - reconciliation behavior;
 - rollback behavior where applicable.
 
-## 14.8 Audit evidence
+## 14.8 Evidence model
 
-Evidence should make execution reconstructable:
-
+A reconstructable evidence record should include:
 - input identity;
 - configuration;
 - proposal;
 - invariant results;
-- authorization;
+- authorization result;
 - selected action;
 - effects;
 - output;
 - hashes;
 - reconciliation status.
 
-Evidence increases auditability; it does not replace correct implementation.
-
 ## 14.9 Conclusion
 
-The durable result of Chapter 14 is:
-
-> Governed execution is achieved by explicit separation of proposal, admissibility, authority, effects, evidence, and reconciliation, with each claimed invariant backed by implementation and tests.
+> Governed execution is achieved by explicit separation of proposal, admissibility, authority, effects, evidence, and reconciliation, with every claimed invariant backed by implementation and tests.
