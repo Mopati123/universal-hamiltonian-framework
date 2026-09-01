@@ -7,6 +7,5 @@ all chapter numbers and links from docs/book_manifest.json.
 
 from tools.generate_book_navigation import main
 
-
 if __name__ == "__main__":
     raise SystemExit(main())
