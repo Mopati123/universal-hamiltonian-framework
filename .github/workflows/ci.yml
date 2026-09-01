@@ -91,6 +91,7 @@ jobs:
         echo "Documentation is markdown-based in docs/. Running validation checks..."
         test -f docs/BOOK_INDEX.md && echo "✓ Main documentation index found"
         test -f docs/NAVIGATION.md && echo "✓ Navigation guide found"
+        python tools/validate_book_truth.py
     
     - name: Upload docs artifact
       uses: actions/upload-artifact@v3
