@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 1: Axiomatic Foundation
 
-> **Classification:** `standard_physics`, `engineering_analogy`, `research_hypothesis`  
-> **Evidence:** Established Hamiltonian mechanics is separated from UHF modeling conventions and speculative extensions.  
+> **Classification:** `standard_physics`, `engineering_analogy`, `research_hypothesis`
+> **Evidence:** Established Hamiltonian mechanics is separated from UHF modeling conventions and speculative extensions.
 > **Certification scope:** This chapter defines the vocabulary and claim rules used by the rest of the book.
 
 ## 1.1 The Universal Hamiltonian Framework as a modeling language
