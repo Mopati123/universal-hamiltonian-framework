@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 2: Meta-Level Self-Observation
 
-> **Classification:** `engineering_analogy`, `research_hypothesis`  
-> **Evidence:** Repository introspection and governed proposal loops are implementable software patterns; autonomous intelligence and consciousness are not established by them.  
+> **Classification:** `engineering_analogy`, `research_hypothesis`
+> **Evidence:** Repository introspection and governed proposal loops are implementable software patterns; autonomous intelligence and consciousness are not established by them.
 > **Certification scope:** Correctly separates Hamiltonian flow from optimization and separates self-inspection from self-awareness.
 
 ## 2.1 What a meta-level system can do
