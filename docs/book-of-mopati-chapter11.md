@@ -4,101 +4,117 @@
 > **Evidence:** Social indicators, causal models, control theory, and systems dynamics can be measured and tested; a literal societal Hamiltonian is not established.  
 > **Certification scope:** Reframes governance and civilization claims as governed systems modeling rather than physical law.
 
-## 11.1 Societies are not assumed to be canonical Hamiltonian systems
+## 11.1 Societies as systems
 
-A society can be represented by measurable stocks, flows, institutions, incentives, constraints, delays, and observables.
+A society can be represented using stocks, flows, institutions, incentives, constraints, delays, and observables.
 
 Examples include:
-
 - population;
-- wealth distribution;
-- public-health indicators;
-- migration;
 - resource stocks;
 - service capacity;
+- public-health indicators;
+- migration;
+- wealth distribution;
 - institutional rules;
 - information flows.
 
-This makes societies amenable to systems dynamics, control theory, causal inference, simulation, and optimization.
-
-It does not establish canonical phase space or Hamiltonian mechanics at the societal level.
+This supports systems dynamics and causal modeling without asserting a canonical Hamiltonian phase space.
 
 ## 11.2 Engineering objectives
 
-A governance model may define an objective such as
+A governance objective may be defined as
 
-[
-J_{	ext{society}}
+$$
+J_{\mathrm{society}}
 =
-w_1J_{	ext{inequality}}
+w_1 J_{\mathrm{inequality}}
 +
-w_2J_{	ext{violence}}
+w_2 J_{\mathrm{violence}}
 +
-w_3J_{	ext{service-gap}}
+w_3 J_{\mathrm{service}}
 +
-w_4J_{	ext{waste}}.
-]
+w_4 J_{\mathrm{waste}}.
+$$
 
-The weights are normative design choices.
+**Where:**
+- each $J_{\cdot}$ is a declared policy-performance metric;
+- $w_1,\ldots,w_4$ encode normative priorities selected by the model designer or governing authority.
 
-They are not natural physical constants, and the resulting score is not collective physical energy.
+These weights are not physical constants.
 
 ## 11.3 Systems dynamics
 
-A more appropriate foundation for many social applications is:
+A generic controlled dynamical model is
 
-[
-dot x = f(x,u,d,t),
-]
+$$
+\dot x
+=
+f(x,u,d,t).
+$$
 
-where (x) contains system stocks, (u) represents policy interventions, and (d) represents disturbances or exogenous factors.
+**Where:**
+- $x$ contains system stocks or state variables;
+- $u$ represents policy or control inputs;
+- $d$ represents disturbances or exogenous factors;
+- $t$ is time;
+- $f$ specifies the system dynamics.
 
-Feedback loops, delays, buffers, reinforcing loops, balancing loops, and leverage points can then be represented explicitly.
+This formulation naturally supports feedback loops, delays, buffers, reinforcing loops, balancing loops, and leverage points.
 
 ## 11.4 Governance under constraints
 
-Policy optimization must occur inside hard legal, ethical, budgetary, and authority constraints.
+Policy optimization must occur within legal, ethical, budgetary, and authority constraints.
 
-A candidate policy is not legitimate merely because it lowers a scalar score.
+If $\mathcal A$ is the admissible policy set, then a candidate policy can be selected only from
 
-The governed sequence is:
+$$
+u^\star
+\in
+\operatorname*{arg\,min}_{u\in\mathcal A}
+J_{\mathrm{society}}(u).
+$$
 
-[
-	ext{observe}
-ightarrow
-	ext{model}
-ightarrow
-	ext{propose}
-ightarrow
-	ext{constrain}
-ightarrow
-	ext{authorize}
-ightarrow
-	ext{measure}.
-]
+A lower objective score cannot legitimize an inadmissible policy.
 
-## 11.5 Causality and intervention
+## 11.5 Governed process
 
-Correlations among societal variables do not establish causal effects.
+~~~text
+observe
+  ↓
+model
+  ↓
+propose
+  ↓
+constrain
+  ↓
+authorize
+  ↓
+execute
+  ↓
+measure
+  ↓
+reconcile
+~~~
 
-Policy claims require methods appropriate to the problem, such as randomized trials where feasible, natural experiments, quasi-experimental methods, causal graphical models, simulation validated against observations, or other credible designs.
+This is a governance process, not a physical equation.
 
-## 11.6 Self-organization
+## 11.6 Causality
 
-Societies can exhibit emergent and self-organizing behavior.
+Correlation does not establish causal effect.
 
-That does not imply that they naturally minimize inequality, conflict, or any other designer-selected objective.
-
-Institutional dynamics can improve or worsen outcomes depending on incentives, constraints, path dependence, shocks, and power structures.
+Policy claims require methods appropriate to the problem, such as:
+- randomized trials where feasible;
+- quasi-experimental designs;
+- natural experiments;
+- causal graphical models;
+- validated simulations.
 
 ## 11.7 Civilizational forecasts
 
-Claims about inevitable future stages, singularity dates, collective consciousness, or predetermined civilizational trajectories are not established by UHF.
+UHF does not establish inevitable singularity dates, predetermined civilizational stages, or collective consciousness.
 
-Such scenarios may be retained as speculative futures but must be labeled research_hypothesis and must not be presented as predictions unless a model and evidence exist.
+Such scenarios remain speculative research hypotheses unless supported by explicit models and evidence.
 
 ## 11.8 Conclusion
-
-The valid UHF contribution is:
 
 > Represent social systems with explicit stocks, flows, feedback, constraints, authority, observables, evidence, and reconciliation; treat optimization targets as normative engineering objectives; and test causal claims empirically.
