@@ -1,89 +1,115 @@
 # Book of Mopati — Chapter 6: Time Symmetry and Tachyonic Hypotheses
 
-> **Classification:** standard_physics, research_hypothesis
-> **Evidence:** Relativistic dispersion relations and time-symmetric equations are established within their domains; physical tachyons, backward information transfer, and practical retrocausal systems are not established by this repository.
-> **Certification scope:** Preserves speculative exploration without presenting it as demonstrated physics.
+> **Classification:** standard_physics, research_hypothesis  
+> **Evidence:** Relativistic dispersion relations and time-symmetric equations are established within their domains; physical tachyons and usable backward information transfer are not established by this repository.  
+> **Certification scope:** Preserves speculative exploration without presenting instability or time symmetry as demonstrated faster-than-light physics.
 
 ## 6.1 Relativistic energy–momentum relation
 
 For a free relativistic particle,
 
-[
-E^2=p^2c^2+m^2c^4.
-]
+$$
+E^2
+=
+p^2 c^2
++
+m^2 c^4.
+$$
 
-Massless particles satisfy (m=0), while ordinary massive particles have (m^2>0).
+**Where:**
+- $E$ is relativistic energy;
+- $p$ is momentum magnitude;
+- $m$ is invariant mass;
+- $c$ is the speed of light.
 
-Field theories sometimes use the phrase tachyonic mass for (m^2<0). In modern field theory, this often signals an instability of an assumed vacuum rather than an experimentally established faster-than-light particle.
+Massless particles satisfy
 
-## 6.2 What a negative mass-squared term means
+$$
+m=0.
+$$
 
-A quadratic potential with negative curvature can produce exponentially growing modes.
+Ordinary massive particles satisfy
 
-For example,
+$$
+m^2>0.
+$$
 
-[
-ddot q-omega^2 q=0
-]
+In field theory, a negative mass-squared parameter can appear in an unstable expansion point. That terminology does not by itself imply an experimentally observed faster-than-light particle.
 
-has
+## 6.2 Unstable modes
 
-[
-q(t)=Ae^{omega t}+Be^{-omega t}.
-]
+Consider
 
-This demonstrates instability.
+$$
+\ddot q
+-
+\omega^2 q
+=
+0.
+$$
 
-It does not prove superluminal signaling or backward causation.
+Its general solution is
+
+$$
+q(t)
+=
+A e^{\omega t}
++
+B e^{-\omega t}.
+$$
+
+**Where:**
+- $q(t)$ is the dynamical variable;
+- $\omega>0$ sets the growth/decay rate;
+- $A$ and $B$ are constants fixed by initial conditions.
+
+The exponentially growing term signals instability.
+
+It does **not** prove superluminal signaling or backward causation.
 
 ## 6.3 Time symmetry
 
-Some fundamental equations are invariant or approximately invariant under time reversal, subject to the relevant transformation rules.
+Some equations of motion are invariant under time reversal when the appropriate variables are transformed correctly.
 
-Time-symmetric dynamics does not automatically imply usable information transfer from future to past.
+Time symmetry does not automatically imply that information can be sent from the future to the past.
 
-Boundary-value formulations can constrain trajectories using conditions at more than one time, but this mathematical structure must not be equated with operational retrocausal communication without an experimentally supported mechanism.
+Boundary-value formulations may constrain a trajectory using conditions at multiple times, but that mathematical setup is different from operational retrocausal communication.
 
 ## 6.4 Entropy
 
 The second law of thermodynamics is statistical and applies under specified macroscopic conditions.
 
-Local entropy reductions are possible when accompanied by compensating entropy production elsewhere.
+Local entropy reduction is compatible with the second law when compensated by entropy production elsewhere.
 
-The repository does not demonstrate a closed-system reversal of the thermodynamic arrow of time.
+This repository does not demonstrate reversal of the thermodynamic arrow of time in a closed macroscopic system.
 
 ## 6.5 UHF tachyonic operators
 
-A UHF component named tachyonic may be used as an engineering or research abstraction for:
-
+Within UHF, the word “tachyonic” may label a research abstraction for:
 - bidirectional temporal constraints;
-- future-conditioned planning scenarios;
 - two-boundary optimization;
-- consistency checking across time-indexed states.
+- future-conditioned planning;
+- consistency checks across time-indexed states.
 
-That naming does not imply physical tachyons.
+That naming convention does not establish physical tachyons.
 
 ## 6.6 Oracle-conditioned models
 
-A model that uses future data supplied by an oracle or held-out dataset can test conditional reasoning.
+If a model is deliberately supplied with future data from a held-out dataset or oracle, that future information is part of the input.
 
-It must not be described as predicting the future retrocausally. The information entered through the oracle is part of the model input.
+Such a model may be useful for conditional reasoning experiments, but it must not be described as having obtained future information retrocausally.
 
-## 6.7 Falsifiable research boundary
+## 6.7 Falsifiable physical hypothesis
 
 A physical retrocausal claim would require:
-
-- a mathematically specified theory;
-- an observable that differs from standard predictions;
-- experimental controls;
+- a precise model;
+- an observable prediction different from standard theory;
+- controlled experiments;
 - uncertainty estimates;
-- independent replication;
-- consistency with existing high-precision tests.
+- independent replication.
 
-Until such evidence exists, UHF retrocausal and tachyonic physical claims remain research_hypothesis.
+Until then, the claim remains a research hypothesis.
 
 ## 6.8 Conclusion
 
-This chapter preserves time-symmetric and tachyonic ideas as a research program while maintaining the core distinction:
-
-> Instability, time symmetry, future-conditioned computation, and faster-than-light signaling are different concepts and must not be treated as interchangeable.
+> Instability, time symmetry, future-conditioned computation, and faster-than-light signaling are distinct concepts and must not be treated as interchangeable.
