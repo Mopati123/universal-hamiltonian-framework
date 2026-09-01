@@ -46,7 +46,7 @@ def main() -> int:
     for path in files:
         print(f"- {path}")
 
-    black_rc = run([sys.executable, "-m", "black", "--check", *files])
+    black_rc = run([sys.executable, "-m", "black", "--check", "--diff", *files])
     ruff_rc = run([sys.executable, "-m", "ruff", "check", *files])
     return 0 if black_rc == 0 and ruff_rc == 0 else 1
 
