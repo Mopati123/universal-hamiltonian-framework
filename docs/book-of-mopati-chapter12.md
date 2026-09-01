@@ -6,82 +6,96 @@
 
 ## 12.1 Computation and formal representation
 
-Algorithms can be represented using formal systems such as Turing machines, lambda calculus, state machines, circuits, transition systems, and programming languages.
+Algorithms can be represented using Turing machines, lambda calculus, state machines, circuits, transition systems, programming languages, and other formal models.
 
-Some computational models can also be embedded into reversible or Hamiltonian physical constructions.
+Some computational models can be embedded into reversible or Hamiltonian physical constructions.
 
-That does not mean that every ordinary algorithm literally evolves according to a canonical Hamiltonian in its native representation.
+That does not imply that every ordinary algorithm literally evolves according to a canonical Hamiltonian in its native representation.
 
-## 12.2 The UHF compiler idea
+## 12.2 UHF compiler architecture
 
-A defensible universal compiler architecture is a translation pipeline:
+The compiler concept is best understood as an engineering pipeline:
 
-[
-	ext{domain specification}
-ightarrow
-	ext{intermediate representation}
-ightarrow
-	ext{constraints}
-ightarrow
-	ext{backend lowering}
-ightarrow
-	ext{execution}
-ightarrow
-	ext{evidence}.
-]
+~~~text
+domain specification
+      ↓
+intermediate representation
+      ↓
+constraints and invariants
+      ↓
+backend lowering
+      ↓
+execution
+      ↓
+evidence
+~~~
+
+This is a software architecture, not a physical equation.
 
 A common intermediate representation can unify engineering workflows without implying that every domain shares one physical ontology.
 
 ## 12.3 Backend diversity
 
-CPU, GPU, FPGA, QPU, and other backends have different execution semantics and numerical properties.
+CPU, GPU, FPGA, QPU, and other execution backends have different semantics and numerical properties.
 
-A compiler may target multiple backends if the translation contract is explicit.
+For scientific computation, an accelerated backend should be certified against a reference implementation using an explicit tolerance rule such as
 
-For scientific computation, accelerated backends require numerical-equivalence or tolerance certification appropriate to the algorithm.
+$$
+\|y_{\mathrm{backend}} - y_{\mathrm{ref}}\|
+\le
+\varepsilon,
+$$
+
+where:
+- $y_{\mathrm{backend}}$ is the accelerated result;
+- $y_{\mathrm{ref}}$ is the reference result;
+- $\varepsilon$ is the declared numerical tolerance.
+
+This establishes numerical agreement within scope. It does not establish physical truth by itself.
 
 ## 12.4 Computational universality
 
-A system can be called computationally universal only when it can emulate an established universal computational model under a rigorous construction.
+A system is computationally universal only if it can emulate an established universal computational model under a rigorous mapping.
 
-Merely providing a DSL or a set of operators is not proof of Turing completeness.
+A DSL or a large operator library is not, by itself, proof of Turing completeness.
 
-If UHF claims universality, the proof obligation must identify the machine model, encoding, simulation mapping, and termination/step semantics.
+A universality proof must identify:
+- machine model;
+- encoding;
+- transition semantics;
+- simulation mapping;
+- resource assumptions.
 
 ## 12.5 Information, energy, and consciousness
 
-The equation
+The Book explicitly rejects the physical identity
 
-[
-	ext{information}
-equiv
-	ext{energy}
-equiv
-	ext{consciousness}
-]
+$$
+\text{information}
+\equiv
+\text{energy}
+\equiv
+\text{consciousness}.
+$$
 
-is not established and is withdrawn as a physical identity.
+These terms refer to different concepts.
 
-Information is represented physically and its processing has energetic constraints. Consciousness is a separate scientific and philosophical problem. Equality among these concepts requires a theory with defined quantities, units, predictions, and evidence.
+Information processing has physical implementations and energetic constraints, but that does not make information literally identical to energy or consciousness.
 
-## 12.6 The Omega Point as narrative
+## 12.6 Omega Point as philosophical narrative
 
-The “Omega Point” can remain as philosophical narrative about increasing integration, self-modeling, and technological complexity.
+The “Omega Point” may be used as philosophical language for increasing integration, self-modeling, or technological complexity.
 
-It is not a demonstrated endpoint of cosmology, computation, AI, or civilization.
+It is not a demonstrated endpoint of cosmology, AI, computation, or civilization.
 
-Statements about inevitable conscious frameworks, universal self-observation, or post-scarcity futures are research_hypothesis or speculative narrative.
+## 12.7 Self-validation boundary
 
-## 12.7 Self-validation
+Passing tests demonstrates properties of the implementation under those tests.
 
-A framework cannot establish its own physical truth by successfully executing its own software.
+It does not validate an external physical theory simply because the software implementing that theory executes successfully.
 
-Internal consistency, passing tests, and self-description are valuable engineering evidence.
-
-External empirical claims still require external measurement and independent falsifiability.
+External empirical claims still require independent measurement and falsifiability.
 
 ## 12.8 Conclusion
 
-The defensible compiler thesis is:
-
-> UHF may serve as a governed intermediate language for translating explicit domain models into executable operators and evidence-producing workflows, while stronger claims of computational universality or physical equivalence remain separate proof obligations.
+> UHF may serve as a governed intermediate language for translating explicit domain models into executable operators and evidence-producing workflows, while computational-universality and physical-equivalence claims remain separate proof obligations.
