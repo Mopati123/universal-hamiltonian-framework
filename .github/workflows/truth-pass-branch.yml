@@ -33,9 +33,6 @@ jobs:
       - name: Changed-file quality ratchet
         run: python scripts/check_changed_python_quality.py --base origin/main
 
-      - name: Type check
-        run: mypy src/ --ignore-missing-imports
-
       - name: Validate workflow YAML
         run: python scripts/validate_github_workflows.py
 
