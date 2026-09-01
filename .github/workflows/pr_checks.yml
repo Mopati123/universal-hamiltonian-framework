@@ -95,12 +95,12 @@ jobs:
               }
               
               // Validate critical fields
-              if (!('improved' in res) || !('delta_E' in res)) {
-                body = '**Meta self-validation results**\n\n⚠️ **WARNING** - Missing required fields in result\n\nMissing improved or delta_E field.';
+              const deltaObjective = ('delta_objective' in res) ? res.delta_objective : res.delta_E;
+              if (!('improved' in res) || deltaObjective === undefined) {
+                body = '**Meta self-validation results**\n\n⚠️ **WARNING** - Missing required fields in result\n\nMissing improved or objective-delta field.';
               } else {
                 improved = res.improved === true;
-                const deltaE = res.delta_E;
-                const badge = improved ? '✅ **PASS** (Delta-E < 0)' : '⚠️ **WARN** (Delta-E >= 0)';
+                const badge = improved ? '✅ **PASS** (Objective delta < 0)' : '⚠️ **WARN** (Objective delta >= 0)';
                 body = `**Meta self-validation results**\n\n${badge}\n\n\`\`\`json\n${JSON.stringify(res, null, 2)}\n\`\`\``;
               }
             }
