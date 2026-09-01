@@ -2,78 +2,119 @@
 
 > **Classification:** engineering_analogy  
 > **Evidence:** Market mappings are modeling constructs whose usefulness must be tested empirically.  
-> **Certification scope:** No claim that financial markets are literal quantum or Hamiltonian physical systems.
+> **Certification scope:** Financial markets are not treated as literal quantum or canonical Hamiltonian physical systems.
 
-## 8.1 State representation
+## 8.1 Market state representation
 
-A market state may include features such as
+A market state can be represented by a feature vector
 
-[
-x_t=
-(P_t,;V_t,;OF_t,;sigma_t,;L_t,;R_t,ldots),
-]
-
-where terms may represent price, volume, order flow, volatility, liquidity, and regime descriptors.
-
-These are features selected for modeling.
-
-They are not automatically canonical coordinates or conjugate momenta.
-
-## 8.2 Hamiltonian-inspired objective
-
-An engineering model may define
-
-[
-J_{	ext{market}}(x)
+$$
+x_t
 =
-J_{	ext{structure}}
-+
-J_{	ext{liquidity}}
-+
-J_{	ext{risk}}
-+
-J_{	ext{execution}}.
-]
+\bigl(
+P_t,\,
+V_t,\,
+OF_t,\,
+\sigma_t,\,
+L_t,\,
+R_t,\,
+\ldots
+\bigr).
+$$
 
-This can organize signals and decisions.
+**Where:**
+- $P_t$ is price information at time $t$;
+- $V_t$ is volume;
+- $OF_t$ is a declared order-flow feature;
+- $\sigma_t$ is a volatility measure;
+- $L_t$ is a liquidity descriptor;
+- $R_t$ is a regime descriptor.
 
-It is an objective or score, not necessarily physical energy.
+These are model features. They are not automatically canonical coordinates or conjugate momenta.
+
+## 8.2 Hamiltonian-inspired market objective
+
+An engineering score may be written as
+
+$$
+J_{\mathrm{market}}(x)
+=
+J_{\mathrm{structure}}
++
+J_{\mathrm{liquidity}}
++
+J_{\mathrm{risk}}
++
+J_{\mathrm{execution}}.
+$$
+
+**Where:** each term is an explicitly defined software score for a market feature family.
+
+This $J_{\mathrm{market}}$ is an engineering objective. It is not presumed to be physical energy.
 
 ## 8.3 Market potential
 
-Mean reversion, support/resistance, liquidity concentration, or inventory pressure may be represented with potential-like terms.
+Mean reversion, liquidity concentration, support/resistance, inventory pressure, or other structure may be represented by potential-like terms.
 
-This is a modeling analogy.
+The analogy is useful only if its computational definition improves inference or decision quality under empirical testing.
 
-Its value is determined by predictive and decision performance against baselines, not by resemblance to mechanics.
+## 8.4 Regimes and candidate states
 
-## 8.4 Regimes and states
+A market model may maintain multiple candidate regimes.
 
-Market regimes can be represented as discrete or latent states.
-
-Calling them eigenstates or referring to regime selection as collapse is metaphorical unless an actual quantum formalism is implemented.
-
-UHF should prefer precise computational language in executable specifications:
-
+In executable specifications, prefer terms such as:
 - candidate regime;
 - posterior probability;
 - selected state;
-- deterministic scheduler decision.
+- scheduler decision.
 
-## 8.5 ΔS and governed selection
+Calling these states “eigenstates” or calling selection “collapse” is metaphorical unless an actual quantum formalism is implemented.
 
-A UHF trading decision may calculate a soft score (Delta S) over admissible candidates.
+## 8.5 ΔS as a soft score
 
-Hard invariants—risk bounds, authority, data validity, market constraints—must be evaluated before selection.
+Suppose a candidate action $a$ receives component scores
 
-The selection rule is an engineering scheduler, not quantum measurement.
+$$
+\Delta S(a)
+=
+w_L S_L(a)
++
+w_T S_T(a)
++
+w_E S_E(a)
++
+w_R S_R(a).
+$$
 
-## 8.6 Empirical requirements
+**Where:**
+- $S_L$ is a declared liquidity-related score;
+- $S_T$ is a timing-related score;
+- $S_E$ is an entry-quality score;
+- $S_R$ is a risk-related score;
+- $w_L,w_T,w_E,w_R$ are declared weights.
 
-No market model is empirically_validated merely because an in-sample example is profitable.
+$\Delta S$ is a software selection score. It is not thermodynamic entropy and not quantum action.
 
-A trading claim requires:
+Hard invariants must be checked before $\Delta S$ is used to rank candidates.
 
+## 8.6 Governed selection
+
+If $\mathcal A(x_t)$ is the set of admissible actions in state $x_t$, selection may be represented as
+
+$$
+a^\star
+\in
+\operatorname*{arg\,min}_{a\in\mathcal A(x_t)}
+J(a\mid x_t),
+$$
+
+or as an equivalent maximization rule if the score is defined in the opposite direction.
+
+The sign convention must be stated explicitly.
+
+## 8.7 Empirical requirements
+
+A market claim requires:
 - chronological train/validation/test separation;
 - out-of-sample evaluation;
 - realistic commissions, spread, slippage, and financing where relevant;
@@ -84,14 +125,6 @@ A trading claim requires:
 - reproducible data or immutable fixtures;
 - uncertainty and robustness analysis.
 
-## 8.7 Claim boundary
-
-Terms such as liquidity mass, market potential, superposition, or entropy may be useful shorthand if their computational definitions are explicit.
-
-They must not be presented as literal physical laws of markets.
-
 ## 8.8 Conclusion
 
-The UHF market chapter is strongest as an engineering framework:
-
-> Represent market state explicitly, generate candidates, enforce hard risk and authority constraints, rank lawful candidates with transparent soft scores, execute deterministically, and evaluate claims out of sample with realistic costs.
+> Represent market state explicitly, enforce hard risk and authority constraints, rank lawful candidates with transparent scores, execute deterministically, and evaluate claims out of sample with realistic costs.
