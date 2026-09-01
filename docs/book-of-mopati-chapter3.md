@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 3: Domain Mappings
 
-> **Classification:** `standard_physics`, `engineering_analogy`, `research_hypothesis`  
-> **Evidence:** Physical Hamiltonians are standard where stated; nonphysical mappings are explicit constructions.  
+> **Classification:** `standard_physics`, `engineering_analogy`, `research_hypothesis`
+> **Evidence:** Physical Hamiltonians are standard where stated; nonphysical mappings are explicit constructions.
 > **Certification scope:** Defines when cross-domain reuse is structural, analogous, or speculative.
 
 ## 3.1 One notation does not imply one ontology
