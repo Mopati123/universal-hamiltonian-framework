@@ -2,8 +2,8 @@
 
 ## Canonical Table of Contents
 
-**Universal Hamiltonian Framework — Truth-Aligned Edition**  
-**Corpus:** 16 chapters, numbered 0–15  
+**Universal Hamiltonian Framework — Truth-Aligned Edition**
+**Corpus:** 16 chapters, numbered 0–15
 **Certification status:** Pending final automated validation
 
 This edition separates established mathematics and physics from engineering analogies, research hypotheses, and empirically validated claims.
