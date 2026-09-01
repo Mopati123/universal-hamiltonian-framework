@@ -23,7 +23,7 @@ CERTIFIABLE_AUDIT = {"aligned"}
 
 PROHIBITED_UNQUALIFIED_PATTERNS = {
     "universal_hamiltonian_literalism": re.compile(
-        r"\\b(everything|all systems|any system)\\b.{0,80}\\b(is|are|possesses?|has)\\b.{0,80}\\bhamiltonian\\b",
+        r"\b(everything|all systems|any system)\b.{0,80}\b(is|are|possesses?|has)\b.{0,80}\bhamiltonian\b",
         re.IGNORECASE | re.DOTALL,
     ),
     "hamiltonian_minimizes_energy": re.compile(
@@ -31,23 +31,23 @@ PROHIBITED_UNQUALIFIED_PATTERNS = {
         re.IGNORECASE | re.DOTALL,
     ),
     "classical_is_quantum_entanglement": re.compile(
-        r"\\b(classical|oscillator)\\b.{0,100}\\b(entanglement|entangled)\\b",
+        r"\b(classical|oscillator)\b.{0,100}\b(entanglement|entangled)\b",
         re.IGNORECASE | re.DOTALL,
     ),
     "retrocausal_market_fact": re.compile(
-        r"\\b(retrocausal(?:ity)?|future information backflow|tachyonic prediction)\\b.{0,100}\\b(price|market|trade|trading)\\b",
+        r"\b(retrocausal(?:ity)?|future information backflow|tachyonic prediction)\b.{0,100}\b(price|market|trade|trading)\b",
         re.IGNORECASE | re.DOTALL,
     ),
     "consciousness_measurement": re.compile(
-        r"\\b(measure(?:s|d|ment)?|quantif(?:y|ies|ied|ication))\\b.{0,100}\\b(consciousness|internal experience)\\b",
+        r"\b(measure(?:s|d|ment)?|quantif(?:y|ies|ied|ication))\b.{0,100}\b(consciousness|internal experience)\b",
         re.IGNORECASE | re.DOTALL,
     ),
     "unbreakable_crypto": re.compile(
-        r"\\b(unbreakable|perfectly secure|guaranteed secure)\\b.{0,80}\\b(encryption|cryptograph|security)\\b",
+        r"\b(unbreakable|perfectly secure|guaranteed secure)\b.{0,80}\b(encryption|cryptograph|security)\b",
         re.IGNORECASE | re.DOTALL,
     ),
     "fabricated_performance_language": re.compile(
-        r"\\b(advantage confirmed|proven profitable|production-ready|guaranteed profit)\\b",
+        r"\b(advantage confirmed|proven profitable|production-ready|guaranteed profit)\b",
         re.IGNORECASE,
     ),
 }
@@ -99,7 +99,7 @@ def validate_manifest(manifest: dict) -> list[str]:
 
 def extract_python_blocks(markdown: str) -> list[str]:
     fence = chr(96) * 3
-    pattern = re.escape(fence) + r"python\\s*\\n(.*?)" + re.escape(fence)
+    pattern = re.escape(fence) + r"python\s*\n(.*?)" + re.escape(fence)
     return re.findall(pattern, markdown, flags=re.IGNORECASE | re.DOTALL)
 
 
