@@ -81,7 +81,15 @@ def main() -> int:
     if legacy_src_files:
         compile_rc = run([sys.executable, "-m", "py_compile", *legacy_src_files])
 
-    return 0 if diff_rc == 0 and black_rc == 0 and ruff_rc == 0 and mypy_rc == 0 and compile_rc == 0 else 1
+    return (
+        0
+        if diff_rc == 0
+        and black_rc == 0
+        and ruff_rc == 0
+        and mypy_rc == 0
+        and compile_rc == 0
+        else 1
+    )
 
 
 if __name__ == "__main__":
