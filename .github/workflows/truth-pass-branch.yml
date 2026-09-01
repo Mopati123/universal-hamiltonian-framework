@@ -5,6 +5,10 @@ on:
     branches:
       - fix/book-of-mopati-truth-consistency-pass-v2
 
+concurrency:
+  group: truth-pass-branch-validation
+  cancel-in-progress: true
+
 jobs:
   validate:
     name: Validate current truth-pass branch head
