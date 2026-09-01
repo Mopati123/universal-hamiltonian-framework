@@ -56,7 +56,14 @@ def main() -> int:
     black_rc = run([sys.executable, "-m", "black", "--check", "--diff", *files])
     ruff_rc = run([sys.executable, "-m", "ruff", "check", *files])
     mypy_rc = run(
-        [sys.executable, "-m", "mypy", "--ignore-missing-imports", *files]
+        [
+            sys.executable,
+            "-m",
+            "mypy",
+            "--ignore-missing-imports",
+            "--explicit-package-bases",
+            *files,
+        ]
     )
     return 0 if black_rc == 0 and ruff_rc == 0 and mypy_rc == 0 else 1
 
