@@ -58,7 +58,9 @@ def main() -> int:
     for path in files:
         print(f"- {path}")
 
-    diff_rc = run(["git", "diff", "--check", f"{args.base}...HEAD"])
+    diff_rc = run(
+        ["git", "diff", "--check", f"{args.base}...HEAD", "--", "*.py"]
+    )
 
     black_rc = 0
     ruff_rc = 0
