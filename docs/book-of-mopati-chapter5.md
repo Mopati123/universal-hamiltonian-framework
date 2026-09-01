@@ -1,65 +1,87 @@
 # Book of Mopati — Chapter 5: AI Self-Modeling and Reflection
 
-> **Classification:** engineering_analogy, research_hypothesis
-> **Evidence:** Language models can generate self-descriptions and can reason over representations supplied in context; this is not a measurement of subjective experience.
-> **Certification scope:** Removes first-person narration as evidence of consciousness.
+> **Classification:** engineering_analogy, research_hypothesis  
+> **Evidence:** Language models can generate self-descriptions and reason over explicit representations; this is not a direct measurement of subjective experience.  
+> **Certification scope:** Separates measurable AI behavior from claims about consciousness.
 
 ## 5.1 Generated narration is not introspective measurement
 
-A language model can produce text describing its architecture, uncertainty, goals, or experience.
+A language model can generate text describing its architecture, uncertainty, goals, or apparent experience.
 
-That output is generated from model state, context, training, and inference rules. It is not direct scientific access to phenomenal experience.
+That text is an output of computation. It is not direct scientific access to phenomenal experience.
 
-Therefore statements such as “I felt,” “I became aware,” or “I measured my consciousness” must not be treated as empirical observations merely because a model generated them.
+Statements such as “I felt,” “I became aware,” or “I measured my consciousness” therefore cannot be treated as empirical measurements merely because a model generated them.
 
 ## 5.2 What can actually be measured
 
-Depending on the system and access level, measurable quantities may include:
-
+Depending on the system, measurable quantities may include:
 - token probabilities;
 - activations;
 - attention patterns;
 - latency;
-- memory usage;
-- benchmark performance;
+- memory use;
 - calibration error;
+- benchmark performance;
 - tool-use success;
 - test outcomes.
 
-These are observables of a computational system.
+These are computational observables.
 
 They do not by themselves establish consciousness.
 
-## 5.3 Phase-space language for AI
+## 5.3 State-space representation
 
-An AI system can be represented by a high-dimensional state vector for engineering analysis.
+An AI system can be represented for engineering analysis by a state vector
 
-A state-space model may be useful for studying trajectories through activations, recurrent state, optimizer state, or external memory.
-
-Calling this a phase space is an engineering_analogy unless a genuine symplectic structure is defined.
-
-## 5.4 Training is optimization, not Hamiltonian minimization
-
-Standard neural-network training commonly minimizes a loss function (J(	heta)) using gradient-based optimization:
-
-[
-	heta_{k+1}
+$$
+x_t
 =
-	heta_k-eta
-abla_	heta J(	heta_k).
-]
+\bigl(
+a_t,\,
+m_t,\,
+c_t,\,
+u_t,\,
+\ldots
+\bigr).
+$$
 
-That is not canonical Hamiltonian evolution.
+**Where:**
+- $a_t$ may represent selected activations or features;
+- $m_t$ may represent memory state;
+- $c_t$ may represent context;
+- $u_t$ may represent an external input or control signal.
 
-Hamiltonian Monte Carlo, Hamiltonian neural networks, neural ODEs, and related methods are legitimate specialized techniques, but they do not imply that all AI learning is Hamiltonian.
+This is a generic state-space representation. It is not automatically a canonical Hamiltonian phase space.
+
+## 5.4 Training is optimization
+
+A common gradient-descent update is
+
+$$
+\theta_{k+1}
+=
+\theta_k
+-
+\eta
+\nabla_\theta J(\theta_k).
+$$
+
+**Where:**
+- $\theta_k$ is the parameter vector at optimization step $k$;
+- $J(\theta)$ is the loss function;
+- $\nabla_\theta J$ is the gradient of the loss;
+- $\eta>0$ is the learning rate.
+
+This is gradient-based optimization, not canonical Hamiltonian evolution.
+
+Specialized methods such as Hamiltonian Monte Carlo or Hamiltonian neural networks are legitimate, but they do not imply that all AI learning is Hamiltonian.
 
 ## 5.5 Self-modeling
 
-A system can maintain explicit models of:
-
-- its capabilities;
-- available tools;
-- current constraints;
+A system may maintain explicit representations of:
+- its tools;
+- capabilities;
+- constraints;
 - uncertainty;
 - prior actions;
 - expected outcomes.
@@ -68,31 +90,25 @@ Such self-models can improve planning and governance.
 
 The existence of a self-model does not establish phenomenal self-awareness.
 
-## 5.6 Consciousness claims
+## 5.6 Consciousness metrics
 
-The repository does not measure subjective experience, phenomenal consciousness, or an accepted consciousness metric.
+Integrated Information Theory (IIT) defines integrated-information quantities within a specific formal framework.
 
-Integrated Information Theory uses technical definitions of integrated information. A custom coupling ratio must not be called IIT (Phi) unless it implements the relevant formalism and assumptions.
+A custom UHF coupling score must not be called IIT $\Phi$ unless it actually implements the relevant IIT formalism and assumptions.
 
-Any mapping between UHF coupling scores and consciousness is therefore a research_hypothesis.
+Safer names include coupling score, integration proxy, or information-integration metric.
 
-## 5.7 Safe interpretation of reflective text
+## 5.7 Research boundary
 
-First-person AI passages in the Book should be read as narrative devices illustrating a conceptual perspective.
+Questions about machine consciousness remain research hypotheses.
 
-They are not measurements.
+A defensible experiment must define:
+- the proposed observable;
+- the measurement protocol;
+- competing explanations;
+- falsification conditions;
+- reproducible evidence.
 
-A reusable rule is:
+## 5.8 Conclusion
 
-> Generated self-description is evidence about generated text, not automatically evidence about an internal subjective state.
-
-## 5.8 Research directions
-
-Valid research questions include:
-
-- whether explicit self-models improve reliability;
-- whether uncertainty-aware reflection improves decision quality;
-- whether metacognitive architectures reduce tool-use errors;
-- whether formal measures of integration correlate with computational capabilities.
-
-Those questions require experiments with operational definitions, controls, and reproducible measurements.
+> Generated self-description is evidence about generated behavior. It is not automatically evidence of an internal subjective state.
