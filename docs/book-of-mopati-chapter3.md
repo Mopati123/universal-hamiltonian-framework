@@ -1,81 +1,101 @@
 # Book of Mopati — Chapter 3: Domain Mappings
 
-> **Classification:** `standard_physics`, `engineering_analogy`, `research_hypothesis`
-> **Evidence:** Physical Hamiltonians are standard where stated; nonphysical mappings are explicit constructions.
+> **Classification:** standard_physics, engineering_analogy, research_hypothesis  
+> **Evidence:** Physical Hamiltonians are standard where stated; nonphysical mappings are explicit constructions.  
 > **Certification scope:** Defines when cross-domain reuse is structural, analogous, or speculative.
 
 ## 3.1 One notation does not imply one ontology
 
-A common notation can make different systems easier to compare, but writing
+Writing
 
-[
+$$
 H(q,p)
-]
+$$
 
-for two domains does not prove that those domains have the same physical ontology.
+in two different domains does not prove that the domains have the same physical ontology.
 
-UHF therefore distinguishes **formal reuse** from **physical identity**.
+The notation says only that we have defined some function $H$ of variables $q$ and $p$. Whether $q$ and $p$ are genuinely canonical variables must be established separately.
 
-## 3.2 Established Hamiltonian domains
+## 3.2 Classical Hamiltonian example
 
-Classical mechanics supplies canonical examples such as
+For a particle of mass $m$ moving in a potential $V(q)$,
 
-[
-H(q,p)=rac{p^2}{2m}+V(q).
-]
+$$
+H(q,p)
+=
+\frac{p^2}{2m}
++
+V(q).
+$$
 
-Quantum mechanics uses Hamiltonian operators,
+**Where:**
+- $q$ is position;
+- $p$ is canonical momentum;
+- $m$ is mass;
+- $V(q)$ is potential energy.
 
-[
-ihbarpartial_t|psiangle=hat H|psiangle.
-]
+This is standard classical mechanics.
 
-Classical field theory and general relativity also admit Hamiltonian formulations under appropriate constructions and constraints.
+## 3.3 Quantum Hamiltonian example
 
-These are `standard_physics` within their assumptions.
+Quantum time evolution satisfies the Schrödinger equation
 
-## 3.3 Harmonic oscillators
+$$
+i\hbar
+\frac{\partial}{\partial t}
+|\psi(t)\rangle
+=
+\hat H |\psi(t)\rangle.
+$$
 
-Near a stable equilibrium, many physical systems can be approximated by quadratic dynamics. The harmonic oscillator is therefore widely useful.
+Here $\hat H$ is an operator acting on a quantum state. This is not the same mathematical object as an arbitrary scalar objective function in software or finance.
 
-That does not imply that any observed oscillation in markets, neural activity, or organizations is literally a physical harmonic oscillator. In those domains, oscillator language is an `engineering_analogy` unless a defensible model is specified and validated.
+## 3.4 Coupled classical oscillators
 
-## 3.4 Classical coupling is not quantum entanglement
+Two classical oscillators can interact through
 
-Two classical oscillators can be coupled through an interaction term, for example
-
-[
+$$
 H
 =
-H_1+H_2+rac{k}{2}(q_1-q_2)^2.
-]
+H_1
++
+H_2
++
+\frac{k}{2}(q_1-q_2)^2.
+$$
 
-This produces correlated classical dynamics.
+**Where:**
+- $H_1$ and $H_2$ are the uncoupled subsystem Hamiltonians;
+- $k$ is a classical coupling constant;
+- $q_1$ and $q_2$ are oscillator coordinates.
 
-Quantum entanglement instead requires a quantum state that cannot be factorized into subsystem states. A classical interaction term alone does not establish entanglement.
+This interaction can create correlated classical motion, synchronization, and normal modes.
 
-This distinction is mandatory throughout UHF.
+It does **not** by itself create quantum entanglement.
 
 ## 3.5 Markets
 
-A market model may define a state from price, order flow, liquidity, volatility, inventory, or regime features.
+A market model may use price, order flow, liquidity, volatility, inventory, and regime variables as features.
 
-A scalar objective or potential may then be constructed for inference or control.
+A potential-like or Hamiltonian-inspired score can then be constructed for inference or control.
 
-Such a model is an `engineering_analogy` unless a true symplectic structure and canonical equations are independently justified.
-
-Usefulness must be established empirically, not inferred from Hamiltonian terminology.
+Such a construction is an **engineering analogy** unless the model defines and justifies a true symplectic structure and canonical equations.
 
 ## 3.6 Biology and cognition
 
-Biological systems obey established physics and thermodynamics at their physical level, but higher-level biological or cognitive variables are not automatically canonical coordinates.
+Biological systems obey established physics at their physical level, but high-level variables such as "attention," "cognitive load," or "integration" are not automatically canonical coordinates.
 
-A proposed "biological Hamiltonian" or "cognitive potential" is therefore a modeling hypothesis unless derived from a defined physical or mathematical model and supported by evidence.
+A proposed biological or cognitive Hamiltonian must therefore specify:
+- state variables;
+- units or semantics;
+- equations of motion;
+- assumptions;
+- observables;
+- falsifiable predictions.
 
 ## 3.7 Domain translation contract
 
 A valid UHF domain mapping states:
-
 - the state variables;
 - the units or semantics of those variables;
 - whether variables are canonical or merely features;
@@ -87,20 +107,12 @@ A valid UHF domain mapping states:
 - classification;
 - evidence status.
 
-If any of these are omitted, the mapping is incomplete.
-
 ## 3.8 Implementation contract
 
 Documentation examples must match the repository's actual public API.
 
-If a code fragment is incomplete, conceptual, or depends on undefined helpers, it is pseudocode and must be labeled as such rather than advertised as runnable Python.
+Incomplete or conceptual code is pseudocode and must be labeled as such. Executable examples belong under tests or tested examples and must run in CI.
 
-Executable examples belong under tested examples or tests and must run in CI.
-
-## 3.9 Cross-domain conclusion
-
-The defensible UHF claim is not that the same physical law literally governs markets, cognition, software, and mechanics.
-
-It is:
+## 3.9 Conclusion
 
 > A common state/operator/constraint/evidence vocabulary can support disciplined comparison and engineering reuse across domains, while preserving the distinction between exact physics, analogy, and hypothesis.
