@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs" / "book_manifest.json"
@@ -12,10 +13,10 @@ START = "<!-- BOOK_NAV_START -->"
 END = "<!-- BOOK_NAV_END -->"
 
 
-def load_chapters() -> list[dict]:
+def load_chapters() -> list[dict[str, Any]]:
     with MANIFEST.open(encoding="utf-8") as fh:
-        data = json.load(fh)
-    return data["chapters"]
+        data = cast(dict[str, Any], json.load(fh))
+    return cast(list[dict[str, Any]], data["chapters"])
 
 
 def rel_docs_path(path: str) -> str:
