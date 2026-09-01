@@ -1,8 +1,8 @@
 # Book of Mopati — Chapter 15: Empirical Validation and Evidence
 
 > **Classification:** engineering_analogy, empirically_validated  
-> **Evidence:** The validation protocol itself is an engineering specification. Individual domain claims are empirically validated only when their evidence packages satisfy the protocol.  
-> **Certification scope:** Makes empirical claims falsifiable and allows scientific assumptions to be revised in response to evidence while protecting governance boundaries from accidental optimization.
+> **Evidence:** The validation protocol itself is an engineering specification. Individual domain claims become empirically validated only when their evidence packages satisfy the protocol.  
+> **Certification scope:** Makes empirical claims falsifiable, keeps JSON examples valid, and explains precisely how evidence changes claim status.
 
 ## 15.1 Validation is external to the claim
 
@@ -10,30 +10,24 @@ A model produces predictions, classifications, actions, or other outputs.
 
 An empirical system provides observations.
 
-Validation compares the two under a declared protocol.
+Validation compares model output with observed evidence under a declared protocol.
 
-A successful software run is not automatically validation of the physical or market claim encoded by the software.
+A successful software run is not automatically validation of the external scientific or market claim represented by that software.
 
 ## 15.2 Evidence can revise scientific models
 
-An earlier version of this chapter stated that empirical outcomes could never affect the framework's axioms.
+Scientific assumptions and hypotheses must remain revisable when evidence contradicts them.
 
-That is too strong for science.
-
-Scientific assumptions and models must remain revisable when evidence contradicts them.
-
-What should remain protected from accidental empirical feedback are governance invariants such as authorization boundaries, evidence immutability rules, or safety constraints—unless an authorized governance change process deliberately revises them.
+Governance invariants are different: authorization boundaries or evidence-integrity rules require an explicit authorized governance process to change.
 
 Therefore:
-
 - scientific hypotheses are falsifiable and revisable;
-- engineering parameters may be updated under controlled procedures;
-- governance invariants require explicit authority to change.
+- engineering parameters may be updated through controlled procedures;
+- governance invariants require explicit authority to modify.
 
 ## 15.3 Claim record
 
 Every major empirical claim should identify:
-
 - claim ID;
 - classification;
 - assumptions;
@@ -48,11 +42,11 @@ Every major empirical claim should identify:
 - configuration hash;
 - limitations.
 
-Without these fields, the claim is not ready for empirically_validated status.
+Without those fields, the claim is not ready for empirically validated status.
 
 ## 15.4 Trading protocol
 
-A trading validation must include at least:
+Trading validation requires at least:
 
 ### Data separation
 
@@ -71,69 +65,51 @@ Include relevant commissions, bid–ask spread, slippage, financing, borrow cost
 ### Baselines
 
 Compare against meaningful alternatives such as:
-
 - buy-and-hold where appropriate;
 - simple momentum;
 - simple mean reversion;
-- random or naive policy where appropriate;
-- an existing production baseline if available.
+- naive or random policies where appropriate;
+- an existing baseline system where available.
 
 ### Reproducibility
 
 Record exact data identity, code commit, parameters, random seeds where relevant, and deterministic evidence artifacts.
 
-## 15.5 Worked examples must be labeled correctly
+## 15.5 Metric examples
 
-Synthetic examples may explain the evidence schema.
+If returns are $r_1,\ldots,r_n$, the sample mean is
 
-They must use labels such as:
+$$
+\bar r
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+r_i.
+$$
 
-- illustrative;
-- synthetic;
-- pseudocode;
-- example-only.
+A Sharpe-like ratio may be estimated as
 
-Synthetic Sharpe ratios, win rates, or drawdowns must never appear as measured strategy performance.
+$$
+S
+=
+\frac{\bar r-r_f}{s_r},
+$$
+
+where:
+- $r_f$ is the return of the chosen risk-free benchmark over the same period convention;
+- $s_r$ is the sample standard deviation of returns.
+
+Any annualization convention must be stated explicitly.
+
+A metric is not evidence by itself; the data-generation and validation protocol matter.
 
 ## 15.6 Valid JSON
 
-Artifacts advertised as JSON must parse as JSON.
+Artifacts advertised as JSON must parse as standard JSON.
 
-Comments such as
+JavaScript-style comments beginning with two slashes are invalid inside standard JSON and therefore belong outside the JSON block.
 
-[
-	ext{// comment}
-]
-
-are invalid in standard JSON and must not appear in executable JSON examples.
-
-Explanatory comments belong outside the JSON code block.
-
-## 15.7 Failure taxonomy
-
-A useful validation system distinguishes:
-
-### Refusal
-
-The candidate violated a pre-execution invariant.
-
-### Failed hypothesis
-
-The candidate was admissible but empirical performance did not satisfy the declared criterion.
-
-### Measurement anomaly
-
-The measurement infrastructure failed or produced unusable evidence.
-
-### Implementation defect
-
-The code failed to implement the declared model or protocol.
-
-These outcomes have different meanings and should not be collapsed into one generic failure state.
-
-## 15.8 Example evidence object
-
-The following is valid illustrative JSON:
+The following is a valid illustrative example:
 
 ~~~json
 {
@@ -156,37 +132,58 @@ The following is valid illustrative JSON:
 
 No performance result is asserted.
 
-## 15.9 Promotion to empirically validated
+## 15.7 Failure taxonomy
 
-A claim changes classification only after the evidence package exists and the validation gate passes.
+### Refusal
 
-The appropriate transition is:
+The candidate violated a pre-execution invariant.
 
-[
-	ext{research or engineering claim}
-+
-	ext{reproducible evidence}
-ightarrow
-	ext{empirically validated claim within stated scope}.
-]
+### Failed hypothesis
 
-Validation is always scoped.
+The candidate was admissible, but empirical performance did not satisfy the declared criterion.
 
-It does not prove a model universally true.
+### Measurement anomaly
 
-## 15.10 Book certification
+The measurement infrastructure failed or produced unusable evidence.
+
+### Implementation defect
+
+The code failed to implement the declared model or protocol.
+
+These outcomes have different meanings and must not be collapsed into one generic failure state.
+
+## 15.8 Promotion to empirically validated
+
+The claim-state transition is
+
+~~~text
+research hypothesis or engineering claim
+              +
+      reproducible evidence
+              ↓
+empirically validated claim
+within the stated scope
+~~~
+
+This is a governance and evidence transition, not a physical equation.
+
+Validation is always scoped. It does not prove a model universally true.
+
+## 15.9 Book certification
 
 The Book of Mopati may be truth-certified only when:
-
-1. all chapters declare their classification and evidence boundary;
+1. all chapters declare classification and evidence boundaries;
 2. mathematical statements are internally consistent;
-3. physical claims distinguish established theory from hypothesis;
-4. advertised executable code is executed in CI;
-5. pseudocode is labeled as pseudocode;
-6. empirical claims point to reproducible evidence;
-7. implementation names and APIs match the repository;
-8. navigation and chapter counts are generated from one canonical manifest;
-9. claim-language validation passes;
-10. the documentation, implementation, and tests agree.
+3. equations render correctly and their symbols are understandable;
+4. physical claims distinguish established theory from hypothesis;
+5. advertised executable code runs in CI;
+6. pseudocode is labeled as pseudocode;
+7. empirical claims point to reproducible evidence;
+8. implementation names and APIs match the repository;
+9. navigation and chapter counts derive from one canonical manifest;
+10. claim-language validation passes;
+11. documentation, implementation, tests, and evidence agree.
 
-That is the final truth contract for the Book.
+## 15.10 Final principle
+
+> Certification means that the Book states what is known, what is engineered, what is hypothesized, and what has been empirically demonstrated without allowing notation or presentation defects to blur those boundaries.
