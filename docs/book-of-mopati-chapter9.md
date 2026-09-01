@@ -2,37 +2,74 @@
 
 > **Classification:** standard_physics, engineering_analogy, research_hypothesis  
 > **Evidence:** Biological energy metabolism and neurophysiology are empirical sciences; UHF consciousness mappings are not validated measures of consciousness.  
-> **Certification scope:** Prevents custom coupling scores from being presented as IIT Φ or subjective-experience measurements.
+> **Certification scope:** Prevents custom coupling scores from being presented as IIT $\Phi$ or direct measurements of subjective experience.
 
 ## 9.1 Biological energy
 
 Living systems exchange matter and energy with their environment.
 
-Biochemical free-energy changes, membrane potentials, metabolism, and neural signaling are legitimate physical and biological observables.
+Relevant measurable quantities can include:
+- chemical free-energy changes;
+- membrane potentials;
+- metabolic rates;
+- ion concentrations;
+- electrical neural activity.
 
-A high-level bioenergetic field requires an operational physical definition before it can be treated as more than metaphor.
+These are physical and biological observables.
+
+A higher-level “bioenergetic field” must be operationally defined before it can be treated as more than metaphor.
 
 ## 9.2 Neural dynamics
 
-Neural populations can be modeled with differential equations, dynamical systems, network models, statistical models, and other techniques.
+A simple dynamical representation may be written as
 
-Oscillatory neural activity is experimentally observed.
+$$
+\dot x
+=
+f(x,u,t),
+$$
 
-The presence of oscillations does not by itself imply a special consciousness Hamiltonian.
+where:
+- $x$ is a vector of neural or physiological state variables;
+- $u$ represents external input or control;
+- $f$ is the specified dynamical law.
+
+This is generic systems modeling. It is not automatically a consciousness Hamiltonian.
 
 ## 9.3 Consciousness measurement
 
-Consciousness research uses behavioral reports, clinical scales, neural measurements, perturbational methods, and competing theoretical constructs.
-
 The repository does not provide a validated direct measurement of subjective experience.
+
+Consciousness research may use:
+- behavioral reports;
+- clinical scales;
+- neural observables;
+- perturbational methods;
+- theory-specific quantities.
+
+Each has its own assumptions and limitations.
 
 ## 9.4 Integrated Information Theory
 
-IIT defines integrated-information quantities within a specific theoretical framework.
+IIT uses formally defined integrated-information quantities.
 
-A custom ratio derived from coupling strengths or energy terms is not IIT Φ merely because it is given the symbol Φ.
+A custom UHF statistic such as
 
-UHF must call such quantities what they are—for example, coupling_score or integration_proxy—unless the IIT formalism is actually implemented and validated.
+$$
+C_{\mathrm{int}}
+=
+\frac{1}{N}
+\sum_{i<j}
+w_{ij}
+$$
+
+may be an integration proxy.
+
+**Where:**
+- $w_{ij}$ is a declared pairwise coupling weight;
+- $N$ is a declared normalization factor.
+
+This quantity must **not** be called IIT $\Phi$ merely because it measures coupling or integration.
 
 ## 9.5 Mind–heart–spirit language
 
@@ -40,22 +77,24 @@ Mind, heart, and spirit can be preserved as philosophical or narrative categorie
 
 They are not interchangeable with experimentally established physical degrees of freedom.
 
-Any computational triad built from them is an engineering_analogy or research_hypothesis, depending on the claim.
+Any computational representation built from them is therefore an engineering analogy or research hypothesis unless a physical correspondence is demonstrated.
 
 ## 9.6 Consciousness–matter coupling
 
-The book does not establish a new physical force connecting consciousness and matter.
+The Book does not establish a new physical force connecting consciousness and matter.
 
-A future hypothesis would require an observable interaction term and predictions that differ from standard neurobiology and physics.
+A future physical hypothesis would need:
+- an explicit interaction variable;
+- an observable coupling term;
+- predicted effects;
+- controls that distinguish the hypothesis from standard neurobiology and physics.
 
 ## 9.7 Artificial consciousness
 
 Optimizing a coupling score, recurrent integration metric, or self-model objective does not demonstrate artificial consciousness.
 
-Such systems may be useful for studying functional integration, metacognition, or global information access, but phenomenal claims require substantially more evidence.
+Such metrics can be useful for studying functional integration or metacognition while remaining silent about phenomenal experience.
 
 ## 9.8 Conclusion
 
-The chapter's valid research position is:
-
-> UHF can provide explicit computational proxies for biological and cognitive organization, but those proxies must not be promoted to consciousness measurements without formal correspondence and empirical validation.
+> UHF can define computational proxies for biological and cognitive organization, but those proxies must not be promoted to consciousness measurements without formal correspondence and empirical validation.
