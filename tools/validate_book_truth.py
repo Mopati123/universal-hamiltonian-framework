@@ -9,6 +9,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from typing import Any, cast
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = ROOT / "docs" / "book_manifest.json"
@@ -58,9 +59,9 @@ REQUIRED_BANNER_LABELS = (
 )
 
 
-def load_manifest() -> dict:
+def load_manifest() -> dict[str, Any]:
     with MANIFEST_PATH.open(encoding="utf-8") as fh:
-        return json.load(fh)
+        return cast(dict[str, Any], json.load(fh))
 
 
 def chapter_paths(manifest: dict) -> list[Path]:
