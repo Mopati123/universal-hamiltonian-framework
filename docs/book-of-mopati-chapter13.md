@@ -109,7 +109,7 @@ A trading claim may be promoted to empirically_validated only when the evidence 
 
 Illustrative numbers must be labeled illustrative.
 
-The Book must not print invented Sharpe ratios, win rates, drawdowns, returns, or “advantage confirmed” tables as measured results.
+The Book must not print invented Sharpe ratios, win rates, drawdowns, returns, or claimed-advantage tables as measured results.
 
 If a real experiment is added later, the chapter must link to its immutable evidence artifact.
 
