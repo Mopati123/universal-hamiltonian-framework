@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 5: AI Self-Modeling and Reflection
 
-> **Classification:** engineering_analogy, research_hypothesis  
-> **Evidence:** Language models can generate self-descriptions and can reason over representations supplied in context; this is not a measurement of subjective experience.  
+> **Classification:** engineering_analogy, research_hypothesis
+> **Evidence:** Language models can generate self-descriptions and can reason over representations supplied in context; this is not a measurement of subjective experience.
 > **Certification scope:** Removes first-person narration as evidence of consciousness.
 
 ## 5.1 Generated narration is not introspective measurement
