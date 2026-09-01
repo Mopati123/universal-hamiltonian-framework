@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 0: Mathematical Foundations
 
-> **Classification:** `standard_physics`, `engineering_analogy`  
-> **Evidence:** Standard analytical mechanics is established physics; cross-domain uses are modeling choices and must be justified separately.  
+> **Classification:** `standard_physics`, `engineering_analogy`
+> **Evidence:** Standard analytical mechanics is established physics; cross-domain uses are modeling choices and must be justified separately.
 > **Certification scope:** This chapter states the mathematical conditions under which Hamiltonian language is valid and its limits.
 
 ## 0.1 What Hamiltonian mechanics actually says
