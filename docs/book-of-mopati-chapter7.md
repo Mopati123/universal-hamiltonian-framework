@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 7: Thermodynamics, Information, and Composite Models
 
-> **Classification:** standard_physics, engineering_analogy, research_hypothesis  
-> **Evidence:** Standard thermodynamics and information thermodynamics are established within their assumptions; a UHF 12D master equation is not an established unified field theory.  
+> **Classification:** standard_physics, engineering_analogy, research_hypothesis
+> **Evidence:** Standard thermodynamics and information thermodynamics are established within their assumptions; a UHF 12D master equation is not an established unified field theory.
 > **Certification scope:** Replaces theory-of-everything claims with a composite modeling hypothesis.
 
 ## 7.1 Thermodynamic foundations
