@@ -64,9 +64,7 @@ def main() -> int:
     ruff_rc = 0
     mypy_rc = 0
     if strict_files:
-        black_rc = run(
-            [sys.executable, "-m", "black", "--check", "--diff", *strict_files]
-        )
+        black_rc = run([sys.executable, "-m", "black", "--check", "--diff", *strict_files])
         ruff_rc = run([sys.executable, "-m", "ruff", "check", *strict_files])
         mypy_rc = run(
             [
@@ -83,15 +81,7 @@ def main() -> int:
     if legacy_src_files:
         compile_rc = run([sys.executable, "-m", "py_compile", *legacy_src_files])
 
-    return (
-        0
-        if diff_rc == 0
-        and black_rc == 0
-        and ruff_rc == 0
-        and mypy_rc == 0
-        and compile_rc == 0
-        else 1
-    )
+    return 0 if diff_rc == 0 and black_rc == 0 and ruff_rc == 0 and mypy_rc == 0 and compile_rc == 0 else 1
 
 
 if __name__ == "__main__":
