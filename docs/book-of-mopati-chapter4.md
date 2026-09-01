@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 4: Coupling and Interaction
 
-> **Classification:** standard_physics, engineering_analogy, research_hypothesis  
-> **Evidence:** Coupled Hamiltonian systems and quantum entanglement are standard physics concepts; cross-domain coupling claims require separate justification.  
+> **Classification:** standard_physics, engineering_analogy, research_hypothesis
+> **Evidence:** Coupled Hamiltonian systems and quantum entanglement are standard physics concepts; cross-domain coupling claims require separate justification.
 > **Certification scope:** Prevents classical interaction, correlation, and quantum entanglement from being conflated.
 
 ## 4.1 Coupled Hamiltonian systems
