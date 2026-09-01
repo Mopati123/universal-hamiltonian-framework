@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "book": {
+    "title": "The Book of Mopati",
+    "chapter_count": 16,
+    "canonical_exercises": "docs/chapter0-exercises.md",
+    "certification_status": "blocked_pending_truth_pass"
+  },
+  "allowed_classifications": [
+    "standard_physics",
+    "engineering_analogy",
+    "research_hypothesis",
+    "empirically_validated"
+  ],
+  "chapters": [
+    {"number":0,"file":"docs/book-of-mopati-chapter0.md","title":"Mathematical Foundations","audit_status":"needs_revision","classifications":["standard_physics","engineering_analogy"],"evidence_status":"mixed_requires_revision"},
+    {"number":1,"file":"docs/book-of-mopati.md","title":"Axiomatic Foundation","audit_status":"critical","classifications":["standard_physics","engineering_analogy","research_hypothesis"],"evidence_status":"unsupported_universal_claims"},
+    {"number":2,"file":"docs/book-of-mopati-chapter2.md","title":"Meta-Hamiltonian Singularity","audit_status":"critical","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"mathematical_contradiction"},
+    {"number":3,"file":"docs/book-of-mopati-chapter3.md","title":"Domain Universality","audit_status":"critical","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"api_and_physics_mismatch"},
+    {"number":4,"file":"docs/book-of-mopati-chapter4.md","title":"Cross-Domain Coupling","audit_status":"critical","classifications":["standard_physics","engineering_analogy","research_hypothesis"],"evidence_status":"unsupported_physical_claims"},
+    {"number":5,"file":"docs/book-of-mopati-chapter5.md","title":"AI as Phase-Space Flow","audit_status":"critical","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"unsupported_consciousness_claims"},
+    {"number":6,"file":"docs/book-of-mopati-chapter6.md","title":"Time and Causality","audit_status":"aligned","classifications":["research_hypothesis"],"evidence_status":"oracle_conditioned_hypothesis"},
+    {"number":7,"file":"docs/book-of-mopati-chapter7.md","title":"Thermodynamics and Information","audit_status":"needs_major_revision","classifications":["standard_physics","engineering_analogy","research_hypothesis"],"evidence_status":"body_overclaims"},
+    {"number":8,"file":"docs/book-of-mopati-chapter8.md","title":"Market Dynamics","audit_status":"aligned","classifications":["engineering_analogy"],"evidence_status":"analogy_boundary"},
+    {"number":9,"file":"docs/book-of-mopati-chapter9.md","title":"Bioenergetic Consciousness","audit_status":"needs_major_revision","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"unsupported_biological_and_consciousness_claims"},
+    {"number":10,"file":"docs/book-of-mopati-chapter10.md","title":"Tachyonic Blockchain","audit_status":"aligned","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"cryptographic_research_boundary"},
+    {"number":11,"file":"docs/book-of-mopati-chapter11.md","title":"Spacetime Engineering","audit_status":"critical","classifications":["standard_physics","research_hypothesis"],"evidence_status":"unsupported_prediction_claims"},
+    {"number":12,"file":"docs/book-of-mopati-chapter12.md","title":"Universal Compiler","audit_status":"critical","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"unsupported_equivalence_and_consciousness_claims"},
+    {"number":13,"file":"docs/book-of-mopati-chapter13.md","title":"ApexQuantumICT","audit_status":"critical","classifications":["engineering_analogy","research_hypothesis"],"evidence_status":"fabricated_or_unreproducible_empirical_claims"},
+    {"number":14,"file":"docs/book-of-mopati-chapter14.md","title":"A Framework Becomes Executable","audit_status":"needs_major_revision","classifications":["engineering_analogy"],"evidence_status":"theorem_not_demonstrated"},
+    {"number":15,"file":"docs/book-of-mopati-chapter15.md","title":"Empirical Validation","audit_status":"needs_major_revision","classifications":["engineering_analogy","empirically_validated"],"evidence_status":"validation_controls_incomplete"}
+  ]
+}
