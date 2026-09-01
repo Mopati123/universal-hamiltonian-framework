@@ -1,96 +1,128 @@
 # Book of Mopati — Chapter 7: Thermodynamics, Information, and Composite Models
 
-> **Classification:** standard_physics, engineering_analogy, research_hypothesis
-> **Evidence:** Standard thermodynamics and information thermodynamics are established within their assumptions; a UHF 12D master equation is not an established unified field theory.
-> **Certification scope:** Replaces theory-of-everything claims with a composite modeling hypothesis.
+> **Classification:** standard_physics, engineering_analogy, research_hypothesis  
+> **Evidence:** Standard thermodynamics and information thermodynamics are established within their assumptions; UHF composite state models are not established unified field theories.  
+> **Certification scope:** Makes the thermodynamic equations readable and separates physical law from composite engineering representation.
 
-## 7.1 Thermodynamic foundations
+## 7.1 First law of thermodynamics
 
-For a thermodynamic system,
+Under a common sign convention,
 
-[
-dU=delta Q-delta W
-]
+$$
+dU
+=
+\delta Q
+-
+\delta W.
+$$
 
-under a common sign convention.
+**Where:**
+- $U$ is internal energy;
+- $\delta Q$ is heat supplied to the system;
+- $\delta W$ is work done by the system.
 
-Entropy satisfies standard thermodynamic and statistical definitions. For isolated macroscopic systems, the second law implies nondecreasing thermodynamic entropy in the usual statistical sense.
+The $\delta$ notation reminds us that heat and work are process-dependent transfers rather than state functions in the same sense as $U$.
 
-## 7.2 Information has physical processing costs
+## 7.2 Landauer's principle
 
-Landauer's principle states that logically irreversible erasure of one bit has a minimum heat cost of
+In the ideal quasistatic limit, logically irreversible erasure of one bit has a minimum heat cost
 
-[
-k_BTln 2
-]
+$$
+Q_{\min}
+=
+k_B T \ln 2.
+$$
 
-in the ideal quasistatic limit.
+**Where:**
+- $k_B$ is Boltzmann's constant;
+- $T$ is absolute temperature.
 
-This demonstrates a deep connection between information processing and thermodynamics.
+This connects physical information processing with thermodynamic cost.
 
-It does not mean that one bit of abstract information is universally identical to a fixed amount of energy independent of physical implementation.
+It does not mean that an abstract bit is universally identical to a fixed amount of energy independent of physical implementation.
 
 ## 7.3 Open quantum systems
 
-A Lindblad-form master equation can model Markovian open quantum systems:
+A standard Lindblad-form master equation is
 
-[
-rac{dho}{dt}
+$$
+\frac{d\rho}{dt}
 =
--rac{i}{hbar}[H,ho]
+-\frac{i}{\hbar}
+[H,\rho]
 +
-sum_k
-left(
-L_kho L_k^dagger
+\sum_k
+\left(
+L_k \rho L_k^\dagger
 -
-rac12{L_k^dagger L_k,ho}
-ight).
-]
+\frac{1}{2}
+\{L_k^\dagger L_k,\rho\}
+\right).
+$$
 
-This equation has a specific mathematical and physical domain. Writing unrelated variables into the same symbolic form does not make them a unified physical theory.
+**Where:**
+- $\rho$ is the density operator;
+- $H$ is the system Hamiltonian;
+- $L_k$ are Lindblad operators describing environmental channels;
+- $[A,B]=AB-BA$ is a commutator;
+- $\{A,B\}=AB+BA$ is an anticommutator.
 
-## 7.4 Composite UHF state models
+This equation has a specific mathematical and physical domain.
 
-UHF may construct a composite engineering state
+Writing unrelated variables in a similar-looking equation does not create a unified physical theory.
 
-[
-x=(x_{	ext{physical}},x_{	ext{information}},x_{	ext{market}},x_{	ext{control}},ldots)
-]
+## 7.4 Composite UHF state
 
-with coupled update rules.
+A composite engineering state may be represented as
 
-Such a model may be useful for simulation or governance, but it is an engineering_analogy unless each sector and coupling has a justified physical interpretation.
+$$
+x
+=
+\bigl(
+x_{\mathrm{physical}},
+x_{\mathrm{information}},
+x_{\mathrm{market}},
+x_{\mathrm{control}},
+\ldots
+\bigr).
+$$
 
-## 7.5 The historical 12D proposal
+This notation simply means that one larger state vector contains several named sectors.
 
-The earlier 12-dimensional construction mixed spatial, temporal, consciousness, information, and tachyonic variables into one equation and called it a unified field theory.
+It does not imply that those sectors are new physical dimensions.
 
-That claim is withdrawn.
+## 7.5 The historical “12D” proposal
 
-A dimensional bookkeeping choice does not establish a physical dimension, and combining symbols in a master equation does not derive a theory of everything.
+A bookkeeping model with twelve coordinates is not automatically a twelve-dimensional physical spacetime.
 
-The 12D construction may remain as a research_hypothesis for a composite computational representation.
+A physical dimension requires a formal geometric and dynamical role, plus evidence appropriate to the claim.
 
-## 7.6 Consciousness and information
+Therefore the historical 12D construction is retained only as a research hypothesis for a composite representation.
 
-The repository does not establish
+## 7.6 Information, energy, and consciousness
 
-[
-	ext{information}equiv	ext{energy}equiv	ext{consciousness}.
-]
+The repository explicitly rejects the physical identity
 
-These concepts have different definitions and units.
+$$
+\text{information}
+\equiv
+\text{energy}
+\equiv
+\text{consciousness}.
+$$
 
-Relationships among them can be investigated, but equivalence requires a formal theory and evidence.
+These concepts have different definitions, units, and evidentiary requirements.
+
+Possible relationships among them may be researched, but equality is not established.
 
 ## 7.7 Security and thermodynamics
 
-Physical resource costs can contribute to security analysis, but thermodynamic cost alone does not prove cryptographic security.
+Thermodynamic costs can matter in physical implementations of computation.
 
-Security requires explicit threat models, algorithms, hardness assumptions or information-theoretic arguments, implementation analysis, and attack evaluation.
+They do not by themselves prove cryptographic security.
+
+Cryptographic claims require a threat model, algorithms, security definitions, and attack analysis.
 
 ## 7.8 Conclusion
 
-The defensible synthesis is:
-
-> Thermodynamics constrains physical information processing; open-system dynamics provides rigorous tools for certain physical systems; UHF may borrow those structures for composite engineering models, but such reuse does not constitute a unified field theory without derivation and evidence.
+> Thermodynamics constrains physical information processing. UHF may reuse thermodynamic and open-system ideas in composite engineering models, but that reuse does not constitute a unified field theory without derivation and evidence.
