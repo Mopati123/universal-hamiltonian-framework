@@ -1,7 +1,7 @@
 # Book of Mopati — Chapter 6: Time Symmetry and Tachyonic Hypotheses
 
-> **Classification:** standard_physics, research_hypothesis  
-> **Evidence:** Relativistic dispersion relations and time-symmetric equations are established within their domains; physical tachyons, backward information transfer, and practical retrocausal systems are not established by this repository.  
+> **Classification:** standard_physics, research_hypothesis
+> **Evidence:** Relativistic dispersion relations and time-symmetric equations are established within their domains; physical tachyons, backward information transfer, and practical retrocausal systems are not established by this repository.
 > **Certification scope:** Preserves speculative exploration without presenting it as demonstrated physics.
 
 ## 6.1 Relativistic energy–momentum relation
