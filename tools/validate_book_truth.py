@@ -180,6 +180,52 @@ def validate_json_blocks(path: Path) -> list[str]:
     return errors
 
 
+
+def validate_math_readability(path: Path) -> list[str]:
+    """Reject Markdown math corruption that would make equations unreadable on GitHub."""
+    errors: list[str] = []
+    text = path.read_text(encoding="utf-8")
+    lines = text.splitlines()
+
+    display_delimiters = text.count("$")
+    if display_delimiters % 2 != 0:
+        errors.append(
+            f"{path.relative_to(ROOT)} has an unbalanced number of $ display-math delimiters"
+        )
+
+    for line_number, line in enumerate(lines, start=1):
+        stripped = line.strip()
+        if stripped in {"[", "]"}:
+            errors.append(
+                f"{path.relative_to(ROOT)} line {line_number} contains a lone bracket "
+                "where rendered display math is expected"
+            )
+
+    corrupted_tokens = (
+        "frac{",
+        "partial H",
+        "partial L",
+        "nabla_",
+        "sum_",
+        "otimes",
+        "hbar",
+        "mathcal A",
+        "argmin",
+        "starin",
+        "dot q",
+        "ddot q",
+        "equiv\\text",
+    )
+    for token in corrupted_tokens:
+        for line_number, line in enumerate(lines, start=1):
+            if token in line and "\\" not in line:
+                errors.append(
+                    f"{path.relative_to(ROOT)} line {line_number} contains possible "
+                    f"stripped LaTeX token {token!r}"
+                )
+
+    return errors
+
 def scan_legacy_overclaims(path: Path) -> list[str]:
     text = path.read_text(encoding="utf-8").lower()
     errors: list[str] = []
@@ -251,6 +297,7 @@ def structural_errors(manifest: dict) -> list[str]:
         errors.extend(validate_chapter_banner(chapter))
         errors.extend(validate_python_blocks(path))
         errors.extend(validate_json_blocks(path))
+        errors.extend(validate_math_readability(path))
         errors.extend(scan_legacy_overclaims(path))
 
     canonical_exercises = ROOT / manifest.get("book", {}).get(
