@@ -97,7 +97,9 @@ def validate_manifest(manifest: dict) -> list[str]:
 
         unknown = set(chapter["classifications"]) - ALLOWED
         if unknown:
-            errors.append(f"chapter {chapter['number']} has unknown classifications: {sorted(unknown)}")
+            errors.append(
+                f"chapter {chapter['number']} has unknown classifications: {sorted(unknown)}"
+            )
 
         path = ROOT / chapter["file"]
         if not path.is_file():
