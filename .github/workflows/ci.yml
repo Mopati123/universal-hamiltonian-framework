@@ -16,10 +16,10 @@ jobs:
         python-version: ['3.11', '3.12']
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     
@@ -34,7 +34,7 @@ jobs:
         pytest tests/ -v --cov=src --cov-report=xml
     
     - name: Upload coverage
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
       with:
         file: ./coverage.xml
         flags: unittests
@@ -45,10 +45,12 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     
@@ -57,11 +59,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install black ruff mypy
     
-    - name: Check formatting with black
+    - name: Changed-file formatting and lint ratchet
+      if: ${{ github.event_name == 'pull_request' }}
+      run: |
+        python scripts/check_changed_python_quality.py --base "${{ github.event.pull_request.base.sha }}"
+    
+    - name: Full formatting check
+      if: ${{ github.event_name != 'pull_request' }}
       run: |
         black --check src/ tests/
     
-    - name: Lint with ruff
+    - name: Full lint
+      if: ${{ github.event_name != 'pull_request' }}
       run: |
         ruff check src/ tests/
     
@@ -74,10 +83,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     
@@ -94,7 +103,7 @@ jobs:
         python tools/validate_book_truth.py
     
     - name: Upload docs artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: documentation
         path: docs/
@@ -104,10 +113,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
     
@@ -128,7 +137,7 @@ jobs:
     needs: [test, lint]
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
