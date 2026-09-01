@@ -1,14 +1,5 @@
-import pytest
+"""Shared pytest configuration.
 
-
-@pytest.fixture
-def benchmark():
-    """Simple stub for pytest-benchmark when plugin is not installed.
-
-    This executes the provided callable and returns its result. It allows
-    tests that rely on the 'benchmark' fixture to run without the plugin.
-    """
-    def _bench(func):
-        return func()
-
-    return _bench
+The project declares pytest-benchmark in the dev dependencies, so the canonical
+`benchmark` fixture is provided by that plugin. Do not shadow it locally.
+"""

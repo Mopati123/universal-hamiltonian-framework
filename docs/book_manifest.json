@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.1",
+  "book": {
+    "title": "The Book of Mopati",
+    "chapter_count": 16,
+    "canonical_exercises": "docs/chapter0-exercises.md",
+    "certification_status": "certified",
+    "certified_scope": "Book of Mopati corpus: chapters 0-15, canonical index, exercises, claim taxonomy, and documentation-level consistency gates",
+    "certification_note": "Certification is documentation-scoped. It does not promote unvalidated domain hypotheses or trading performance claims to empirically_validated."
+  },
+  "allowed_classifications": [
+    "standard_physics",
+    "engineering_analogy",
+    "research_hypothesis",
+    "empirically_validated"
+  ],
+  "chapters": [
+    {
+      "number": 0,
+      "file": "docs/book-of-mopati-chapter0.md",
+      "title": "Mathematical Foundations",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 1,
+      "file": "docs/book-of-mopati.md",
+      "title": "Axiomatic Foundation",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 2,
+      "file": "docs/book-of-mopati-chapter2.md",
+      "title": "Meta-Level Self-Observation",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 3,
+      "file": "docs/book-of-mopati-chapter3.md",
+      "title": "Domain Mappings",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 4,
+      "file": "docs/book-of-mopati-chapter4.md",
+      "title": "Coupling and Interaction",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 5,
+      "file": "docs/book-of-mopati-chapter5.md",
+      "title": "AI Self-Modeling and Reflection",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 6,
+      "file": "docs/book-of-mopati-chapter6.md",
+      "title": "Time Symmetry and Tachyonic Hypotheses",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 7,
+      "file": "docs/book-of-mopati-chapter7.md",
+      "title": "Thermodynamics, Information, and Composite Models",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 8,
+      "file": "docs/book-of-mopati-chapter8.md",
+      "title": "Market Dynamics as an Engineering Analogy",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 9,
+      "file": "docs/book-of-mopati-chapter9.md",
+      "title": "Bioenergetics and Consciousness Hypotheses",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 10,
+      "file": "docs/book-of-mopati-chapter10.md",
+      "title": "Cryptographic Research Boundaries",
+      "audit_status": "aligned",
+      "classifications": [
+        "standard_physics",
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 11,
+      "file": "docs/book-of-mopati-chapter11.md",
+      "title": "Societal and Civilizational Dynamics",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 12,
+      "file": "docs/book-of-mopati-chapter12.md",
+      "title": "Universal Compiler and Omega-Point Hypotheses",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 13,
+      "file": "docs/book-of-mopati-chapter13.md",
+      "title": "ApexQuantumICT Financial Architecture",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy",
+        "research_hypothesis"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 14,
+      "file": "docs/book-of-mopati-chapter14.md",
+      "title": "Governed Executability",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    },
+    {
+      "number": 15,
+      "file": "docs/book-of-mopati-chapter15.md",
+      "title": "Empirical Validation and Evidence",
+      "audit_status": "aligned",
+      "classifications": [
+        "engineering_analogy",
+        "empirically_validated"
+      ],
+      "evidence_status": "scope_defined_truth_aligned"
+    }
+  ]
+}

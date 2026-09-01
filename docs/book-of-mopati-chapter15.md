@@ -1,539 +1,189 @@
-# Book of Mopati - Chapter 15: Empirical Validation
+# Book of Mopati — Chapter 15: Empirical Validation and Evidence
 
-## How to Test Without Breaking the Law
+> **Classification:** engineering_analogy, empirically_validated  
+> **Evidence:** The validation protocol itself is an engineering specification. Individual domain claims become empirically validated only when their evidence packages satisfy the protocol.  
+> **Certification scope:** Makes empirical claims falsifiable, keeps JSON examples valid, and explains precisely how evidence changes claim status.
 
-*Where measurement meets governance — validation that preserves invariants*
+## 15.1 Validation is external to the claim
 
----
+A model produces predictions, classifications, actions, or other outputs.
 
-**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 15 of 15** | **[← Previous Chapter](book-of-mopati-chapter14.md)**
+An empirical system provides observations.
 
----
+Validation compares model output with observed evidence under a declared protocol.
 
-## 15.1 Validation is External
+A successful software run is not automatically validation of the external scientific or market claim represented by that software.
 
-Chapter 14 demonstrated that a framework can become executable without violating its own laws. It showed how creativity operates under constraint, how refusal enforces boundaries, and how non-sovereign agents generate proposals without execution authority.
+## 15.2 Evidence can revise scientific models
 
-But a critical question remains:
+Scientific assumptions and hypotheses must remain revisable when evidence contradicts them.
 
-**How do we know if any of this works?**
+Governance invariants are different: authorization boundaries or evidence-integrity rules require an explicit authorized governance process to change.
 
-More precisely:
+Therefore:
+- scientific hypotheses are falsifiable and revisable;
+- engineering parameters may be updated through controlled procedures;
+- governance invariants require explicit authority to modify.
 
-**How do we validate empirical claims without breaking the governance model that makes those claims legitimate?**
+## 15.3 Claim record
 
-This is not a question about confidence. It is a question about **structure**.
+Every major empirical claim should identify:
+- claim ID;
+- classification;
+- assumptions;
+- dataset or experimental source;
+- protocol;
+- metrics;
+- baselines;
+- uncertainty;
+- result;
+- evidence artifact;
+- code commit;
+- configuration hash;
+- limitations.
 
-Most systems fail at this boundary in one of three ways:
+Without those fields, the claim is not ready for empirically validated status.
 
-1. **Self-Validation**: The system measures itself and declares success (circular)
-2. **Collapse Under Measurement**: Testing requires compromising safety constraints
-3. **Unfalsifiable Claims**: No empirical test is possible, so validity is assumed
+## 15.4 Trading protocol
 
-All three outcomes destroy the framework's integrity.
+Trading validation requires at least:
 
-This chapter addresses that problem directly. It shows how empirical validation can occur **externally**, how failure can be **admissible**, and how measurements can **refine applications without rewriting axioms**.
+### Data separation
 
-The result is not certainty.  
-It is **evidence under law**.
+Chronological train, validation, and test partitions.
 
-### What Validation Is Not
+The final test set must not influence model selection.
 
-Before defining validation semantics, we must be explicit about what validation does **not** mean in this framework:
+### Leakage controls
 
-- **Validation ≠ Proof**: Correspondence between projection and measurement does not prove the framework true. It provides evidence of applicability within a boundary.
-- **Validation ≠ Optimization**: Testing does not "improve" the framework. It refines understanding of where the framework applies.
-- **Validation ≠ Self-Certification**: The framework does not validate itself. External systems provide measurements; the framework only records correspondence.
+Features, labels, preprocessing, normalization, and parameter selection must use only information available at the relevant historical time.
 
-This is critical: validation produces **evidence**, not **truth claims**.
+### Costs
 
-### The Boundary Condition
+Include relevant commissions, bid–ask spread, slippage, financing, borrow costs, and latency assumptions.
 
-Validation in this framework follows the same principle as quantum measurement:
+### Baselines
 
-**The framework does not validate itself.**
+Compare against meaningful alternatives such as:
+- buy-and-hold where appropriate;
+- simple momentum;
+- simple mean reversion;
+- naive or random policies where appropriate;
+- an existing baseline system where available.
 
-Validation occurs in adjacent systems:
-- Financial markets (price evolution)
-- Physical simulations (trajectory prediction)
-- Trading engines (order execution)
-- Blockchain networks (consensus verification)
+### Reproducibility
 
-The framework produces **projections** — predictions, strategies, hypotheses.  
-The external system produces **measurements** — prices, outcomes, confirmations.
+Record exact data identity, code commit, parameters, random seeds where relevant, and deterministic evidence artifacts.
 
-The correspondence between projection and measurement is evidence.  
-The lack of correspondence is also evidence.
+## 15.5 Metric examples
 
-Neither outcome changes the framework's laws.
+If returns are $r_1,\ldots,r_n$, the sample mean is
 
-### The Invariant
-
-This establishes a critical constraint:
-
-> **No empirical outcome can override the framework's governing rules.**
-
-If a trading strategy fails, the failure does not weaken refusal semantics.  
-If a prediction is wrong, the error does not invalidate Hamiltonian evolution.  
-If a test reveals a bug, the bug is in the application, not the axioms.
-
-This is not defensiveness. It is **separation of concerns**.
-
-The framework governs **how proposals are generated**.  
-Empirical systems govern **whether proposals correspond to reality**.
-
-These are distinct questions, and they must remain distinct.
-
----
-
-## 15.2 Hypotheses vs Measurements
-
-In classical mechanics, we solve Hamilton's equations to predict a trajectory. The prediction is not "true" in an absolute sense. It is a **projection** from initial conditions and governing laws into future state.
-
-Empirical validation checks:
-- Was the prediction accurate?
-- Did it hold within stated tolerances?
-- What was the deviation, if any?
-
-The measurement does not change Newton's laws. It changes our **confidence in the model's applicability** to a specific system.
-
-In this framework, the same logic holds:
-
-### When an agent generates a business plan:
-- **The plan is a projection** from framework axioms and domain constraints
-- **The market outcome is a measurement** of real-world dynamics
-- **Correspondence is evidence** that the framework applies to this domain
-- **Divergence is evidence** about boundary conditions or incomplete modeling
-
-### When ApexQuantumICT produces a trading signal:
-- **The signal is a projection** from Hamiltonian market intelligence
-- **Price movement is a measurement** of actual market behavior
-- **Profit/loss is evidence** of model fitness
-- **Drawdown is evidence** of risk, not axiom failure
-
-### The Critical Distinction
-
-The framework does not claim:
-- "This plan will succeed"
-- "This trade will profit"
-- "This prediction is certain"
-
-The framework claims:
-- "This plan was generated under constraint"
-- "This trade satisfies risk bounds"
-- "This prediction is falsifiable"
-
-**Legitimacy is structural. Accuracy is empirical.**
-
-They are not the same thing.
-
----
-
-## 15.3 The Validation Gate
-
-Every empirical test in this framework passes through a validation gate with three outcomes:
-
-### PASS
-- Projection and measurement correspond within tolerance
-- Evidence is recorded with full context
-- Application is marked as validated for this domain
-- No changes to framework governance
-
-### FAIL
-- Projection and measurement diverge beyond tolerance
-- Failure is recorded with deviation metrics
-- Root cause analysis determines: bug vs. boundary condition
-- Application may be refined; axioms remain unchanged
-
-### REFUSAL
-- Test cannot execute due to constraint violation
-- System halts before measurement occurs
-- Refusal reason is logged
-- This is enforcement, not failure
-
-The validation gate preserves a critical invariant:
-
-> **Tests can fail. Governance cannot.**
-
-### What Happens After PASS
-
-Evidence artifacts are created:
-- Timestamp and configuration hash
-- Input data and projection
-- External measurement
-- Correspondence metrics (error, tolerance, confidence)
-
-This becomes part of the framework's empirical foundation—not proof of truth, but proof of testability.
-
-### What Happens After FAIL
-
-Failure produces two types of evidence:
-
-**1. Application Error** (bug in implementation)
-- Code is corrected
-- Test is re-run
-- Governance unchanged
-
-**2. Boundary Condition** (model doesn't apply here)
-- Domain constraints are documented
-- Application scope is refined
-- No attempt to weaken framework laws to force fit
-
-This mirrors science: a failed experiment refines the theory's domain, it doesn't invalidate the theory itself.
-
-### What Happens After REFUSAL
-
-Refusal means the test violated a governing constraint before execution:
-- Schema not satisfied
-- Quality threshold not met
-- Authorization denied
-- Resource limit exceeded
-
-**This is the framework working correctly.**
-
-The correct response is:
-1. Record the refusal with full context
-2. Verify refusal was legitimate
-3. Do not bypass the constraint
-4. If needed, redesign the test to satisfy governance
-
----
-
-## 15.4 Evidence Artifacts
-
-In physical systems, observables provide measurable quantities that allow verification without requiring access to internal state.
-
-In this framework, **evidence artifacts serve the same role**.
-
-Every validation run emits structured artifacts:
-
-### Manifest
-```json
-{
-  "test_id": "uuid",
-  "timestamp": "ISO-8601",
-  "framework_version": "0.3.1",
-  "test_type": "trading_backtest",
-  "outcome": "PASS|FAIL|REFUSAL",
-  "projection_hash": "sha256(...)",
-  "measurement_hash": "sha256(...)"
-}
-```
-
-### Projection Record
-- Inputs and configuration
-- Generated hypothesis or strategy
-- Expected bounds or tolerance
-- Hash of projection for immutability
-
-### Measurement Record
-- External system identifier
-- Measurement data (prices, outcomes, confirmations)
-- Timestamp and source
-- Hash of measurement for immutability
-
-### Correspondence Metrics
-- Error magnitude
-- Statistical significance
-- Tolerance satisfied (yes/no)
-- Confidence intervals
-
-### Audit Log
-- Authorization checks performed
-- Refusal conditions evaluated
-- Constraint violations (if any)
-- Full execution trace
-
-These artifacts allow an external observer—human or machine—to verify:
-- Constraints were enforced
-- Measurements were external
-- No unauthorized execution occurred
-- Outcomes are traceable to inputs
-
-**Trust is not assumed. It is replaced by inspection.**
-
-### Evidence is Storage, Not Interpretation
-
-The framework's role in validation ends at **recording**. It does not:
-
-- **Interpret** whether a PASS means "good" or FAIL means "bad"
-- **Conclude** anything about the hypothesis beyond correspondence metrics
-- **Recommend** changes to strategy or parameters
-- **Learn** from outcomes (no feedback into weights or rules)
-
-Evidence artifacts are:
-- **Immutable**: Once written, never modified (append-only)
-- **Hash-addressable**: Content-addressed for verification
-- **Interpretation-free**: Contains measurements, not conclusions
-- **Externally consumable**: Any observer can read without trusting framework
-
-The framework is a **witness**, not a judge.
-
-An external authority (human or system) may:
-- Read evidence artifacts
-- Draw conclusions about applicability
-- Decide whether to retry, refine, or reject
-- Update application code based on patterns
-
-But the framework itself does **none of this**. It stores, it does not conclude.
-
-This separation is architectural, not philosophical.
-
----
-
-## 15.5 Failure Semantics
-
-In most systems, failure is treated as exception, bug, or inadequacy. In this framework, failure is treated as **data**.
-
-A failed hypothesis does not invalidate the framework. It produces evidence about:
-- Applicability boundaries
-- Model assumptions
-- Domain-specific constraints
-- Measurement noise
-
-### Failure Taxonomy (Three Distinct Cases)
-
-Failure modes are **not** interchangeable. Each has a different cause and requires a different response:
-
-#### Type 1: Invalid State (Refusal)
-- **Cause**: Schema violation, constraint breach, authorization denial
-- **Timing**: Detected **before** execution or measurement
-- **Framework Action**: Halt execution, emit refusal reason
-- **This is enforcement, not failure**
-
-Examples:
-- Trading strategy requests leverage > 3x → REFUSAL (violates constraint)
-- Agent output missing required schema field → REFUSAL (invalid state)
-- Quality score < threshold → REFUSAL (governance boundary)
-
-#### Type 2: Failed Hypothesis (Admissible Empirical Outcome)
-- **Cause**: Projection and measurement diverge beyond tolerance
-- **Timing**: Detected **after** external measurement
-- **Framework Action**: Record deviation, analyze boundary conditions
-- **This is data, not contradiction**
-
-Examples:
-- ApexQuantumICT predicts Sharpe 1.2, measured Sharpe 0.3 → FAIL (outside tolerance)
-- Strategy generates loss within risk bounds → FAIL (hypothesis didn't hold)
-- Prediction diverges during market regime shift → FAIL (boundary condition)
-
-#### Type 3: Measurement Anomaly (External System Issue)
-- **Cause**: External system error, data corruption, execution failure
-- **Timing**: During measurement phase
-- **Framework Action**: Record anomaly, mark test incomplete
-- **This is neither framework failure nor hypothesis failure**
-
-Examples:
-- Trading engine timeout during backtest → ANOMALY (external system)
-- Market data feed drops connection → ANOMALY (measurement unavailable)
-- Blockchain node returns invalid response → ANOMALY (oracle failure)
-
-**Critical Distinction**:
-- Type 1 → Framework worked correctly (prevented invalid execution)
-- Type 2 → Hypothesis was wrong (framework worked correctly, application was wrong)
-- Type 3 → Measurement failed (neither framework nor application at fault)
-
-Conflating these types produces incorrect responses.
-
-### Non-Failure Events (Enforcement)
-
-The following are **not failures**:
-- Refusal to generate output (this is constraint enforcement)
-- Low quality score requiring regeneration (this is iteration under bounds)
-- Authorization denial (this is governance)
-- Schema violation detected pre-execution (this is prevention)
-
-Conflating enforcement with failure is a category error.
-
-### Rollback Semantics
-
-When a test fails:
-1. No state mutation occurs in the framework's canonical stores
-2. Test artifacts are preserved for analysis
-3. Governance rules remain unchanged
-4. Application code may be revised and retested
-
-The framework's laws are **write-protected against empirical outcomes**.
-
-### The Non-Feedback Invariant (Formal)
-
-We now state this explicitly as an architectural constraint:
-
-> **Invariant 15.1 (No Empirical Feedback into Law)**  
-> For all validation outcomes $O \in \{\text{PASS}, \text{FAIL}, \text{REFUSAL}, \text{ANOMALY}\}$:
-> - $O$ may trigger application code revision
-> - $O$ may refine domain applicability boundaries
-> - $O$ may update confidence estimates
-> - $O$ **cannot** modify axioms, governance rules, or execution authority
-
-Formally:
 $$
-\forall O: \quad \text{Axioms}_{\text{after}(O)} = \text{Axioms}_{\text{before}(O)}
+\bar r
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+r_i.
 $$
 
-**What this means in practice**:
+A Sharpe-like ratio may be estimated as
 
-| Outcome | Allowed Response | Forbidden Response |
-|---------|------------------|-------------------|
-| PASS | Record evidence, increase confidence | Weaken refusal conditions to "optimize" |
-| FAIL | Analyze boundary, refine model | Lower quality thresholds to force PASS |
-| REFUSAL | Fix input to satisfy constraint | Bypass constraint "just this once" |
-| ANOMALY | Retry with different external system | Assume measurement and proceed anyway |
+$$
+S
+=
+\frac{\bar r-r_f}{s_r},
+$$
 
-**Why this is non-negotiable**:
+where:
+- $r_f$ is the return of the chosen risk-free benchmark over the same period convention;
+- $s_r$ is the sample standard deviation of returns.
 
-If empirical outcomes could rewrite governance, then:
-1. A failed test could weaken safety constraints retroactively
-2. Optimization pressure could erode refusal semantics over time
-3. The framework would become self-validating (circular)
+Any annualization convention must be stated explicitly.
 
-The Non-Feedback Invariant is what keeps validation **external**.
+A metric is not evidence by itself; the data-generation and validation protocol matter.
 
-**Enforcement**:
-- Axioms and governance rules live in write-protected canonical stores
-- Validation code has read-only access to framework configuration
-- All governance changes require explicit human authorization
-- No automated "improvement" loops exist in the validation pipeline
+## 15.6 Valid JSON
 
-This is not a feature. This is a **boundary condition**.
+Artifacts advertised as JSON must parse as standard JSON.
 
----
+JavaScript-style comments beginning with two slashes are invalid inside standard JSON and therefore belong outside the JSON block.
 
-## 15.6 Worked Example: TRADING_ENGINE Validation Loop
+The following is a valid illustrative example:
 
-This example illustrates the **semantic structure** of a validation run. It does not claim profitability; it demonstrates how the framework executes a test without violating governance.
-
-### Phase 1: Hypothesis Generation (Draft Artifact)
-
-The agent proposes a strategy. Note that this is a **proposal**, not an executable command.
-
-```json
-// Artifact: proposal_strategy_alpha.json (DRAFT)
+~~~json
 {
-  "type": "proposal",
-  "domain": "TRADING_ENGINE",
-  "hypothesis": "Mean reversion on SPY 15m timeframe",
-  "parameters": {
-    "lookback": 20,
-    "entry_threshold": 2.0,
-    "stop_loss": 0.05
+  "claim_id": "example_market_claim",
+  "classification": "engineering_analogy",
+  "status": "illustrative_only",
+  "dataset": {
+    "identity": "synthetic_fixture_v1",
+    "out_of_sample": true
   },
-  "constraints_checked": ["max_leverage_3x", "liquid_symbols_only"],
-  "status": "AWAITING_VALIDATION"
-}
-```
-*Status: The framework has generated a candidate. It has no authority to execute it yet.*
-
-### Phase 2: External Measurement Setup
-
-The proposal is passed to an **external** engine for measurement. The framework does not simulate the market; it queries a simulator or live feed.
-
-- **Instrument**: SPY
-- **Interval**: 2023-01-01 to 2023-06-01 (Historical)
-- **Engine**: External Backtest Service (stateless)
-
-*Status: Control hand-off. The framework waits for data.*
-
-### Phase 3: Observed Outcome (Measurement)
-
-The external engine returns raw data. This is **measurement**, not interpretation.
-
-```json
-// Artifact: measurement_record_123.json (EXTERNAL)
-{
-  "source": "backtest_engine_v2",
-  "timestamp": "2025-01-30T14:00:00Z",
-  "metrics": {
-    "sharpe_ratio": 1.15,
-    "max_drawdown": 0.12,
-    "total_trades": 45,
-    "win_rate": 0.58
+  "controls": {
+    "transaction_costs": true,
+    "leakage_checks": true,
+    "baselines": true
   },
-  "integrity_hash": "sha256(7f8a...)"
+  "result": null,
+  "evidence_hash": null
 }
-```
-*Status: Raw observation received. No judgment yet.*
+~~~
 
-### Phase 4: Evidence Artifact (Immutable Record)
+No performance result is asserted.
 
-The framework combines proposal and measurement into a permanent **Evidence Artifact**. This is the "witness" step.
+## 15.7 Failure taxonomy
 
-```json
-// Artifact: evidence_log_999.json (IMMUTABLE)
-{
-  "test_id": "val_run_999",
-  "proposal_hash": "sha256(proposal_strategy_alpha)",
-  "measurement_hash": "sha256(measurement_record_123)",
-  "outcome_classification": "PASS",
-  "criteria": {
-    "sharpe_min": 1.0,
-    "drawdown_max": 0.15
-  },
-  "governance_implication": "strategy_validated_for_use",
-  "axioms_modified": []
-}
-```
-*Status: Correlation recorded. The strategy is marked valid for this domain.*
+### Refusal
 
-### Phase 5: Outcome Classification
+The candidate violated a pre-execution invariant.
 
-If the Sharpe ratio had been 0.5:
-- **Classification**: Type 2 Failure (Failed Hypothesis)
-- **Action**: Mark proposal as rejected. Record evidence.
-- **Invariant**: Do **not** lower the Sharpe threshold to force a pass.
+### Failed hypothesis
 
-If the simulation timed out:
-- **Classification**: Type 3 Anomaly
-- **Action**: Retry or abort.
-- **Invariant**: Do **not** assume the test passed.
+The candidate was admissible, but empirical performance did not satisfy the declared criterion.
 
-In all cases, the framework's axioms (how to generate, how to validate) remain **unchanged**. Only the application state (this specific strategy) is updated.
+### Measurement anomaly
 
----
+The measurement infrastructure failed or produced unusable evidence.
 
-## 15.7 Position in the Framework
+### Implementation defect
 
-Chapter 14 proved the framework could execute without self-violation.  
-Chapter 15 proves the framework can be tested without self-validation.
+The code failed to implement the declared model or protocol.
 
-Together, they establish:
-- **Executability under law** (Chapter 14)
-- **Testability under law** (Chapter 15)
+These outcomes have different meanings and must not be collapsed into one generic failure state.
 
-This closes the loop between theory and evidence.
+## 15.8 Promotion to empirically validated
 
-The framework is now:
-1. Axiomatically founded (Ch 0-1)
-2. Domain-mapped (Ch 3-13)
-3. Self-executable (Ch 14)
-4. Empirically testable (Ch 15)
+The claim-state transition is
 
-What remains is accumulation of evidence across domains—not to prove the framework true, but to demonstrate its **applicability boundaries** and **fitness regions**.
+~~~text
+research hypothesis or engineering claim
+              +
+      reproducible evidence
+              ↓
+empirically validated claim
+within the stated scope
+~~~
 
----
+This is a governance and evidence transition, not a physical equation.
 
-## 15.8 Summary
+Validation is always scoped. It does not prove a model universally true.
 
-In this chapter, we showed that:
+## 15.9 Book certification
 
-1. **Validation is external** — the framework does not measure itself
-2. **Hypotheses are projections** — not truth claims, but falsifiable predictions
-3. **The validation gate has three outcomes** — PASS, FAIL, REFUSAL (all admissible)
-4. **Evidence artifacts replace trust** — audit logs, manifolds, hashes
-5. **Failure is data** — it refines applications, not axioms
-6. **One complete example** — TRADING_ENGINE validation loop with all gates explicit
+The Book of Mopati may be truth-certified only when:
+1. all chapters declare classification and evidence boundaries;
+2. mathematical statements are internally consistent;
+3. equations render correctly and their symbols are understandable;
+4. physical claims distinguish established theory from hypothesis;
+5. advertised executable code runs in CI;
+6. pseudocode is labeled as pseudocode;
+7. empirical claims point to reproducible evidence;
+8. implementation names and APIs match the repository;
+9. navigation and chapter counts derive from one canonical manifest;
+10. claim-language validation passes;
+11. documentation, implementation, tests, and evidence agree.
 
-This is not the scientific method adapted to software.  
-**This is Hamiltonian mechanics applied to validation.**
+## 15.10 Final principle
 
-Measurements are external observables.  
-Governance is conserved under evolution.  
-Evidence accumulates without collapsing law.
-
----
-
-**📖 [Table of Contents](BOOK_INDEX.md)** | **Chapter 15 of 15** | **[← Previous Chapter](book-of-mopati-chapter14.md)**
-
----
-
-*End of Chapter 15*
+> Certification means that the Book states what is known, what is engineered, what is hypothesized, and what has been empirically demonstrated without allowing notation or presentation defects to blur those boundaries.

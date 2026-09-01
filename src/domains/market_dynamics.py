@@ -154,10 +154,7 @@ class MarketHamiltonian(DissipativeHamiltonian):
         
         # Damping (mean reversion) term: reduce momentum over time
         # gamma = self.kappa (mean_reversion_strength) used as damping coeff
-        if hasattr(self, 'damping'):
-            gamma = self.damping
-        else:
-            gamma = 0.0
+        gamma = self.gamma
         # Attenuate momentum
         p_new = p_new * (1.0 - gamma * dt)
 

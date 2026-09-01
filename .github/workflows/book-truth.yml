@@ -1,0 +1,33 @@
+name: Book Truth Certification
+
+on:
+  push:
+    branches:
+      - main
+      - fix/book-of-mopati-truth-consistency-pass
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  book-truth:
+    name: Validate Book of Mopati
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Structural truth validation
+        run: python tools/validate_book_truth.py
+
+      - name: Certification candidate check
+        run: |
+          if grep -q '"certification_status": "certified"' docs/book_manifest.json; then
+            python tools/validate_book_truth.py --certify
+          else
+            echo "Book is structurally aligned but awaiting certification promotion."
+          fi

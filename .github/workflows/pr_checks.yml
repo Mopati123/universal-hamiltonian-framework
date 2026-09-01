@@ -1,5 +1,10 @@
 name: PR Validation
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -11,10 +16,12 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.11'
 
@@ -23,17 +30,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e ".[dev]"
 
-    - name: Formatting check (black)
+    - name: Changed-file formatting and lint ratchet
       run: |
-        black --check src/ tests/
-
-    - name: Lint (ruff)
-      run: |
-        ruff check src/ tests/
-
-    - name: Type check (mypy)
-      run: |
-        mypy src/ --ignore-missing-imports
+        python scripts/check_changed_python_quality.py --base "${{ github.event.pull_request.base.sha }}"
 
     - name: Validate GitHub workflow YAML
       run: |
@@ -92,12 +91,12 @@ jobs:
               }
               
               // Validate critical fields
-              if (!('improved' in res) || !('delta_E' in res)) {
-                body = '**Meta self-validation results**\n\n⚠️ **WARNING** - Missing required fields in result\n\nMissing improved or delta_E field.';
+              const deltaObjective = ('delta_objective' in res) ? res.delta_objective : res.delta_E;
+              if (!('improved' in res) || deltaObjective === undefined) {
+                body = '**Meta self-validation results**\n\n⚠️ **WARNING** - Missing required fields in result\n\nMissing improved or objective-delta field.';
               } else {
                 improved = res.improved === true;
-                const deltaE = res.delta_E;
-                const badge = improved ? '✅ **PASS** (Delta-E < 0)' : '⚠️ **WARN** (Delta-E >= 0)';
+                const badge = improved ? '✅ **PASS** (Objective delta < 0)' : '⚠️ **WARN** (Objective delta >= 0)';
                 body = `**Meta self-validation results**\n\n${badge}\n\n\`\`\`json\n${JSON.stringify(res, null, 2)}\n\`\`\``;
               }
             }

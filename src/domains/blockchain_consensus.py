@@ -19,11 +19,21 @@ class BlockState:
     NOTE: state_hash is kept for reference but state_vector is used for
     Hamiltonian mechanics (requires continuous, differentiable variables).
     """
-    state_vector: np.ndarray  # q - Continuous state representation (e.g., hash embedding)
+    state_vector: np.ndarray | str  # q - Continuous vector, or legacy hash input
     validation_rate: float  # p - Rate of block production
     timestamp: float
     block_height: int
     state_hash: str = ""  # Reference only - not used in H computation
+
+    def __post_init__(self) -> None:
+        """Normalize legacy hash inputs into the canonical continuous state vector."""
+        if isinstance(self.state_vector, str):
+            legacy_hash = self.state_vector
+            if not self.state_hash:
+                self.state_hash = legacy_hash
+            self.state_vector = hash_to_vector(legacy_hash)
+        else:
+            self.state_vector = np.asarray(self.state_vector, dtype=float)
     
     def to_dict(self) -> dict:
         return {
