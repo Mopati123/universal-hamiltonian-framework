@@ -81,9 +81,7 @@ def main() -> int:
     if legacy_src_files:
         compile_rc = run([sys.executable, "-m", "py_compile", *legacy_src_files])
 
-    all_checks_passed = all(
-        rc == 0 for rc in (diff_rc, black_rc, ruff_rc, mypy_rc, compile_rc)
-    )
+    all_checks_passed = all(rc == 0 for rc in (diff_rc, black_rc, ruff_rc, mypy_rc, compile_rc))
     return 0 if all_checks_passed else 1
 
 
