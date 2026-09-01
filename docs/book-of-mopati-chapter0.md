@@ -1,151 +1,198 @@
 # Book of Mopati — Chapter 0: Mathematical Foundations
 
-> **Classification:** `standard_physics`, `engineering_analogy`
-> **Evidence:** Standard analytical mechanics is established physics; cross-domain uses are modeling choices and must be justified separately.
-> **Certification scope:** This chapter states the mathematical conditions under which Hamiltonian language is valid and its limits.
+> **Classification:** standard_physics, engineering_analogy  
+> **Evidence:** Standard analytical mechanics is established physics; cross-domain uses are modeling choices and must be justified separately.  
+> **Certification scope:** This chapter states the mathematical conditions under which Hamiltonian language is valid and explains every symbol used in its core equations.
 
-## 0.1 What Hamiltonian mechanics actually says
+## 0.1 Canonical variables and the Hamiltonian
 
-For a mechanical system with generalized coordinates (q_i), a regular Lagrangian (L(q,dot q,t)), and conjugate momenta
+For a mechanical system, let $q_i$ denote generalized coordinates and let $\dot q_i$ denote their time derivatives. If the system has a regular Lagrangian $L(q,\dot q,t)$, the conjugate momentum is
 
-[
-p_i = rac{partial L}{partial dot q_i},
-]
+$$
+p_i = \frac{\partial L}{\partial \dot q_i}.
+$$
 
-the Hamiltonian is obtained by a Legendre transform when the velocity-to-momentum map is locally invertible:
+**Where:**
+- $q_i$ is the $i$th generalized coordinate;
+- $\dot q_i = dq_i/dt$ is its generalized velocity;
+- $p_i$ is the momentum conjugate to $q_i$;
+- $L$ is the Lagrangian;
+- $t$ is time.
 
-[
-H(q,p,t)=sum_i p_idot q_i-L(q,dot q,t).
-]
+When the map from velocities to momenta is locally invertible, the Hamiltonian is obtained by the Legendre transform
+
+$$
+H(q,p,t)
+=
+\sum_i p_i \dot q_i - L(q,\dot q,t).
+$$
+
+**Meaning:** $H$ is the generator of canonical Hamiltonian evolution. In many familiar autonomous mechanical systems it equals the total energy, but that identification is model-dependent and should not be assumed universally.
 
 Hamilton's equations are
 
-[
-dot q_i=rac{partial H}{partial p_i},
-qquad
-dot p_i=-rac{partial H}{partial q_i}.
-]
+$$
+\dot q_i = \frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i = -\frac{\partial H}{\partial q_i}.
+$$
 
-These equations describe canonical Hamiltonian flow. They are not a generic objective-minimization rule.
+The first equation tells us how coordinates change; the second tells us how their conjugate momenta change.
+
+## 0.2 Conservation is not minimization
 
 Along a Hamiltonian trajectory,
 
-[
-rac{dH}{dt}
+$$
+\frac{dH}{dt}
 =
-rac{partial H}{partial t}
+\frac{\partial H}{\partial t}
 +
-{H,H}
+\{H,H\}
 =
-rac{partial H}{partial t}.
-]
+\frac{\partial H}{\partial t}.
+$$
 
-Therefore an autonomous Hamiltonian system satisfies
+The Poisson bracket of any function with itself is zero:
 
-[
-rac{dH}{dt}=0.
-]
+$$
+\{H,H\}=0.
+$$
 
-The ordinary result is conservation of (H), not spontaneous minimization of (H).
+Therefore, if the Hamiltonian has no explicit time dependence,
 
-## 0.2 Stationary action, not "nature is lazy"
+$$
+\frac{\partial H}{\partial t}=0
+\quad\Longrightarrow\quad
+\frac{dH}{dt}=0.
+$$
 
-The action is
+**Meaning:** an autonomous Hamiltonian system normally conserves $H$. It does not spontaneously move toward the minimum of $H$.
 
-[
-S[q]=int_{t_1}^{t_2}L(q,dot q,t),dt.
-]
+## 0.3 Stationary action
+
+The action of a path $q(t)$ is
+
+$$
+S[q]
+=
+\int_{t_1}^{t_2}
+L(q,\dot q,t)\,dt.
+$$
 
 Physical trajectories satisfy the stationarity condition
 
-[
-delta S=0.
-]
+$$
+\delta S = 0.
+$$
 
-"Least action" is common historical terminology, but the mathematically correct statement is **stationary action**: the physical path may correspond to a minimum, maximum, or saddle point of the action depending on the problem.
+This is more precise than saying that nature always "minimizes" action. A stationary point may be a minimum, maximum, or saddle point depending on the problem.
 
-The Euler–Lagrange equations,
+The corresponding Euler–Lagrange equations are
 
-[
-rac{d}{dt}rac{partial L}{partial dot q_i}
+$$
+\frac{d}{dt}
+\left(
+\frac{\partial L}{\partial \dot q_i}
+\right)
 -
-rac{partial L}{partial q_i}=0,
-]
-
-follow from this variational condition.
-
-## 0.3 Phase space and symplectic structure
-
-Canonical phase space carries the symplectic two-form
-
-[
-omega=sum_i dq_iwedge dp_i.
-]
-
-Hamiltonian flow preserves this structure. Liouville's theorem states that canonical Hamiltonian evolution preserves phase-space volume.
-
-This does **not** imply that every arbitrary data space, market state, software state, or social state is literally a symplectic phase space. Such a structure has to be defined and shown to satisfy the required mathematical properties.
-
-## 0.4 Hamiltonian flow versus other dynamics
-
-The Book uses four distinct dynamical concepts:
-
-1. **Hamiltonian flow:** conservative/symplectic evolution generated by a Hamiltonian.
-2. **Gradient flow:** optimization dynamics such as (dot x=-
-abla J(x)), for which (J) can decrease.
-3. **Dissipative flow:** dynamics with friction, damping, environmental coupling, or other mechanisms that may reduce mechanical energy.
-4. **Engineering soft scores:** designer-defined losses, penalties, utilities, risks, or quality functions.
-
-These must never be conflated.
-
-For gradient flow,
-
-[
-rac{dJ}{dt}
+\frac{\partial L}{\partial q_i}
 =
+0.
+$$
 
-abla Jcdotdot x
+## 0.4 Phase space and symplectic structure
+
+Canonical phase space is coordinatized by $(q_i,p_i)$. Its standard symplectic two-form is
+
+$$
+\omega
 =
--|
-abla J|^2le 0.
-]
+\sum_i dq_i \wedge dp_i.
+$$
 
-That is the appropriate mathematical template for objective minimization.
+**Where:** $\wedge$ is the antisymmetric wedge product of differential forms.
 
-## 0.5 Quantum connection
+Hamiltonian flow preserves this symplectic structure and, by Liouville's theorem, preserves phase-space volume.
 
-Quantum mechanics uses Hamiltonian operators to generate unitary time evolution:
+This does **not** imply that every data space, market state, software state, or social state is literally a symplectic phase space. That structure must be defined and demonstrated.
 
-[
-ihbarrac{partial}{partial t}|psi(t)angle
+## 0.5 Hamiltonian flow, gradient flow, and dissipation
+
+These are different mathematical objects.
+
+### Hamiltonian flow
+
+$$
+\dot q_i = \frac{\partial H}{\partial p_i},
+\qquad
+\dot p_i = -\frac{\partial H}{\partial q_i}.
+$$
+
+This describes conservative, symplectic evolution.
+
+### Gradient flow
+
+For a scalar objective $J(x)$,
+
+$$
+\dot x = -\nabla J(x).
+$$
+
+Then
+
+$$
+\frac{dJ}{dt}
 =
-hat H|psi(t)angle.
-]
+\nabla J \cdot \dot x
+=
+-\|\nabla J\|^2
+\le 0.
+$$
 
-Canonical quantization relates some classical canonical variables to operators satisfying commutation relations, but quantization is not universally obtained by a simple text substitution from Poisson brackets to commutators. Operator ordering, constraints, gauge structure, domains of operators, and field-theoretic issues can matter.
+**Meaning:** gradient flow drives the objective $J$ downhill. This is the appropriate mathematical template for minimization.
+
+### Dissipative flow
+
+A damped system contains nonconservative mechanisms such as friction or coupling to an environment. Its mechanical energy may decrease, but the decrease comes from dissipation rather than canonical Hamiltonian flow.
+
+### Engineering soft score
+
+A software or market objective such as $J(x)$ is a designer-defined score unless a genuine physical Hamiltonian structure has separately been established.
+
+## 0.6 Quantum connection
+
+Quantum mechanics uses a Hamiltonian operator $\hat H$ to generate time evolution:
+
+$$
+i\hbar
+\frac{\partial}{\partial t}
+|\psi(t)\rangle
+=
+\hat H |\psi(t)\rangle.
+$$
+
+**Where:**
+- $i$ is the imaginary unit;
+- $\hbar$ is the reduced Planck constant;
+- $|\psi(t)\rangle$ is the quantum state;
+- $\hat H$ is the Hamiltonian operator.
 
 Quantum entanglement is a property of a nonseparable quantum state. Classical coupling or statistical correlation is not, by itself, quantum entanglement.
 
-## 0.6 Dissipation and numerical integration
+## 0.7 Numerical integration
 
-A symplectic integrator is valuable because it approximately preserves the geometric structure of Hamiltonian dynamics over long integrations. It does **not** generally conserve the exact numerical energy at every step and it does not guarantee stability for arbitrary step sizes or arbitrary models.
+A symplectic integrator approximately preserves the geometric structure of Hamiltonian dynamics over long integrations.
 
-Dissipative systems require a model that includes the nonconservative terms or an extended formalism. Calling a decreasing software loss "Hamiltonian energy" is only an engineering analogy unless a genuine Hamiltonian structure has been established.
-
-## 0.7 When UHF may use Hamiltonian language
-
-A domain may be classified as `standard_physics` when the canonical structure is part of established physics.
-
-A nonphysical domain may use `engineering_analogy` when state variables, interaction terms, objective functions, and constraints are explicitly constructed for computation.
-
-A proposed physical extension must be labeled `research_hypothesis` until it has a defined model and supporting evidence.
-
-A claim may be labeled `empirically_validated` only when its assumptions, data, protocol, baselines, uncertainty, and reproducible evidence are supplied.
+It does **not** generally guarantee:
+- exact numerical energy at every time step;
+- stability for arbitrary step sizes;
+- correctness for an incorrect physical model.
 
 ## 0.8 Foundational invariant
 
-The Book of Mopati does not require Hamiltonian mechanics to be "the true map of reality." Its defensible foundation is narrower:
+The Book of Mopati does not require Hamiltonian mechanics to be "the true map of reality."
 
-> Hamiltonian mechanics is a powerful and precise formalism for systems that satisfy its mathematical conditions. UHF explores where that structure is exact, where Hamiltonian-inspired engineering abstractions are useful, and where proposed extensions remain hypotheses.
+The defensible foundation is:
 
-That boundary is the mathematical foundation for all later chapters.
+> Hamiltonian mechanics is a precise formalism for systems that satisfy its mathematical conditions. UHF uses it exactly where those conditions hold, uses Hamiltonian-inspired constructions explicitly as engineering analogies elsewhere, and labels unverified physical extensions as research hypotheses.
