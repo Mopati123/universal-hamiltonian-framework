@@ -2,127 +2,162 @@
 
 > **Classification:** engineering_analogy, research_hypothesis  
 > **Evidence:** The chapter documents an experimental trading architecture. No profitability, Sharpe ratio, win rate, predictive advantage, retrocausal effect, or quantum advantage is claimed without reproducible evidence.  
-> **Certification scope:** Removes fabricated empirical results and literal quantum/retrocausal market claims.
+> **Certification scope:** Explains the trading equations clearly while keeping quantum and retrocausal terminology non-literal unless independently demonstrated.
 
 ## 13.1 Architecture, not proof of alpha
 
-ApexQuantumICT can be described as a modular trading research architecture.
+ApexQuantumICT is described here as a modular trading research architecture.
 
-Its components may represent:
+A composite state can be written as
 
-- market state;
-- temporal context;
-- information features;
-- portfolio state;
-- risk;
-- execution authority;
-- evidence.
+$$
+x_t
+=
+\bigl(
+x_{\mathrm{market}},
+x_{\mathrm{time}},
+x_{\mathrm{information}},
+x_{\mathrm{portfolio}},
+x_{\mathrm{risk}},
+x_{\mathrm{authority}},
+x_{\mathrm{evidence}}
+\bigr)_t.
+$$
 
-These components are software modules and modeling abstractions.
+**Meaning:** the total software state at time $t$ is assembled from several named state sectors.
 
-Names containing quantum, Hamiltonian, tachyonic, collapse, superposition, or energy do not by themselves imply the corresponding physical phenomena.
+These sectors are software abstractions. Their names do not make them separate physical dimensions or quantum subsystems.
 
-## 13.2 Governed trading state
+## 13.2 Admissible actions
 
-A defensible system state can be written abstractly as
+Let $\mathcal A(x_t)$ denote the actions allowed by hard constraints in state $x_t$.
 
-[
-x_t=
-(x_{	ext{market}},
-x_{	ext{time}},
-x_{	ext{information}},
-x_{	ext{portfolio}},
-x_{	ext{risk}},
-x_{	ext{authority}},
-x_{	ext{evidence}}).
-]
-
-Candidate actions (a) are first tested for admissibility.
-
-Only lawful candidates proceed to scoring and scheduling.
-
-## 13.3 Hard invariants and soft scores
-
-Let (mathcal A(x_t)) be the set of actions satisfying hard constraints such as:
-
-- maximum risk;
-- position limits;
-- data validity;
+Examples of hard constraints include:
+- maximum position or risk;
+- valid data;
 - authorization;
-- market-session constraints;
+- session rules;
 - execution feasibility.
 
-A soft score (J(amid x_t)) may rank candidates:
+An action outside $\mathcal A(x_t)$ is refused before soft scoring.
 
-[
-a^star
-in
-argmin_{ainmathcal A(x_t)}J(amid x_t).
-]
+## 13.3 Soft-score selection
 
-This is governed optimization.
+A lawful candidate can be ranked using a declared score
 
-It is not quantum wave-function collapse.
+$$
+a^\star
+\in
+\operatorname*{arg\,min}_{a\in\mathcal A(x_t)}
+J(a\mid x_t).
+$$
 
-## 13.4 Market mappings
+**Where:**
+- $a$ is a candidate action;
+- $x_t$ is current system state;
+- $J(a\mid x_t)$ is an engineering objective;
+- $a^\star$ is a best-ranked admissible candidate according to the declared convention.
+
+If a higher score is better, the implementation may use an arg-max instead. The sign convention must be explicit.
+
+This selection is not quantum wave-function collapse.
+
+## 13.4 Example score decomposition
+
+A trading score can be decomposed as
+
+$$
+J
+=
+w_L J_L
++
+w_T J_T
++
+w_E J_E
++
+w_R J_R,
+$$
+
+where the terms may represent liquidity, timing, entry quality, and risk.
+
+The weights are engineering parameters, not physical constants.
+
+## 13.5 Market features
 
 Price, order flow, liquidity, imbalance, volatility, FVGs, structure, and regime variables may be used as features.
 
-If UHF calls order flow momentum, liquidity mass, or market structure potential, those are engineering analogies unless canonical structure has been independently derived.
+Terms such as “liquidity mass” or “market potential” are analogies unless a literal physical mapping is separately derived.
 
-## 13.5 “Quantum” terminology
+## 13.6 Quantum terminology
 
-A classical program may maintain multiple candidate strategies simultaneously.
+A classical program may maintain many candidate strategies at the same time.
 
 That is an ensemble or candidate set.
 
-It is not a coherent quantum superposition unless the implementation uses an actual quantum state with amplitudes, unitary operations, measurement semantics, and an appropriate quantum device or simulator.
+It is not a coherent quantum superposition unless the implementation actually uses quantum amplitudes, unitary operations, and measurement semantics.
 
 Likewise, statistical dependence between assets is not quantum entanglement.
 
-## 13.6 Retrocausality
+## 13.7 Retrocausality and leakage
 
-A model trained or evaluated with future data can leak information.
+If future information appears in model inputs during backtesting, that is data leakage unless the experiment is explicitly oracle-conditioned.
 
-That is not retrocausality.
+It is not evidence of retrocausality.
 
-All predictive experiments must ensure that information available at decision time is strictly limited to contemporaneously available inputs.
+Predictive evaluation must restrict each decision to information that was available at that historical time.
 
-Future-conditioned research scenarios must be labeled oracle-conditioned and excluded from trading-performance claims.
+## 13.8 Empirical validation contract
 
-## 13.7 Empirical validation contract
-
-A trading claim may be promoted to empirically_validated only when the evidence package includes:
-
-1. a timestamped data specification;
+A trading claim requires:
+1. timestamped data specification;
 2. chronological train/validation/test separation;
-3. strict look-ahead and leakage controls;
+3. look-ahead and leakage controls;
 4. realistic spread, commission, slippage, financing, and latency assumptions where relevant;
 5. baseline strategies;
-6. parameter-selection and tuning disclosure;
+6. disclosed parameter tuning;
 7. out-of-sample results;
 8. robustness or sensitivity analysis;
-9. reproducible code and data or immutable test fixtures;
-10. evidence artifacts tied to a commit and configuration.
-
-## 13.8 No fabricated metrics
-
-Illustrative numbers must be labeled illustrative.
-
-The Book must not print invented Sharpe ratios, win rates, drawdowns, returns, or claimed-advantage tables as measured results.
-
-If a real experiment is added later, the chapter must link to its immutable evidence artifact.
+9. reproducible code and data or immutable fixtures;
+10. evidence tied to a commit and configuration.
 
 ## 13.9 P&L semantics
 
-Trading P&L must account for execution prices, position direction, quantity, fees, and other modeled costs.
+For a simple completed long trade, gross P&L can be written as
 
-Performance metrics must be calculated from reproducible return series, not manually typed summaries.
+$$
+\mathrm{PnL}_{\mathrm{gross}}
+=
+q
+\left(
+P_{\mathrm{exit}}
+-
+P_{\mathrm{entry}}
+\right),
+$$
+
+where:
+- $q$ is position quantity;
+- $P_{\mathrm{entry}}$ is execution entry price;
+- $P_{\mathrm{exit}}$ is execution exit price.
+
+Net P&L must subtract modeled trading costs:
+
+$$
+\mathrm{PnL}_{\mathrm{net}}
+=
+\mathrm{PnL}_{\mathrm{gross}}
+-
+C_{\mathrm{fees}}
+-
+C_{\mathrm{spread}}
+-
+C_{\mathrm{slippage}}
+-
+C_{\mathrm{other}}.
+$$
+
+Performance metrics must be derived from reproducible return series, not manually typed summaries.
 
 ## 13.10 Research status
 
-ApexQuantumICT should currently be read as:
-
-> a governed market-research and execution architecture whose empirical advantage remains an open question to be tested under strict out-of-sample controls.
-
-That statement preserves the architecture without claiming results the repository has not demonstrated.
+> ApexQuantumICT is a governed market-research and execution architecture whose empirical advantage remains an open question until tested under strict out-of-sample controls.
